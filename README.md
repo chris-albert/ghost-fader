@@ -2,7 +2,7 @@
 
 USB-MIDI-controlled volume and pan for two balanced 1/4" line channels. Balanced in, always-balanced out, one input becomes stereo automatically. Bus-powered Teensy 4.0 plus a 2x2 gain matrix of PGA2310 attenuators. Revision B: USB only, no DIN jack, no DC jack.
 
-The full schematic package (block diagram, five sheets, level budget, USB power budget, MIDI map, build order) is `hardware/ghost-fader.html`. This file is the short version.
+The full schematic package (block diagram, five sheets, level budget, USB power budget, MIDI map, build order) is published at https://chris-albert.github.io/ghost-fader/ (source: `docs/index.html`). This file is the short version.
 
 ## Signal chain
 
@@ -18,7 +18,7 @@ J1/J2 TRS in -> THAT 1246 (bal->SE, -6 dB) -> 2x PGA2310 (2x2 matrix, 4 gains)
 
 ## Power
 
-Everything runs from the USB cable. The Teensy's VUSB-VIN pad stays intact, so the VIN pin exports the bus 5 V. That feeds an isolated 5 V -> +/-15 V DC-DC module (Traco TMR 3-0523) for the analog stages and, directly, the PGA2310 logic supply.
+Everything runs from the USB cable. There is no external power supply, DC jack or wall adapter. The Teensy's VUSB-VIN pad stays intact, so the VIN pin exports the bus 5 V. That feeds PS1, a small isolated 5 V -> +/-15 V DC-DC converter soldered to the board (Traco TMR 3-0523), for the analog stages and, directly, the PGA2310 logic supply.
 
 | Load | Current at 5 V |
 |---|---|
@@ -68,7 +68,7 @@ Prices are approximate single-piece USD.
 | U5 | 1 | TI OPA1642AID | Dual JFET op-amp | 4.00 | Alt: NE5532 |
 | U6, U7 | 2 | THAT 1646S08 | Cross-coupled balanced driver, +6 dB | 5.50 | Alt: TI DRV134 |
 | U9 | 1 | PJRC Teensy 4.0 | MCU with USB MIDI | 24.00 | Leave VUSB-VIN pad intact |
-| PS1 | 1 | Traco TMR 3-0523 | Isolated DC-DC, 4.5-9 V in, +/-15 V 100 mA | 22.00 | Any 2-3 W +/-15 V module, 5 V in |
+| PS1 | 1 | Traco TMR 3-0523 | Board-mounted isolated DC-DC, 4.5-9 V in, +/-15 V 100 mA | 22.00 | Fed from USB 5 V, not an external supply. Any 2-3 W +/-15 V module, 5 V in |
 | FB1 | 1 | Ferrite bead 600 R @ 100 MHz, >=1 A | Keeps switching noise off USB | 0.20 | |
 | J1-J4 | 4 | Neutrik NRJ6HF | 1/4" TRS PCB jack, T and R switching | 3.00 | Switch contacts used on J1, J2 only |
 | L1, L2 | 2 | 10 uH, >=300 mA | Rail filters | 0.40 | |

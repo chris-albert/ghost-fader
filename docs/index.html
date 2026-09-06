@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ghost Fader: USB-MIDI-controlled volume and pan for two balanced line channels. Schematic package and parts list.">
 <title>Ghost Fader</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
@@ -98,7 +104,8 @@ li{margin:0 0 6px}
 .legend i{display:inline-block;width:26px;height:0;border-top:2px solid currentColor;vertical-align:middle;margin-right:6px}
 .legend .la{color:var(--au)} .legend .lc{color:var(--ctrl)} .legend .lp{color:var(--pwr)}
 </style>
-
+</head>
+<body>
 <div class="wrap">
 
 <div class="tb">
@@ -120,7 +127,7 @@ li{margin:0 0 6px}
   <div><b>Gain range</b><span>+31.5 dB to −95.5 dB in 0.5 dB steps, hard mute</span></div>
   <div><b>Control</b><span>USB MIDI, class-compliant, channel set by DIP switch</span></div>
   <div><b>Mono → stereo</b><span>Jack switch detects a missing R plug; firmware pans the L signal</span></div>
-  <div><b>Power</b><span>USB bus power, ≈ 0.4 A at 5 V, one cable does everything</span></div>
+  <div><b>Power</b><span>USB bus power only, ≈ 0.4 A at 5 V. No DC jack, no wall adapter, one cable does everything</span></div>
 </div>
 
 <section>
@@ -696,7 +703,7 @@ li{margin:0 0 6px}
       <text x="672" y="294" class="ref">C14 10µ</text>
     </svg>
     </div>
-    <figcaption><b>Power.</b> Everything runs from the USB 5 V that the Teensy passes out on VIN. PS1 is an isolated module, so the analog rails are regenerated rather than filtered from the bus. All grounds meet once, at PS1's COM pin: analog ground, PGA DGND and Teensy ground. Keep PS1 at the far end of the board from the input receivers.</figcaption>
+    <figcaption><b>Power.</b> Everything runs from the USB 5 V that the Teensy passes out on VIN. There is no external power supply: PS1 is a small DC-DC converter soldered to the board, and its only input is that USB 5 V. PS1 is an isolated module, so the analog rails are regenerated rather than filtered from the bus. All grounds meet once, at PS1's COM pin: analog ground, PGA DGND and Teensy ground. Keep PS1 at the far end of the board from the input receivers.</figcaption>
   </figure>
 
   <h3>USB power budget</h3>
@@ -814,7 +821,7 @@ void writeMatrix(float a, float b, float c, float d){
       <tr><td class="m">LED1</td><td class="n">1</td><td class="m">3 mm LED</td><td>MIDI activity</td><td class="n">0.15</td><td></td></tr>
       <tr><td class="m">CABLE</td><td class="n">1</td><td class="m">USB A or C to micro-B</td><td>Data cable, not a charge-only cable</td><td class="n">3.00</td><td>Short and thick keeps the 5 V drop small</td></tr>
       <tr class="grp"><td colspan="6">Power</td></tr>
-      <tr><td class="m">PS1</td><td class="n">1</td><td class="m">Traco TMR 3-0523</td><td>Isolated DC-DC, 4.5–9 V in, ±15 V 100 mA out, 3 W</td><td class="n">22.00</td><td>Any 2–3 W ±15 V module with 5 V nominal input (Recom, Murata, Mornsun). Budget ≈ 50 mA per rail</td></tr>
+      <tr><td class="m">PS1</td><td class="n">1</td><td class="m">Traco TMR 3-0523</td><td>Board-mounted isolated DC-DC, 4.5–9 V in, ±15 V 100 mA out, 3 W</td><td class="n">22.00</td><td>Fed from USB 5 V; not an external supply. Any 2–3 W ±15 V module with 5 V nominal input (Recom, Murata, Mornsun). Budget ≈ 50 mA per rail</td></tr>
       <tr><td class="m">FB1</td><td class="n">1</td><td class="m">Ferrite bead, 600 Ω @ 100 MHz, ≥ 1 A</td><td>Keeps converter switching noise off the USB line</td><td class="n">0.20</td><td></td></tr>
       <tr><td class="m">L1, L2</td><td class="n">2</td><td class="m">10 µH, ≥300 mA</td><td>Rail filter inductors</td><td class="n">0.40</td><td></td></tr>
       <tr><td class="m">C11</td><td class="n">1</td><td class="m">47 µF 10 V low-ESR</td><td>USB-side reservoir for PS1</td><td class="n">0.25</td><td>Keep it modest; USB frowns on big inrush</td></tr>
@@ -844,3 +851,5 @@ void writeMatrix(float a, float b, float c, float d){
 </section>
 
 </div>
+</body>
+</html>
