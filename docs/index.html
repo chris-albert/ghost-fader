@@ -61,6 +61,9 @@ figure.sch .scroll{overflow-x:auto;padding:14px 12px 6px}
 figure.sch svg{display:block;width:100%;height:auto;min-width:640px;color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 figure.sch figcaption{padding:10px 16px 12px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted);max-width:none}
 figure.sch figcaption b{color:var(--ink);font-weight:600}
+figure.sch img{display:block;width:100%;height:auto;min-width:640px;background:#F5F4EF}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 18px}
+.dl a{display:inline-block;padding:7px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
 
 /* SVG parts */
 svg .w{stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -114,8 +117,8 @@ li{margin:0 0 6px}
     <p class="sub">USB-MIDI-controlled volume and pan for two balanced ¼″ line channels. Balanced in, always-balanced out, one input becomes stereo automatically. Bus-powered Teensy 4.0 plus a 2×2 gain matrix of PGA2310 attenuators.</p>
   </div>
   <div class="meta">
-    <div>Sheet set</div><div>0 block · 1 input · 2 matrix · 3 output · 4 control · 5 power</div>
-    <div>Revision</div><div>B · 2026-09-02 · USB only</div>
+    <div>Sheet set</div><div>0 block · 1 input · 2 matrix · 3 output · 4 control · 5 power · <a href="#full-schematic">full KiCad schematic</a></div>
+    <div>Revision</div><div>B · 2026-09-06 · USB only · through-hole ICs</div>
     <div>Signal level</div><div>+4 dBu nominal, +22 dBu peak</div>
     <div>Rails</div><div>USB 5 V → isolated ±15 V analog · 5 V logic · 3.3 V Teensy</div>
   </div>
@@ -249,7 +252,7 @@ li{margin:0 0 6px}
       <h3>Cost-down option</h3>
       <p>If cross-feed and mono-sum do not matter, drop U4 and the summers and put a DG419 analog switch in front of the second PGA channel: it picks the R receiver when a plug is present and the L receiver when it is not. That saves roughly $18 and one op-amp, at the cost of a small click on plug insertion unless firmware mutes around it.</p>
       <h3>Pin numbering</h3>
-      <p>Sheets 1 to 5 label IC pins by function, not number. Take pin numbers from the current datasheet for the package you order when you lay out the board. Every supply pin gets a 100 nF ceramic right at the pin; those are listed in the parts list but not drawn.</p>
+      <p>Sheets 1 to 5 are the readable overview: IC pins are labelled by function and bypass caps are not drawn. The <a href="#full-schematic">full KiCad schematic</a> further down has datasheet pin numbers, every bypass cap, the 1646 sense caps and the ERC-checked netlist, and is the one to lay a board out from.</p>
     </div>
   </div>
 </section>
@@ -728,6 +731,24 @@ li{margin:0 0 6px}
   </div>
 </section>
 
+<section id="full-schematic">
+  <div class="eyebrow">Full schematic · KiCad 9</div>
+  <div class="prose">
+    <p>The complete, layout-ready schematic: datasheet pin numbers on every IC, every bypass and bulk cap, the 1646 sense caps, build-outs and RF caps, all as a five-sheet hierarchical KiCad 9 project. Inter-sheet nets are global labels; rails are power symbols. It passes ERC with zero violations, and the exported netlist was checked pin-for-pin against an independently written connectivity list (53 nets, 233 pins).</p>
+  </div>
+  <div class="dl">
+    <a href="schematic/ghost-fader-schematic.pdf">PDF, all sheets</a>
+    <a href="https://github.com/chris-albert/ghost-fader/tree/main/hardware/kicad">KiCad project on GitHub</a>
+    <a href="https://github.com/chris-albert/ghost-fader/blob/main/hardware/kicad/bom.csv">BOM (CSV)</a>
+  </div>
+  <figure class="sch"><div class="scroll"><img src="schematic/sheet1-input.svg" alt="Sheet 1: balanced inputs. J1 and J2 TRS jacks with 100 pF RF caps into THAT 1246 receivers U1 and U2; ring-normal contacts pulled up by R1 and R14 as plug sense." loading="lazy"></div><figcaption><b>Sheet 1 · Balanced inputs.</b> J1/J2 → U1/U2 THAT 1246. Tip-normal grounded, ring-normal is the plug sense with a 1 MΩ pull-up to 3.3 V. Outputs leave as L_SE and R_SE.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="schematic/sheet2-matrix.svg" alt="Sheet 2: two PGA2310 volume controls U3 and U4 forming a 2 by 2 matrix, coupling caps C3 to C6, 10 k mix resistors and OPA2134 non-inverting summers U5A and U5B." loading="lazy"></div><figcaption><b>Sheet 2 · Matrix and summers.</b> U3 carries the direct paths, U4 the cross paths. SPI chain Teensy → U3 SDI, U3 SDO → U4 SDI. R2/R3 and R6/R7 mix into U5A/U5B, ×2 non-inverting.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="schematic/sheet3-output.svg" alt="Sheet 3: THAT 1646 drivers U6 and U7 with 10 µF sense caps, 10 ohm build-out resistors and 100 pF RF caps into output jacks J3 and J4." loading="lazy"></div><figcaption><b>Sheet 3 · Balanced outputs.</b> U6/U7 THAT 1646 with sense caps C17–C20, build-outs R10–R13, RF caps, jacks J3/J4.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="schematic/sheet4-control.svg" alt="Sheet 4: Teensy 4.0 with DIP switch SW1 on pins 4 to 7, plug sense on pins 2 and 3, SPI on 10, 11, 13, mute on 9 with pull-down R15, and activity LED on pin 8." loading="lazy"></div><figcaption><b>Sheet 4 · Control.</b> Teensy 4.0 pins are numbered 1–28 by physical position from the USB end. VIN exports the USB 5 V to sheet 5; 3.3 V feeds the sense pull-ups.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="schematic/sheet5-power.svg" alt="Sheet 5: USB 5 V through ferrite bead FB1 and 47 µF C11 into TMR 3-0523 isolated DC-DC PS1, giving plus and minus 15 V through L1, L2 and 100 µF caps; the 5 V node also feeds PGA logic." loading="lazy"></div><figcaption><b>Sheet 5 · Power.</b> No external supply. USB 5 V → FB1 → PS1 (board-mounted isolated DC-DC) → ±15 V. Star ground at PS1 Common.</figcaption></figure>
+  <div class="note prose"><b>Before ordering boards.</b> Footprints are assigned for every part except the Neutrik NRJ6HF jacks: take that footprint from Neutrik or SnapEDA and check its terminal names (T, R, S, TN, RN) against the symbol. The Teensy 4.0 and TMR 3 footprints are in the project library and were drawn from the published pitch and pin list; confirm the body outlines against the drawings. The symbol library and the generator script that produced the schematic live in <code>hardware/kicad/</code>.</div>
+</section>
+
 <section>
   <div class="eyebrow">Level budget</div>
   <div class="tscroll">
@@ -804,18 +825,18 @@ void writeMatrix(float a, float b, float c, float d){
     <tbody>
       <tr class="grp"><td colspan="6">Audio</td></tr>
       <tr><td class="m">U1, U2</td><td class="n">2</td><td class="m">THAT 1246S08</td><td>Balanced line receiver, −6 dB, SO-8</td><td class="n">5.50</td><td>TI INA137UA is drop-in-similar. THAT 1240 (0 dB) if you would rather pad in firmware</td></tr>
-      <tr><td class="m">U3, U4</td><td class="n">2</td><td class="m">TI PGA2310UA</td><td>Stereo volume control, ±15 V analog, SPI, SOIC-16</td><td class="n">11.00</td><td>PGA2310PA is the DIP-16 for breadboarding. Not PGA2311 (±5 V, too little headroom)</td></tr>
-      <tr><td class="m">U5</td><td class="n">1</td><td class="m">TI OPA1642AID</td><td>Dual JFET audio op-amp, SOIC-8</td><td class="n">4.00</td><td>NE5532 works, slightly more noise</td></tr>
+      <tr><td class="m">U3, U4</td><td class="n">2</td><td class="m">TI PGA2310PA</td><td>Stereo volume control, ±15 V analog, SPI, DIP-16</td><td class="n">11.00</td><td>PGA2310UA is the SOIC-16. Not PGA2311 (±5 V, too little headroom)</td></tr>
+      <tr><td class="m">U5</td><td class="n">1</td><td class="m">TI OPA2134PA</td><td>Dual JFET audio op-amp, DIP-8</td><td class="n">4.00</td><td>NE5532P works, slightly more noise. OPA1642 if you go SOIC</td></tr>
       <tr><td class="m">U6, U7</td><td class="n">2</td><td class="m">THAT 1646S08</td><td>Cross-coupled balanced line driver, +6 dB, SO-8</td><td class="n">5.50</td><td>TI DRV134UA is the equivalent</td></tr>
       <tr><td class="m">J1, J2</td><td class="n">2</td><td class="m">Neutrik NRJ6HF</td><td>¼″ TRS PCB jack, horizontal, tip and ring switching contacts</td><td class="n">3.00</td><td>Any TRS jack with a ring-normal contact; the switch is the plug sense</td></tr>
       <tr><td class="m">J3, J4</td><td class="n">2</td><td class="m">Neutrik NRJ6HF</td><td>¼″ TRS PCB jack (switch contacts unused)</td><td class="n">3.00</td><td>Same part keeps the panel uniform</td></tr>
-      <tr><td class="m">C3–C6</td><td class="n">4</td><td class="m">10 µF non-polar</td><td>Bipolar electrolytic, 25 V, coupling into PGA</td><td class="n">0.40</td><td>Nichicon UES / MUSE ES, or 4.7 µF film</td></tr>
-      <tr><td class="m">C1, C2, C7–C10 (+2 for J2)</td><td class="n">8</td><td class="m">100 pF C0G</td><td>RF caps at every jack tip and ring</td><td class="n">0.10</td><td>Return to chassis / sleeve, shortest path</td></tr>
+      <tr><td class="m">C3–C6, C17–C20</td><td class="n">8</td><td class="m">10 µF non-polar</td><td>Bipolar electrolytic, 25 V. C3–C6 couple into the PGAs; C17–C20 are the THAT 1646 sense caps</td><td class="n">0.40</td><td>Nichicon UES / MUSE ES. The sense caps cut output DC offset from 250 mV to 15 mV (1646 datasheet fig. 5)</td></tr>
+      <tr><td class="m">C1, C2, C7–C10, C15, C16</td><td class="n">8</td><td class="m">100 pF C0G</td><td>RF caps at every jack tip and ring</td><td class="n">0.10</td><td>Return to chassis / sleeve, shortest path</td></tr>
       <tr><td class="m">R2–R9</td><td class="n">8</td><td class="m">10 kΩ 1%</td><td>Summing and feedback, metal film</td><td class="n">0.05</td><td>Match within a summer for a clean mono sum</td></tr>
       <tr><td class="m">R10–R13</td><td class="n">4</td><td class="m">10 Ω</td><td>Output build-out</td><td class="n">0.05</td><td></td></tr>
       <tr><td class="m">R1, R14</td><td class="n">2</td><td class="m">1 MΩ</td><td>Plug-sense pull-ups to 3.3 V</td><td class="n">0.05</td><td>Do not enable the Teensy internal pull-up on pins 2, 3</td></tr>
       <tr class="grp"><td colspan="6">Control</td></tr>
-      <tr><td class="m">U9</td><td class="n">1</td><td class="m">PJRC Teensy 4.0</td><td>MCU, USB MIDI, with header pins</td><td class="n">24.00</td><td>Leave the VUSB–VIN pad intact; VIN feeds the board</td></tr>
+      <tr><td class="m">U9</td><td class="n">1</td><td class="m">PJRC Teensy 4.0</td><td>MCU, USB MIDI, with header pins</td><td class="n">24.00</td><td>Leave the VUSB–VIN pad intact; VIN feeds the board. Full schematic numbers its pins 1–28 by physical position from the USB end</td></tr>
       <tr><td class="m">R15, R16</td><td class="n">2</td><td class="m">10 kΩ, 1 kΩ</td><td>Mute pull-down, LED series</td><td class="n">0.05</td><td></td></tr>
       <tr><td class="m">SW1</td><td class="n">1</td><td class="m">4-way DIP switch</td><td>MIDI channel 1–16</td><td class="n">0.80</td><td></td></tr>
       <tr><td class="m">LED1</td><td class="n">1</td><td class="m">3 mm LED</td><td>MIDI activity</td><td class="n">0.15</td><td></td></tr>
@@ -827,7 +848,8 @@ void writeMatrix(float a, float b, float c, float d){
       <tr><td class="m">C11</td><td class="n">1</td><td class="m">47 µF 10 V low-ESR</td><td>USB-side reservoir for PS1</td><td class="n">0.25</td><td>Keep it modest; USB frowns on big inrush</td></tr>
       <tr><td class="m">C12, C13</td><td class="n">2</td><td class="m">100 µF 25 V</td><td>±15 V rail filters</td><td class="n">0.25</td><td></td></tr>
       <tr><td class="m">C14</td><td class="n">1</td><td class="m">10 µF</td><td>5 V logic rail</td><td class="n">0.10</td><td></td></tr>
-      <tr><td class="m">Cdec</td><td class="n">12</td><td class="m">100 nF X7R</td><td>One at every supply pin of U1–U7, PS1</td><td class="n">0.05</td><td>Plus 10 µF per rail near each THAT part</td></tr>
+      <tr><td class="m">C21–C36</td><td class="n">16</td><td class="m">100 nF X7R</td><td>One at every supply pin of U1–U7</td><td class="n">0.05</td><td>Within 5 mm of the pin</td></tr>
+      <tr><td class="m">C40–C43</td><td class="n">4</td><td class="m">10 µF 25 V</td><td>±15 V bulk, one pair at the input end and one at the output end</td><td class="n">0.10</td><td></td></tr>
       <tr class="grp"><td colspan="6">Mechanical</td></tr>
       <tr><td class="m">ENC</td><td class="n">1</td><td class="m">Hammond 1590BB</td><td>Die-cast aluminium, 119 × 94 × 34 mm</td><td class="n">12.00</td><td>1590DD if you want a hand-solderable spread</td></tr>
       <tr><td class="m">PCB</td><td class="n">1</td><td class="m">2-layer, ≈ 100 × 80 mm</td><td>Ground pour, jacks on one edge, DC-DC on the far edge</td><td class="n">10.00</td><td>5 boards from JLCPCB or OSH Park</td></tr>

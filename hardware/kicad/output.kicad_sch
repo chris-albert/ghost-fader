@@ -1,0 +1,1313 @@
+(kicad_sch (version 20250114) (generator "ghost-fader-gen") (generator_version "9.0") (uuid "66a6cf73-36ee-4ad6-af71-e984dea0b05d") (paper "A3")
+  (title_block (title "Ghost Fader - Sheet 3: Balanced outputs") (date "2026-09-06") (rev "B") (company "Ghost Fader") (comment 1 "THAT 1646 cross-coupled drivers") (comment 2 "https://chris-albert.github.io/ghost-fader/"))
+  (lib_symbols
+(symbol "Connector_Audio:AudioJack3_SwitchTR" 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "J" 
+        (at 0 8.89 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Value" "AudioJack3_SwitchTR" 
+        (at 0 6.35 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "~" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Audio Jack, 3 Poles (Stereo / TRS), Switched TR Poles (Normalling)" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "audio jack receptacle stereo headphones phones TRS connector" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_fp_filters" "Jack*" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "AudioJack3_SwitchTR_0_1" 
+        (rectangle 
+          (start -5.08 -5.08) 
+          (end -6.35 -7.62) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type outline))) 
+        (polyline 
+          (pts 
+            (xy -1.905 -5.08) 
+            (xy -1.27 -5.715) 
+            (xy -0.635 -5.08) 
+            (xy -0.635 0) 
+            (xy 2.54 0)) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 0 -5.08) 
+            (xy 0.635 -5.715) 
+            (xy 1.27 -5.08) 
+            (xy 2.54 -5.08)) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 0.508 -0.254) 
+            (xy 0.762 -0.762)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 1.778 -5.334) 
+            (xy 2.032 -5.842)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (rectangle 
+          (start 2.54 3.81) 
+          (end -5.08 -10.16) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type background))) 
+        (polyline 
+          (pts 
+            (xy 2.54 2.54) 
+            (xy -2.54 2.54) 
+            (xy -2.54 -5.08) 
+            (xy -3.175 -5.715) 
+            (xy -3.81 -5.08)) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 2.54 -2.54) 
+            (xy 0.508 -2.54) 
+            (xy 0.508 -0.254) 
+            (xy 0.254 -0.762)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 2.54 -7.62) 
+            (xy 1.778 -7.62) 
+            (xy 1.778 -5.334) 
+            (xy 1.524 -5.842)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "AudioJack3_SwitchTR_1_1" 
+        (pin passive line 
+          (at 5.08 2.54 180) 
+          (length 2.54) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "S" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 5.08 0 180) 
+          (length 2.54) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "R" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 5.08 -2.54 180) 
+          (length 2.54) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "RN" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 5.08 -5.08 180) 
+          (length 2.54) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "T" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 5.08 -7.62 180) 
+          (length 2.54) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "TN" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "Device:C" 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0.254)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "C" 
+        (at 0.635 2.54 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Value" "C" 
+        (at 0.635 -2.54 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Footprint" "" 
+        (at 0.9652 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "~" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Unpolarized capacitor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "cap capacitor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_fp_filters" "C_*" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "C_0_1" 
+        (polyline 
+          (pts 
+            (xy -2.032 0.762) 
+            (xy 2.032 0.762)) 
+          (stroke 
+            (width 0.508) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy -2.032 -0.762) 
+            (xy 2.032 -0.762)) 
+          (stroke 
+            (width 0.508) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "C_1_1" 
+        (pin passive line 
+          (at 0 3.81 270) 
+          (length 2.794) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 0 -3.81 90) 
+          (length 2.794) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "Device:C_Polarized" 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0.254)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "C" 
+        (at 0.635 2.54 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Value" "C_Polarized" 
+        (at 0.635 -2.54 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Footprint" "" 
+        (at 0.9652 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "~" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Polarized capacitor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "cap capacitor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_fp_filters" "CP_*" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "C_Polarized_0_1" 
+        (rectangle 
+          (start -2.286 0.508) 
+          (end 2.286 1.016) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy -1.778 2.286) 
+            (xy -0.762 2.286)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy -1.27 2.794) 
+            (xy -1.27 1.778)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (rectangle 
+          (start 2.286 -0.508) 
+          (end -2.286 -1.016) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type outline)))) 
+      (symbol "C_Polarized_1_1" 
+        (pin passive line 
+          (at 0 3.81 270) 
+          (length 2.794) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 0 -3.81 90) 
+          (length 2.794) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "Device:R" 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "R" 
+        (at 2.032 0 90) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Value" "R" 
+        (at 0 0 90) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at -1.778 0 90) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "~" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Resistor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "R res resistor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_fp_filters" "R_*" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "R_0_1" 
+        (rectangle 
+          (start -1.016 -2.54) 
+          (end 1.016 2.54) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "R_1_1" 
+        (pin passive line 
+          (at 0 3.81 270) 
+          (length 1.27) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 0 -3.81 90) 
+          (length 1.27) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "GhostFader:THAT1646" 
+      (pin_names 
+        (offset 1.016)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "U" 
+        (at -7.62 8.89 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Value" "THAT1646" 
+        (at 7.62 -8.89 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify right))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "THAT 1646 OutSmarts balanced line driver, +6 dB, SO-8" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "THAT1646_0_1" 
+        (rectangle 
+          (start -7.62 7.62) 
+          (end 7.62 -7.62) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type background)))) 
+      (symbol "THAT1646_1_1" 
+        (pin input line 
+          (at -10.16 0 0) 
+          (length 2.54) 
+          (name "In" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "4" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin output line 
+          (at 10.16 5.08 180) 
+          (length 2.54) 
+          (name "Out+" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "8" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin input line 
+          (at 10.16 2.54 180) 
+          (length 2.54) 
+          (name "Sns+" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "7" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin input line 
+          (at 10.16 -2.54 180) 
+          (length 2.54) 
+          (name "Sns-" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin output line 
+          (at 10.16 -5.08 180) 
+          (length 2.54) 
+          (name "Out-" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin power_in line 
+          (at -2.54 -10.16 90) 
+          (length 2.54) 
+          (name "Gnd" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "3" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin power_in line 
+          (at 2.54 -10.16 90) 
+          (length 2.54) 
+          (name "Vee" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "5" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin power_in line 
+          (at 0 10.16 270) 
+          (length 2.54) 
+          (name "Vcc" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "6" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))))
+(symbol "power:+15V" 
+      (power) 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0) 
+        (hide yes)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "#PWR" 
+        (at 0 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Value" "+15V" 
+        (at 0 3.556 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Power symbol creates a global label with name \"+15V\"" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "global power" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "+15V_0_1" 
+        (polyline 
+          (pts 
+            (xy -0.762 1.27) 
+            (xy 0 2.54)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 0 2.54) 
+            (xy 0.762 1.27)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 0 0) 
+            (xy 0 2.54)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "+15V_1_1" 
+        (pin power_in line 
+          (at 0 0 90) 
+          (length 0) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "power:-15V" 
+      (power) 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0) 
+        (hide yes)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "#PWR" 
+        (at 0 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Value" "-15V" 
+        (at 0 3.556 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Power symbol creates a global label with name \"-15V\"" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "global power" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "-15V_0_0" 
+        (pin power_in line 
+          (at 0 0 90) 
+          (length 0) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (symbol "-15V_0_1" 
+        (polyline 
+          (pts 
+            (xy 0 0) 
+            (xy 0 1.27) 
+            (xy 0.762 1.27) 
+            (xy 0 2.54) 
+            (xy -0.762 1.27) 
+            (xy 0 1.27)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type outline)))) 
+      (embedded_fonts no))
+(symbol "power:GND" 
+      (power) 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0) 
+        (hide yes)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "#PWR" 
+        (at 0 -6.35 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Value" "GND" 
+        (at 0 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Power symbol creates a global label with name \"GND\" , ground" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "global power" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "GND_0_1" 
+        (polyline 
+          (pts 
+            (xy 0 0) 
+            (xy 0 -1.27) 
+            (xy 1.27 -1.27) 
+            (xy 0 -2.54) 
+            (xy -1.27 -1.27) 
+            (xy 0 -1.27)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "GND_1_1" 
+        (pin power_in line 
+          (at 0 0 270) 
+          (length 0) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+  )
+(global_label "L_OUT_SE" (shape input) (at 68.58 50.8 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "f9c20f19-986c-4169-ab3a-f01486dd97de") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 68.58 50.8 0) (effects (font (size 1.27 1.27)) (hide yes))))
+(no_connect (at 152.4 48.26) (uuid "fcb018f3-20a0-42a5-b140-c1c84000240f"))
+(no_connect (at 152.4 43.18) (uuid "1ae363ef-e1d4-4b4e-9458-d5508b61eea0"))
+(global_label "R_OUT_SE" (shape input) (at 68.58 111.76 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "ea5e76b9-49e8-4329-acef-ae6f7e4319d7") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 68.58 111.76 0) (effects (font (size 1.27 1.27)) (hide yes))))
+(no_connect (at 152.4 109.22) (uuid "039ee28a-126a-400c-b179-06c88062cf06"))
+(no_connect (at 152.4 104.14) (uuid "c1101289-8a12-417c-aa17-bf7d9330fd22"))
+(text "THAT 1646 = +6 dB cross-coupled driver. A TS plug on the output shorts Out- to ground; OutSmarts keeps the full signal on the tip.\n10 uF non-polar sense caps (datasheet figure 5) drop output DC offset from 250 mV to 15 mV. 10 R build-outs isolate cable capacitance.\nOutput jack switch contacts are not used." (exclude_from_sim no) (at 33.02 35.56 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "ac88944b-7ad2-4f53-bcb1-56a24290bb99"))
+(text "Bypass, one per supply pin, within 5 mm of U6 / U7. C42, C43 bulk for the output side." (exclude_from_sim no) (at 200.66 45.72 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "85de765f-c815-4960-81ff-c3eb84a98b84"))
+(wire (pts (xy 78.74 50.8) (xy 68.58 50.8)) (stroke (width 0) (type default)) (uuid "4daf8c12-4fa1-4b8e-a15e-aa400612c12a"))
+(wire (pts (xy 99.06 48.26) (xy 100.33 48.26)) (stroke (width 0) (type default)) (uuid "3c1a2d25-1d9f-4469-aede-7eca527ee336"))
+(wire (pts (xy 107.95 48.26) (xy 119.38 48.26)) (stroke (width 0) (type default)) (uuid "e6faaac7-aa4d-4007-8dc9-6a6aa73a1f6b"))
+(wire (pts (xy 119.38 48.26) (xy 119.38 45.72)) (stroke (width 0) (type default)) (uuid "d1d18db1-7740-4789-a926-328d880e5db3"))
+(wire (pts (xy 99.06 53.34) (xy 107.95 53.34)) (stroke (width 0) (type default)) (uuid "5fc232ac-7c42-4320-b7f6-e5bbb70af414"))
+(wire (pts (xy 115.57 53.34) (xy 119.38 53.34)) (stroke (width 0) (type default)) (uuid "0236440a-02cd-407d-a762-53ee15bf1680"))
+(wire (pts (xy 119.38 53.34) (xy 119.38 55.88)) (stroke (width 0) (type default)) (uuid "cdaae40f-c3b9-4b5d-bb50-80ac25d1fa3b"))
+(wire (pts (xy 99.06 45.72) (xy 119.38 45.72)) (stroke (width 0) (type default)) (uuid "872af30d-337f-4a91-8e21-05d045b909b4"))
+(wire (pts (xy 119.38 45.72) (xy 123.19 45.72)) (stroke (width 0) (type default)) (uuid "b6cb5bf8-2833-4da7-a575-aa4c49aabf10"))
+(wire (pts (xy 99.06 55.88) (xy 119.38 55.88)) (stroke (width 0) (type default)) (uuid "b8ffd646-a51a-421a-b756-e34bd45cbed8"))
+(wire (pts (xy 119.38 55.88) (xy 123.19 55.88)) (stroke (width 0) (type default)) (uuid "f250f3e6-62bd-4c9b-91a6-65ceaeab95c8"))
+(wire (pts (xy 130.81 45.72) (xy 137.16 45.72)) (stroke (width 0) (type default)) (uuid "66f41d4d-005f-4f2b-986d-146b4250e441"))
+(wire (pts (xy 137.16 45.72) (xy 152.4 45.72)) (stroke (width 0) (type default)) (uuid "15f46fa9-ab42-41b8-a9d3-795993d9f6d8"))
+(wire (pts (xy 130.81 55.88) (xy 137.16 55.88)) (stroke (width 0) (type default)) (uuid "f3be889e-8459-497e-9335-388dc884a675"))
+(wire (pts (xy 137.16 55.88) (xy 144.78 55.88)) (stroke (width 0) (type default)) (uuid "b603735b-11c8-40db-9e01-21083ddddb32"))
+(wire (pts (xy 144.78 55.88) (xy 144.78 50.8)) (stroke (width 0) (type default)) (uuid "d88722b2-246d-48bd-ae5d-2c937f43f437"))
+(wire (pts (xy 144.78 50.8) (xy 152.4 50.8)) (stroke (width 0) (type default)) (uuid "d8f39134-f094-4da5-a50f-c8043ad2fa47"))
+(wire (pts (xy 152.4 53.34) (xy 149.86 53.34)) (stroke (width 0) (type default)) (uuid "c45f107d-611f-4b4d-92c6-8620c7776b31"))
+(wire (pts (xy 149.86 53.34) (xy 149.86 58.42)) (stroke (width 0) (type default)) (uuid "675212f3-d24d-4e0f-a305-c97d6a05a88c"))
+(wire (pts (xy 88.9 40.64) (xy 88.9 38.1)) (stroke (width 0) (type default)) (uuid "81cbd894-84a1-4a5f-a37a-c9088022c208"))
+(wire (pts (xy 86.36 60.96) (xy 86.36 63.5)) (stroke (width 0) (type default)) (uuid "e08e0022-4cde-446b-96f2-f980e8979496"))
+(wire (pts (xy 91.44 60.96) (xy 91.44 66.04)) (stroke (width 0) (type default)) (uuid "3b1e2d4e-84db-4fa0-a29b-d92929f61bf0"))
+(wire (pts (xy 78.74 111.76) (xy 68.58 111.76)) (stroke (width 0) (type default)) (uuid "07fae601-6074-4567-bf87-3f5c28eb5518"))
+(wire (pts (xy 99.06 109.22) (xy 100.33 109.22)) (stroke (width 0) (type default)) (uuid "be5443f4-d4f3-4b61-906d-aec92f05bc8d"))
+(wire (pts (xy 107.95 109.22) (xy 119.38 109.22)) (stroke (width 0) (type default)) (uuid "c186fcf3-1123-41bd-8142-12fc9ec7bedd"))
+(wire (pts (xy 119.38 109.22) (xy 119.38 106.68)) (stroke (width 0) (type default)) (uuid "ab2e8ac6-569c-4239-9c13-f9bfb110d596"))
+(wire (pts (xy 99.06 114.3) (xy 107.95 114.3)) (stroke (width 0) (type default)) (uuid "e610c18a-ab20-479c-9cd6-cc1b2faf6b8d"))
+(wire (pts (xy 115.57 114.3) (xy 119.38 114.3)) (stroke (width 0) (type default)) (uuid "a87f4dd9-d175-4358-bb7d-01bdc7c9a31c"))
+(wire (pts (xy 119.38 114.3) (xy 119.38 116.84)) (stroke (width 0) (type default)) (uuid "0afef5da-f227-4e7e-b5bb-c0a5fb1a111a"))
+(wire (pts (xy 99.06 106.68) (xy 119.38 106.68)) (stroke (width 0) (type default)) (uuid "3ef1c6cc-6084-4529-a029-bb1d266f172b"))
+(wire (pts (xy 119.38 106.68) (xy 123.19 106.68)) (stroke (width 0) (type default)) (uuid "509d6594-f0bb-4cc5-83f1-1bb66f2256e0"))
+(wire (pts (xy 99.06 116.84) (xy 119.38 116.84)) (stroke (width 0) (type default)) (uuid "d71cb661-2fd0-46be-b8de-ff1f893eccc3"))
+(wire (pts (xy 119.38 116.84) (xy 123.19 116.84)) (stroke (width 0) (type default)) (uuid "a68cb83e-962d-474b-b80e-e26c553c0e7e"))
+(wire (pts (xy 130.81 106.68) (xy 137.16 106.68)) (stroke (width 0) (type default)) (uuid "fc055f02-300e-4ccf-ab70-6233d7cd05c5"))
+(wire (pts (xy 137.16 106.68) (xy 152.4 106.68)) (stroke (width 0) (type default)) (uuid "56db394d-cfe1-4080-b90a-a77918b9b846"))
+(wire (pts (xy 130.81 116.84) (xy 137.16 116.84)) (stroke (width 0) (type default)) (uuid "18191798-4ea5-4666-9845-fea11dd11098"))
+(wire (pts (xy 137.16 116.84) (xy 144.78 116.84)) (stroke (width 0) (type default)) (uuid "d72a182a-08b9-4ea9-95ec-469a0bb43a7b"))
+(wire (pts (xy 144.78 116.84) (xy 144.78 111.76)) (stroke (width 0) (type default)) (uuid "40ab911c-6314-453f-9123-e3b7005221d2"))
+(wire (pts (xy 144.78 111.76) (xy 152.4 111.76)) (stroke (width 0) (type default)) (uuid "06ba04ff-ae45-4380-9597-1d294ed78546"))
+(wire (pts (xy 152.4 114.3) (xy 149.86 114.3)) (stroke (width 0) (type default)) (uuid "87acb638-c23a-4839-b10d-7ba198a3c391"))
+(wire (pts (xy 149.86 114.3) (xy 149.86 119.38)) (stroke (width 0) (type default)) (uuid "f7045d18-80f2-4772-a876-8267d52af815"))
+(wire (pts (xy 88.9 101.6) (xy 88.9 99.06)) (stroke (width 0) (type default)) (uuid "524a1643-1c0c-46d9-816c-d8b7f283c50b"))
+(wire (pts (xy 86.36 121.92) (xy 86.36 124.46)) (stroke (width 0) (type default)) (uuid "4599a9d7-b614-499a-918f-3cacca1c5ee9"))
+(wire (pts (xy 91.44 121.92) (xy 91.44 127)) (stroke (width 0) (type default)) (uuid "4b090e1a-5c72-42d6-ac58-4b309302c8cf"))
+(junction (at 119.38 45.72) (diameter 0) (color 0 0 0 0) (uuid "931a42f6-5c4d-4fe1-9546-ff0c45695d32"))
+(junction (at 119.38 55.88) (diameter 0) (color 0 0 0 0) (uuid "4e190c36-84b8-45e5-85d0-016f192711a6"))
+(junction (at 119.38 106.68) (diameter 0) (color 0 0 0 0) (uuid "9b0c8c35-6a5c-4ab9-bb3f-55e90801930f"))
+(junction (at 119.38 116.84) (diameter 0) (color 0 0 0 0) (uuid "71f09399-1981-4ce8-a0ec-6a761c29d42d"))
+(junction (at 137.16 45.72) (diameter 0) (color 0 0 0 0) (uuid "d7b4b2be-4941-4153-ba98-ef9c5d785530"))
+(junction (at 137.16 55.88) (diameter 0) (color 0 0 0 0) (uuid "efc74a40-a4fc-4e90-83a1-ae3f0f123f52"))
+(junction (at 137.16 106.68) (diameter 0) (color 0 0 0 0) (uuid "69aeb25f-b7ad-4dc1-b8a9-752aec394ce0"))
+(junction (at 137.16 116.84) (diameter 0) (color 0 0 0 0) (uuid "d15c7f8c-195e-481c-bf71-2793ec5afbcc"))
+(symbol (lib_id "GhostFader:THAT1646") (at 88.9 50.8 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b77b9b8c-f0e5-45b8-9378-fdbd5c553326")
+  (property "Reference" "U6" (at 93.98 39.37 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "THAT1646S08" (at 93.98 41.91 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 88.9 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 88.9 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "cf8ac736-99d2-4df0-a2d7-0694829ff507"))
+  (pin "2" (uuid "44ad6976-5781-41cd-98c3-8ff1c212cd46"))
+  (pin "3" (uuid "01fdcc87-f480-4c1b-9046-19e8d8cfa9ea"))
+  (pin "4" (uuid "f85ebb6d-02bf-4413-8dc0-6b9fe257d966"))
+  (pin "5" (uuid "9af924cd-5caa-46fe-8397-508b1da4da9b"))
+  (pin "6" (uuid "36a7e01d-0c03-47f3-8ee3-f5705800c5f3"))
+  (pin "7" (uuid "eb94c26d-3fa6-48d6-96c2-83cdc9f3b2de"))
+  (pin "8" (uuid "d0c9cbe6-a975-4017-b6d9-1bddd9a6eca9"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "U6") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 104.14 48.26 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a8d51749-cc34-4298-91cd-a890b76c0510")
+  (property "Reference" "C17" (at 104.14 44.958 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10u NP" (at 104.14 51.562 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" (at 104.14 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 104.14 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "438e13b5-72e3-407e-af58-f778227bc014"))
+  (pin "2" (uuid "72ae01e5-dc94-49a9-a583-cbe222541a45"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C17") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 111.76 53.34 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "38894826-fd27-4f92-8998-65e30e266f5a")
+  (property "Reference" "C18" (at 111.76 50.038 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10u NP" (at 111.76 56.642 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" (at 111.76 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 111.76 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "0387b118-4caf-413b-a1c3-8444dbacf4d0"))
+  (pin "2" (uuid "103e192f-69fe-4e95-9270-6219fe642f54"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C18") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 127 45.72 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b2f7b6c3-4832-46c2-9fcd-013b864fcd23")
+  (property "Reference" "R10" (at 127 43.434 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10R" (at 127 48.006 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 127 45.72 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 127 45.72 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "0a127ffc-74b3-4e30-8c19-af5543e5bb12"))
+  (pin "2" (uuid "9a6a5cc4-6c9c-405f-aad8-f06af2acbe62"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "R10") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 127 55.88 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "e6a896ee-4b7e-4bc6-b155-9ad681e3325a")
+  (property "Reference" "R11" (at 127 53.594 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10R" (at 127 58.166 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 127 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 127 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "6932bcad-2d7c-4ced-bbea-39aba904f492"))
+  (pin "2" (uuid "b03fac52-bd9c-443b-921f-f2b4244b5e99"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "R11") (unit 1))))
+)
+(symbol (lib_id "Connector_Audio:AudioJack3_SwitchTR") (at 157.48 50.8 180) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6a1025e7-e5d5-49e2-ab32-f0cbd632eea1")
+  (property "Reference" "J3" (at 154.94 39.37 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "NRJ6HF" (at 154.94 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 157.48 50.8 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "R" (uuid "465fec73-8e2d-4d67-b173-2443feb04f56"))
+  (pin "S" (uuid "ad5ed059-77fa-46cb-a190-996fca1acab1"))
+  (pin "T" (uuid "9f0b166f-7713-4d41-b37f-e1e77f806bed"))
+  (pin "RN" (uuid "5bfc6aeb-d07a-42a7-a762-22592f365d2e"))
+  (pin "TN" (uuid "b35d3146-9bf0-478c-aecf-cc2190f77de1"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "J3") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 137.16 41.91 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "50830b63-9f3b-4e20-b1ff-eea4e5e5cb4f")
+  (property "Reference" "C9" (at 140.462 40.64 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100p C0G" (at 140.462 43.18 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 137.16 41.91 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 41.91 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "85035578-9cc1-49c1-8f22-c291b6e19129"))
+  (pin "2" (uuid "9558853d-2d4f-45cd-a74f-3d2d2700852b"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C9") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 137.16 38.1 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "26a361fb-4249-431d-aa4e-737f7fdb23ee")
+  (property "Reference" "#PWR001" (at 137.16 38.1 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 137.16 34.29 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 137.16 38.1 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 38.1 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "5cf37336-6ceb-43aa-9b3e-d1250678b0ad"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR001") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 137.16 59.69 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d99e1ca8-b9fc-4d6a-909f-dbfc9d60e606")
+  (property "Reference" "C10" (at 140.462 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100p C0G" (at 140.462 60.96 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 137.16 59.69 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 59.69 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "f261d370-a557-4efc-8ece-52a41d8a3359"))
+  (pin "2" (uuid "e0a99e19-dae1-4b50-bc5d-98dbb7f0f6da"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C10") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 137.16 63.5 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "ad1ff7a2-0f0c-41d5-b08d-d76c0d40cd86")
+  (property "Reference" "#PWR002" (at 137.16 63.5 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 137.16 67.31 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 137.16 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "71eda434-8465-4c42-9326-cd571c0c0c21"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR002") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 149.86 58.42 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "a3029463-d4aa-4ddc-a4b0-bf810c3b0c5a")
+  (property "Reference" "#PWR003" (at 149.86 58.42 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 149.86 62.23 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 149.86 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 149.86 58.42 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "84e54ea8-18d6-40ec-84d7-8485949bef34"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR003") (unit 1))))
+)
+(symbol (lib_id "power:+15V") (at 88.9 38.1 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "8ff3be40-8a74-4add-b8f4-ac11f5a7e3eb")
+  (property "Reference" "#PWR004" (at 88.9 38.1 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+15V" (at 88.9 34.29 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 88.9 38.1 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 88.9 38.1 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "919f1ac9-0977-440b-a46d-7164c623205b"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR004") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 86.36 63.5 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "64e2de73-87fa-4e42-9006-1134e35a707c")
+  (property "Reference" "#PWR005" (at 86.36 63.5 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 86.36 67.31 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 86.36 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 86.36 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "e3ba876f-d05b-4d66-a81a-88fc1dcb7a40"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR005") (unit 1))))
+)
+(symbol (lib_id "power:-15V") (at 91.44 66.04 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "1ed190e3-57b5-4776-8d45-cb10304cf1e7")
+  (property "Reference" "#PWR006" (at 91.44 66.04 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "-15V" (at 91.44 69.85 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 91.44 66.04 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 91.44 66.04 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "1d50dab5-fa4e-4d75-baa6-83d7146dc64a"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR006") (unit 1))))
+)
+(symbol (lib_id "GhostFader:THAT1646") (at 88.9 111.76 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cc5d939b-3559-475b-9608-e51ad4b3d912")
+  (property "Reference" "U7" (at 93.98 100.33 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "THAT1646S08" (at 93.98 102.87 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 88.9 111.76 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 88.9 111.76 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "cfef07ff-6b78-489b-b7e9-a160d9b2ecd3"))
+  (pin "2" (uuid "18a4d217-0410-40ac-842e-96cf11833e64"))
+  (pin "3" (uuid "bf330426-dca3-49af-9eb4-7e0c0896ac5c"))
+  (pin "4" (uuid "691e2e6f-8759-4722-92aa-83aabbf4ba8d"))
+  (pin "5" (uuid "efce6924-f150-4d6e-aadc-5ff274d8b4b5"))
+  (pin "6" (uuid "92c86538-8733-473f-bb15-597e9f564428"))
+  (pin "7" (uuid "04135ba0-5162-47aa-8b76-611a35d16499"))
+  (pin "8" (uuid "f2f5f437-71d6-4b32-864d-6c7f94a41ac8"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "U7") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 104.14 109.22 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6aaa684d-01bd-426e-b613-d23005073592")
+  (property "Reference" "C19" (at 104.14 105.918 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10u NP" (at 104.14 112.522 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" (at 104.14 109.22 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 104.14 109.22 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "cee51a4f-b171-4ba1-aabd-c0bcae34519c"))
+  (pin "2" (uuid "eb40624b-1f13-436c-bfd6-ee28d5ab4592"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C19") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 111.76 114.3 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2cc8aabf-b9a1-41c1-be0e-fe529ab1a41c")
+  (property "Reference" "C20" (at 111.76 110.998 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10u NP" (at 111.76 117.602 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" (at 111.76 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 111.76 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "0d0d1779-ed9b-48c3-8ab7-92772badc55a"))
+  (pin "2" (uuid "4a381e39-0985-470a-ae62-c68c0c3e30b3"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C20") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 127 106.68 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "176f08fb-d239-4982-a6d1-fcae69c7f70e")
+  (property "Reference" "R12" (at 127 104.394 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10R" (at 127 108.966 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 127 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 127 106.68 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "79533074-503a-45cc-833d-3adba8bb126e"))
+  (pin "2" (uuid "0790aed1-37bc-4b2c-9d83-940ec90d45b5"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "R12") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 127 116.84 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "9d6001a6-bbc0-488f-8d43-8c63c82f8e4e")
+  (property "Reference" "R13" (at 127 114.554 90) (effects (font (size 1.27 1.27))))
+  (property "Value" "10R" (at 127 119.126 90) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 127 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 127 116.84 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "4d381194-2610-440f-b750-94c6d28a0c20"))
+  (pin "2" (uuid "4602ae28-34d8-45d5-9783-8017f43efa56"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "R13") (unit 1))))
+)
+(symbol (lib_id "Connector_Audio:AudioJack3_SwitchTR") (at 157.48 111.76 180) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ec8c0847-36f9-4150-8123-8322ff711c54")
+  (property "Reference" "J4" (at 154.94 100.33 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "NRJ6HF" (at 154.94 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "" (at 157.48 111.76 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 157.48 111.76 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "R" (uuid "ca4c4371-06ad-4d3b-afd8-a844de79fe0c"))
+  (pin "S" (uuid "0c13693c-a1b0-4822-a75e-976a33925e6d"))
+  (pin "T" (uuid "e25dafc7-985e-4f0e-b960-f171072a3098"))
+  (pin "RN" (uuid "a2cc473c-1378-493d-99bd-128ea14ae2e3"))
+  (pin "TN" (uuid "b6421e8f-d7e7-4578-bd28-1bff521c48c0"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "J4") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 137.16 102.87 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3895c94a-4ded-402b-952c-3bda5abf273e")
+  (property "Reference" "C15" (at 140.462 101.6 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100p C0G" (at 140.462 104.14 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 137.16 102.87 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 102.87 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "86a26045-f24f-4db1-a1cc-c9aead70b2a3"))
+  (pin "2" (uuid "3d9b1c61-0110-4d7d-bb66-31ed89e86509"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C15") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 137.16 99.06 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "dba11798-9628-4fbc-9e42-c56075f45b44")
+  (property "Reference" "#PWR007" (at 137.16 99.06 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 137.16 95.25 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 137.16 99.06 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 99.06 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "6bf1d727-29cf-4dc8-865b-624c78579086"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR007") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 137.16 120.65 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "802f9f8c-da9d-4b42-987e-13f7ff140df5")
+  (property "Reference" "C16" (at 140.462 119.38 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100p C0G" (at 140.462 121.92 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 137.16 120.65 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 120.65 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "9f5edce8-735b-43f9-affc-a16feb1918d1"))
+  (pin "2" (uuid "522f46a9-677e-4d17-aab0-703fcbe85003"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C16") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 137.16 124.46 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "e0a48ab8-4b11-4fe8-b43b-5a2774157f06")
+  (property "Reference" "#PWR008" (at 137.16 124.46 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 137.16 128.27 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 137.16 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 137.16 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "3f2d18a8-8713-47df-9f91-7c8f5e239e5d"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR008") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 149.86 119.38 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "c39edace-0220-463e-849c-32c813652285")
+  (property "Reference" "#PWR009" (at 149.86 119.38 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 149.86 123.19 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 149.86 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 149.86 119.38 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "5d6d96f1-ef79-44e8-bffc-560d2cd3cdb8"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR009") (unit 1))))
+)
+(symbol (lib_id "power:+15V") (at 88.9 99.06 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "1600efd4-3084-41c1-b619-9ebc846d856a")
+  (property "Reference" "#PWR010" (at 88.9 99.06 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+15V" (at 88.9 95.25 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 88.9 99.06 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 88.9 99.06 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "709ada8c-a72e-4fd5-aaaa-6899a3c037b0"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR010") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 86.36 124.46 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "c1b8eb08-1877-4795-9527-66901f0cc78f")
+  (property "Reference" "#PWR011" (at 86.36 124.46 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 86.36 128.27 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 86.36 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 86.36 124.46 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "d15e6118-4d41-4d3d-bde7-29a751b04441"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR011") (unit 1))))
+)
+(symbol (lib_id "power:-15V") (at 91.44 127 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "94d47bb3-e4c7-4e5f-aa89-761e1828bc94")
+  (property "Reference" "#PWR012" (at 91.44 127 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "-15V" (at 91.44 130.81 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 91.44 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 91.44 127 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "adb28f21-2d36-4406-99e7-0837715191db"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR012") (unit 1))))
+)
+(symbol (lib_id "power:+15V") (at 200.66 53.34 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "be4fae10-376f-4363-95e6-f6800d905cb1")
+  (property "Reference" "#PWR013" (at 200.66 53.34 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+15V" (at 200.66 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 200.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 200.66 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "d189ba77-df71-4643-a569-a09d38373d1f"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR013") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 200.66 57.15 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "db621324-ba5a-44ce-ba25-bdbd0e336f95")
+  (property "Reference" "C33" (at 203.962 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100n" (at 203.962 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 200.66 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 200.66 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "38c01b78-1cf6-4861-9e00-dfd6f41e4c94"))
+  (pin "2" (uuid "a2f94f3e-cc07-4c39-85f0-ac3db7ae0feb"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C33") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 200.66 60.96 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "1056b612-567d-4427-bbd5-443342b71683")
+  (property "Reference" "#PWR014" (at 200.66 60.96 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 200.66 64.77 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 200.66 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 200.66 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "1e3d41c0-96b5-41eb-96c2-a11186f1dfba"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR014") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 213.36 53.34 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "e238b0b0-c697-4baa-b8fe-fa4e62042b3c")
+  (property "Reference" "#PWR015" (at 213.36 53.34 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 213.36 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 213.36 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 213.36 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "9b78615e-dbba-4ecb-aa5e-3b183d32e285"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR015") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 213.36 57.15 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "a925b8a8-d7e8-4404-aea4-0958b95a67f9")
+  (property "Reference" "C34" (at 216.662 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100n" (at 216.662 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 213.36 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 213.36 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "07fde7d8-4de2-494f-ae89-974dfea83158"))
+  (pin "2" (uuid "8dbfb764-432b-4573-a8d8-000e7102d7c0"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C34") (unit 1))))
+)
+(symbol (lib_id "power:-15V") (at 213.36 60.96 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "9b171279-e8ae-477b-a62a-0a36cd11ff9c")
+  (property "Reference" "#PWR016" (at 213.36 60.96 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "-15V" (at 213.36 64.77 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 213.36 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 213.36 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "433ffb24-3ba4-4724-b36f-4939a08b5fb5"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR016") (unit 1))))
+)
+(symbol (lib_id "power:+15V") (at 226.06 53.34 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "922893d8-cd4c-4a29-aa6d-2f869644bffc")
+  (property "Reference" "#PWR017" (at 226.06 53.34 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+15V" (at 226.06 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 226.06 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 226.06 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "458a4224-2741-4cb8-8b6d-dc881b9a6f0f"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR017") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 226.06 57.15 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7979bdb6-8ee1-4274-a79f-628a9c349b37")
+  (property "Reference" "C35" (at 229.362 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100n" (at 229.362 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 226.06 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 226.06 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "1f184b86-d9fc-445e-a26f-7da2b1420834"))
+  (pin "2" (uuid "1fddda52-8073-4d9e-a44d-8b946a661155"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C35") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 226.06 60.96 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "1311a9b5-f8a3-414d-8821-a007f169c09e")
+  (property "Reference" "#PWR018" (at 226.06 60.96 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 226.06 64.77 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 226.06 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 226.06 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "0d73c58c-c94f-4288-a056-6e10923ee588"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR018") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 238.76 53.34 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "c6614f32-7b53-4f90-a360-f25d451095d9")
+  (property "Reference" "#PWR019" (at 238.76 53.34 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 238.76 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 238.76 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 238.76 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "aed668ce-dbce-4c88-a164-c6503fee919a"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR019") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 238.76 57.15 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "7abb94dc-2243-4cb1-8eaa-8b01ca0d0f86")
+  (property "Reference" "C36" (at 242.062 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100n" (at 242.062 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 238.76 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 238.76 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "03885de8-9d4a-44d6-8fa7-94f411643f0b"))
+  (pin "2" (uuid "f949a666-e659-4e00-9d72-dd057cae17d5"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C36") (unit 1))))
+)
+(symbol (lib_id "power:-15V") (at 238.76 60.96 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "fae92d97-1300-4d8a-a8aa-03629009cd39")
+  (property "Reference" "#PWR020" (at 238.76 60.96 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "-15V" (at 238.76 64.77 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 238.76 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 238.76 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "9481c150-37c0-433b-863d-636568f46fde"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR020") (unit 1))))
+)
+(symbol (lib_id "power:+15V") (at 251.46 53.34 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "2545f703-f5d6-4ae9-b65c-1adeb28989a6")
+  (property "Reference" "#PWR021" (at 251.46 53.34 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+15V" (at 251.46 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 251.46 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 251.46 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "72ae25f4-fe04-41f6-ad62-456daa92e0fd"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR021") (unit 1))))
+)
+(symbol (lib_id "Device:C_Polarized") (at 251.46 57.15 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "44a65a14-95c8-4601-abf1-2079ec9e0cdc")
+  (property "Reference" "C42" (at 255.016 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "10u" (at 255.016 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" (at 251.46 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 251.46 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "cea20e90-24fa-43fe-acba-a284a84ddce4"))
+  (pin "2" (uuid "11145727-68eb-4cb1-b1a7-3edd7e5a696a"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C42") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 251.46 60.96 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "06f0dae7-33cf-444e-b39f-945466a5b50a")
+  (property "Reference" "#PWR022" (at 251.46 60.96 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 251.46 64.77 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 251.46 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 251.46 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "6ca9aade-8bb0-4619-9ba2-352c149657d4"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR022") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 264.16 53.34 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "053b9f1e-32e7-4e69-9a82-373ad9e1c288")
+  (property "Reference" "#PWR023" (at 264.16 53.34 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 264.16 49.53 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 264.16 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 264.16 53.34 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "feabd15d-1340-4a05-a525-226b172c098f"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR023") (unit 1))))
+)
+(symbol (lib_id "Device:C_Polarized") (at 264.16 57.15 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "388de066-c152-4381-8947-ec6aa21a8aab")
+  (property "Reference" "C43" (at 267.716 55.88 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "10u" (at 267.716 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" (at 264.16 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 264.16 57.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "767bc868-3901-4b8c-a466-f7f42539dba4"))
+  (pin "2" (uuid "ab145050-0749-4b8e-b89a-dcef9b31ec2f"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "C43") (unit 1))))
+)
+(symbol (lib_id "power:-15V") (at 264.16 60.96 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "c7d9cb83-5401-408e-ac93-bdbded10a887")
+  (property "Reference" "#PWR024" (at 264.16 60.96 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "-15V" (at 264.16 64.77 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 264.16 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 264.16 60.96 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "671e3cbd-1918-459a-b44a-f3c178c11be8"))
+  (instances (project "ghost-fader" (path "/fea7b9ca-c814-4436-8b9b-27ea79511ff8/f94fac5d-8db9-4635-8c9c-b4078213d1f7" (reference "#PWR024") (unit 1))))
+)
+)
