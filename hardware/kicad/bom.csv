@@ -6,7 +6,7 @@
 "C14,C40-C43","10u","Capacitor_THT:CP_Radial_D6.3mm_P2.50mm","5"
 "C21-C36","100n","Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm","16"
 "FB1","600R@100MHz 1A","Inductor_THT:L_Axial_L7.0mm_D3.3mm_P10.16mm_Horizontal_Fastron_MICC","1"
-"J1-J4","NRJ6HF","","4"
+"J1-J4","NRJ6HF","Connector_Audio:Jack_6.35mm_Neutrik_NRJ6HF_Horizontal","4"
 "L1,L2","10uH 300mA","Inductor_THT:L_Axial_L7.0mm_D3.3mm_P10.16mm_Horizontal_Fastron_MICC","2"
 "LED1","MIDI act","LED_THT:LED_D3.0mm","1"
 "PS1","TMR 3-0523","GhostFader:TRACO_TMR3_SIP8","1"
