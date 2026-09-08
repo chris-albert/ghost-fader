@@ -141,7 +141,7 @@ FOOTPRINTS = {
     'SO8': 'Package_SO:SOIC-8_3.9x4.9mm_P1.27mm',
     'TEENSY': 'GhostFader:Teensy40_Edge',
     'TMR3': 'GhostFader:TRACO_TMR3_SIP8',
-    'JACK': '',   # Neutrik NRJ6HF: take the footprint from Neutrik / SnapEDA, see README
+    'JACK': 'Connector_Audio:Jack_6.35mm_Neutrik_NRJ6HF_Horizontal',
 }
 
 def symbbox(lib_id, unit):
@@ -584,11 +584,11 @@ def build_root(sheets):
     return root_uuid
 
 def write_project():
-    pro = {"board": {"design_settings": {"defaults": {}, "rules": {}}, "layer_presets": [], "viewports": []},
+    pro = {"board": {"design_settings": {"defaults": {}, "rules": {'max_error': 0.005, 'min_clearance': 0.2, 'min_connection': 0.0, 'min_copper_edge_clearance': 0.25, 'min_groove_width': 0.0, 'min_hole_clearance': 0.25, 'min_hole_to_hole': 0.25, 'min_microvia_diameter': 0.2, 'min_microvia_drill': 0.1, 'min_resolved_spokes': 1, 'min_silk_clearance': 0.0, 'min_text_height': 0.8, 'min_text_thickness': 0.08, 'min_through_hole_diameter': 0.3, 'min_track_width': 0.2, 'min_via_annular_width': 0.1, 'min_via_diameter': 0.6, 'solder_mask_to_copper_clearance': 0.0, 'use_height_for_length_calcs': True}}, "layer_presets": [], "viewports": []},
            "boards": [], "cvpcb": {"equivalence_files": []},
            "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
            "meta": {"filename": f"{PROJECT}.kicad_pro", "version": 3},
-           "net_settings": {"classes": [{"name": "Default", "clearance": 0.2, "track_width": 0.25, "via_diameter": 0.8, "via_drill": 0.4, "wire_width": 6, "bus_width": 12, "pcb_color": "rgba(0, 0, 0, 0.000)", "schematic_color": "rgba(0, 0, 0, 0.000)", "line_style": 0, "priority": 2147483647}], "meta": {"version": 4}},
+           "net_settings": {"classes": [{'bus_width': 12, 'clearance': 0.25, 'diff_pair_gap': 0.25, 'diff_pair_via_gap': 0.25, 'diff_pair_width': 0.2, 'line_style': 0, 'microvia_diameter': 0.3, 'microvia_drill': 0.1, 'name': 'Default', 'pcb_color': 'rgba(0, 0, 0, 0.000)', 'priority': 2147483647, 'schematic_color': 'rgba(0, 0, 0, 0.000)', 'track_width': 0.3, 'via_diameter': 0.8, 'via_drill': 0.4, 'wire_width': 6}, {'bus_width': 12, 'clearance': 0.25, 'diff_pair_gap': 0.25, 'diff_pair_via_gap': 0.25, 'diff_pair_width': 0.2, 'line_style': 0, 'microvia_diameter': 0.3, 'microvia_drill': 0.1, 'name': 'Power', 'pcb_color': 'rgba(0, 0, 0, 0.000)', 'priority': -1, 'schematic_color': 'rgba(0, 0, 0, 0.000)', 'track_width': 0.6, 'via_diameter': 0.9, 'via_drill': 0.5, 'wire_width': 6}], "meta": {"version": 4}, "netclass_patterns": [{'netclass': 'Power', 'pattern': '+5V'}, {'netclass': 'Power', 'pattern': 'USB_5V'}, {'netclass': 'Power', 'pattern': '+15V'}, {'netclass': 'Power', 'pattern': '-15V'}, {'netclass': 'Power', 'pattern': 'GND'}, {'netclass': 'Power', 'pattern': 'Net-(PS1-+Vout)'}, {'netclass': 'Power', 'pattern': 'Net-(PS1--Vout)'}]},
            "pcbnew": {"page_layout_descr_file": ""},
            "schematic": {"drawing": {}, "legacy_lib_dir": "", "legacy_lib_list": [], "meta": {"version": 1}},
            "sheets": [], "text_variables": {}}

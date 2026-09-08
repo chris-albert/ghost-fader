@@ -746,7 +746,21 @@ li{margin:0 0 6px}
   <figure class="sch"><div class="scroll"><img src="schematic/sheet3-output.svg" alt="Sheet 3: THAT 1646 drivers U6 and U7 with 10 µF sense caps, 10 ohm build-out resistors and 100 pF RF caps into output jacks J3 and J4." loading="lazy"></div><figcaption><b>Sheet 3 · Balanced outputs.</b> U6/U7 THAT 1646 with sense caps C17–C20, build-outs R10–R13, RF caps, jacks J3/J4.</figcaption></figure>
   <figure class="sch"><div class="scroll"><img src="schematic/sheet4-control.svg" alt="Sheet 4: Teensy 4.0 with DIP switch SW1 on pins 4 to 7, plug sense on pins 2 and 3, SPI on 10, 11, 13, mute on 9 with pull-down R15, and activity LED on pin 8." loading="lazy"></div><figcaption><b>Sheet 4 · Control.</b> Teensy 4.0 pins are numbered 1–28 by physical position from the USB end. VIN exports the USB 5 V to sheet 5; 3.3 V feeds the sense pull-ups.</figcaption></figure>
   <figure class="sch"><div class="scroll"><img src="schematic/sheet5-power.svg" alt="Sheet 5: USB 5 V through ferrite bead FB1 and 47 µF C11 into TMR 3-0523 isolated DC-DC PS1, giving plus and minus 15 V through L1, L2 and 100 µF caps; the 5 V node also feeds PGA logic." loading="lazy"></div><figcaption><b>Sheet 5 · Power.</b> No external supply. USB 5 V → FB1 → PS1 (board-mounted isolated DC-DC) → ±15 V. Star ground at PS1 Common.</figcaption></figure>
-  <div class="note prose"><b>Before ordering boards.</b> Footprints are assigned for every part except the Neutrik NRJ6HF jacks: take that footprint from Neutrik or SnapEDA and check its terminal names (T, R, S, TN, RN) against the symbol. The Teensy 4.0 and TMR 3 footprints are in the project library and were drawn from the published pitch and pin list; confirm the body outlines against the drawings. The symbol library and the generator script that produced the schematic live in <code>hardware/kicad/</code>.</div>
+  <div class="note prose"><b>Footprints.</b> Every part has one. The jacks use KiCad's stock Neutrik NRJ6HF horizontal footprint (pad names T, R, S, TN, RN, SN match the symbol). The Teensy 4.0 and TMR 3 footprints are in the project library and were drawn from the published pitch and pin list; confirm the body outlines against the drawings. The symbol library and the generator script that produced the schematic live in <code>hardware/kicad/</code>.</div>
+</section>
+
+<section>
+  <div class="eyebrow">PCB layout · 2 layers, 108 × 80 mm</div>
+  <div class="prose">
+    <p>A routed board that fits the Hammond 1590BB. Jacks along the rear edge with their noses 1.5 mm past the board so the panel nuts have thread; Teensy USB flush with the front edge; DC-DC converter and rail filters front-centre, the far corner from the input receivers; every decoupling cap within a few millimetres of its pin. Ground is a pour on both layers over the ground tracks the router laid first, so the schematic's star point becomes a plane. Power tracks are 0.6 mm, signals 0.3 mm, clearance 0.25 mm. The corners are notched 7.5 × 6.5 mm to clear the box's lid-screw bosses, and the board hangs on the four jack nuts. DRC is clean against the schematic. Placement is a table in <code>tools/build_pcb.py</code>; routing is Freerouting via <code>tools/route.py</code>.</p>
+  </div>
+  <div class="dl">
+    <a href="https://github.com/chris-albert/ghost-fader/raw/main/hardware/ghost-fader-gerbers.zip">Gerbers + drill (zip)</a>
+    <a href="https://github.com/chris-albert/ghost-fader/blob/main/hardware/kicad/ghost-fader.kicad_pcb">KiCad board file</a>
+  </div>
+  <figure class="sch"><div class="scroll"><img src="pcb/top.png" alt="Top of the Ghost Fader board: four Neutrik jacks along the rear edge, THAT 1246 receivers below the input jacks, two PGA2310 DIPs side by side in the middle, OPA2134 and THAT 1646 drivers on the right, Teensy 4.0 front-left, TMR 3 DC-DC and filters front-centre." loading="lazy"></div><figcaption><b>Top.</b> J1–J4 rear edge, U1/U2 receivers, C3–C6 coupling into U3/U4, U5 summer, U6/U7 drivers, U9 Teensy front-left with USB at the edge, PS1 and rail filters front-centre.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="pcb/bottom.png" alt="Bottom of the Ghost Fader board, mirrored: ground pour with routed tracks and jack labels IN L, IN R, OUT L, OUT R." loading="lazy"></div><figcaption><b>Bottom.</b> Ground pour and the rest of the routing. Jack labels read correctly from the back.</figcaption></figure>
+  <div class="note prose"><b>Before ordering.</b> Check the board against your box: the 1590BB is about 112 × 86 mm inside at the base and the lid-screw bosses sit on 103.5 × 78 mm centres, which the notches are sized for. Drill the rear wall on the jack centres (19, 39, 68, 90 mm from the board's left edge) and slot the front wall for the micro-USB plug. LED1 is a 3 mm through-hole part at the front-right corner: bend it toward the panel or use a light pipe.</div>
 </section>
 
 <section>
@@ -852,7 +866,7 @@ void writeMatrix(float a, float b, float c, float d){
       <tr><td class="m">C40–C43</td><td class="n">4</td><td class="m">10 µF 25 V</td><td>±15 V bulk, one pair at the input end and one at the output end</td><td class="n">0.10</td><td></td></tr>
       <tr class="grp"><td colspan="6">Mechanical</td></tr>
       <tr><td class="m">ENC</td><td class="n">1</td><td class="m">Hammond 1590BB</td><td>Die-cast aluminium, 119 × 94 × 34 mm</td><td class="n">12.00</td><td>1590DD if you want a hand-solderable spread</td></tr>
-      <tr><td class="m">PCB</td><td class="n">1</td><td class="m">2-layer, ≈ 100 × 80 mm</td><td>Ground pour, jacks on one edge, DC-DC on the far edge</td><td class="n">10.00</td><td>5 boards from JLCPCB or OSH Park</td></tr>
+      <tr><td class="m">PCB</td><td class="n">1</td><td class="m">2-layer, 108 × 80 mm</td><td>Routed, ground pour both sides, jacks on the rear edge, DC-DC on the far edge; gerbers in the repo</td><td class="n">10.00</td><td>5 boards from JLCPCB or OSH Park</td></tr>
     </tbody>
     <tfoot><tr><td colspan="4">Estimated total, one unit at single-piece prices</td><td class="n">≈ 145</td><td>Cost-down variant (one PGA2310 + DG419): ≈ 125</td></tr></tfoot>
   </table>
