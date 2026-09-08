@@ -52,15 +52,15 @@ PLACE = {
     'C27': (32.4, 65, 0), 'C30': (69.5, 65, 0), 'C14': (60.5, 65.5, 0),
     # Teensy, USB end flush with the front edge; DIP switch to its right
     'U9': (19.5, 61.5, 180), 'SW1': (31.5, 78.5, 90),
-    # left column: plug-sense pull-ups, mute pull-down
-    'R1': (3.5, 55, 90), 'R14': (7, 55, 90), 'R15': (5.25, 68, 90),
-    # power: USB 5 V -> FB1 -> C11 -> PS1; L1/L2 + C12/C13 on the +/-15 V outputs
+    # left column: plug-sense pull-ups, mute pull-down, LED resistor
+    'R1': (3.5, 55, 90), 'R14': (7, 55, 90), 'R16': (3.5, 70.5, 90), 'R15': (7, 70.5, 90),
+    # power: USB 5 V -> FB1 -> C11 -> PS1; L1/L2 on the +/-15 V outputs, C12/C13 up by the summer
     'FB1': (39.8, 65.5, 0), 'C11': (53.5, 65.5, 0), 'PS1': (44.5, 74.7, 0),
-    'L1': (67.3, 78.5, 90), 'L2': (71.3, 78.5, 90), 'C12': (76.3, 74, 0), 'C13': (83.3, 74, 0),
+    'L1': (67.6, 78.5, 90), 'L2': (72.6, 78.5, 90), 'C12': (90, 48.5, 0), 'C13': (98, 48.5, 0),
     # summing resistors from the PGA outputs, op-amp, feedback/ground resistors, op-amp 100n
-    'R2': (91, 65.8, 90), 'R3': (94.5, 65.8, 90), 'R6': (98, 65.8, 90), 'R7': (101.5, 65.8, 90),
-    'U5': (80, 55, 0), 'R4': (89.1, 68.5, 0), 'R5': (89.1, 71.8, 0), 'R8': (89.1, 75.1, 0), 'R9': (89.1, 78.4, 0),
-    'C31': (84, 48, 0), 'C32': (84, 51.5, 0),
+    'R2': (95.7, 66, 90), 'R3': (99, 66, 90), 'R6': (102.3, 66, 90), 'R7': (105.6, 66, 90),
+    'U5': (82, 55, 0), 'R4': (75.7, 70.2, 0), 'R5': (75.7, 74.8, 0), 'R8': (89, 70.2, 0), 'R9': (89, 74.8, 0),
+    'C31': (92.5, 60, 90), 'C32': (79.2, 61.5, 90),
     # output drivers under J3/J4 with sense caps either side, build-out resistors and 100n below
     'C17': (58, 33.5, 0), 'U6': (68, 33.5, 270), 'C18': (74, 33.5, 0),
     'C19': (80, 33.5, 0), 'U7': (90, 33.5, 270), 'C20': (96, 33.5, 0),
@@ -68,11 +68,30 @@ PLACE = {
     'R12': (79, 39.5, 0), 'R13': (79, 43, 0), 'C35': (92, 39.5, 0), 'C36': (92, 43, 0),
     # +/-15 V bulk, output end
     'C42': (103, 33.5, 0), 'C43': (103, 40.5, 0),
-    # MIDI activity LED and its resistor, front-right corner
-    'LED1': (102, 71, 0), 'R16': (105.5, 66, 90),
+    # MIDI activity LED, front-right corner
+    'LED1': (102, 71, 0),
 }
 
-REF_ABOVE = {'C40', 'C42', 'C12', 'C13'}   # 6.3 mm radial caps whose label goes above the can (the rest go below)
+# Reference labels, world coordinates (x, y, angle). Parts not listed use a rule for their footprint type:
+# horizontal axial/disc parts get the library default (above the body), vertical axials a vertical label above the top pad, radial cans a label above or below the can.
+LABELS = {
+    'U9': (24.5, 42.3, 0), 'SW1': (35.3, 69.0, 0), 'PS1': (47, 69.2, 0), 'U5': (85.81, 52.6, 0),
+    'R11': (61, 45.3, 0), 'R13': (84.08, 45.3, 0), 'C34': (77.3, 45.3, 0), 'C36': (94.3, 45.3, 0),
+    'R5': (80.78, 72.5, 0), 'R9': (94.08, 72.5, 0),
+    'L1': (65.08, 73.4, 90), 'L2': (70.09, 73.4, 90), 'C32': (79.2, 54.3, 0), 'C31': (92.5, 52.8, 0), 'C12': (86.8, 48.5, 90),
+    # vertical 100n discs: label stands beside the body
+    'C22': (7.75, 36, 90), 'C21': (24.15, 36, 90), 'C24': (27.85, 36, 90), 'C23': (44.25, 36, 90),
+    'C25': (37.25, 48.5, 90), 'C26': (45.75, 48.5, 90), 'C28': (61.25, 48.5, 90), 'C29': (69.75, 48.5, 90),
+}
+REF_ABOVE = {'C40', 'C42', 'C13'}   # 6.3 mm radial caps whose label goes above the can (the rest go below)
+
+def label_for(ref, name, x, y, rot):
+    if ref in LABELS: return LABELS[ref]
+    vertical = rot in (90, 270)
+    if name.startswith('CP_Radial_D6.3'): return (x + 1.25, y + (-3.9 if ref in REF_ABOVE else 3.9), 0)
+    if name.startswith('CP_Radial_D5'): return (x + 1.25, y + 3.25, 0)
+    if (name.startswith('R_Axial') or name.startswith('L_Axial')) and vertical: return (x, y - 12.4, 90)
+    return None   # library default
 
 # ---------------------------------------------------------------- netlist
 net = parse(open(NETFILE).read())[0]
@@ -131,17 +150,14 @@ for ref in sorted(comps, key=lambda r: (r.rstrip('0123456789'), int(r.lstrip('AB
     fp.SetReference(ref); fp.SetValue(value)
     fp.SetFPIDAsString(fpname)
     fp.Reference().SetVisible(True)
-    fp.Reference().SetTextSize(VECTOR2I(mm(0.9), mm(0.9))); fp.Reference().SetTextThickness(mm(0.15))
-    # dense rows: put the reference inside the part outline instead of on the neighbour
-    if name.startswith('R_Axial') or name.startswith('L_Axial'): fp.Reference().SetFPRelativePosition(pt(5.08, 0))
-    elif name.startswith('CP_Radial_D6.3'): fp.Reference().SetFPRelativePosition(pt(1.25, -3.9 if ref in REF_ABOVE else 3.9))
-    elif name.startswith('CP_Radial_D5'): fp.Reference().SetFPRelativePosition(pt(1.25, 3.25))
-    elif name.startswith('C_Disc'): fp.Reference().SetFPRelativePosition(pt(2.5, 0))
-    elif name.startswith('DIP-8'): fp.Reference().SetFPRelativePosition(pt(3.81, 3.81))
-    elif name.startswith('SW_DIP'): fp.Reference().SetFPRelativePosition(pt(3.81, -1.4))
     x, y, rot = PLACE[ref]
     fp.SetPosition(pt(x, y))
     fp.SetOrientation(EDA_ANGLE(rot, DEGREES_T))
+    fp.Reference().SetTextSize(VECTOR2I(mm(0.8), mm(0.8))); fp.Reference().SetTextThickness(mm(0.15))
+    lbl = label_for(ref, name, x, y, rot)
+    if lbl:
+        fp.Reference().SetPosition(pt(lbl[0], lbl[1]))
+        fp.Reference().SetTextAngle(EDA_ANGLE(lbl[2], DEGREES_T))   # absolute angle
     for pad in fp.Pads():
         n = pad_net.get((ref, pad.GetNumber()))
         if n: pad.SetNet(netinfo[n])
@@ -181,7 +197,7 @@ def text(txt, x, y, size=1.5, layer=pcbnew.F_SilkS, rot=0):
     t.SetTextAngle(EDA_ANGLE(rot, DEGREES_T))
     if layer == pcbnew.B_SilkS: t.SetMirrored(True)
     board.Add(t)
-text('GHOST FADER rev B', 4, 25, 1.5, rot=90)
+text('GHOST FADER rev B', 55, 57.2, 1.8, pcbnew.B_SilkS)
 text('USB', 19.5, 42.3, 1.2)
 text('IN L', 19, 5, 1.2, pcbnew.B_SilkS); text('IN R', 39, 5, 1.2, pcbnew.B_SilkS)
 text('OUT L', 68, 5, 1.2, pcbnew.B_SilkS); text('OUT R', 90, 5, 1.2, pcbnew.B_SilkS)
