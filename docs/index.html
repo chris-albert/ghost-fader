@@ -778,6 +778,20 @@ li{margin:0 0 6px}
 </section>
 
 <section>
+  <div class="eyebrow">Slim in-line PCB · 2 layers, 207 × 38 mm</div>
+  <div class="prose">
+    <p>The narrowest version: as wide as two jacks side by side (18 mm pitch) and, across the board, the Teensy with its USB out of the rear edge. Inputs right, outputs left, USB rear-centre. It wants a 3D-printed box, about 40 × 210 mm inside with a ledge under the long edges; the four jack nuts hold the board. Parts run in columns along the length: drivers and summer behind the output jacks, the two PGA2310s stacked across the board with their SPI rows facing each other, Teensy, switch and pull-ups, DC-DC and filters, receivers behind the input jacks. Same rules as the other boards, DRC clean against the schematic. Placement is a table in <code>tools/build_pcb_slim.py</code>.</p>
+  </div>
+  <div class="dl">
+    <a href="https://github.com/chris-albert/ghost-fader/raw/main/hardware/ghost-fader-slim-gerbers.zip">Gerbers + drill (zip)</a>
+    <a href="https://github.com/chris-albert/ghost-fader/blob/main/hardware/kicad/ghost-fader-slim.kicad_pcb">KiCad board file</a>
+  </div>
+  <figure class="sch"><div class="scroll"><img src="pcb-slim/top.png" alt="Top of the bare slim Ghost Fader board, 207 by 38 mm: output jacks stacked on the left end, drivers and summer, two PGA2310 DIPs stacked across the board, Teensy 4.0 across the board with USB at the rear edge, DIP switch, DC-DC and filters, receivers, input jacks stacked on the right end." loading="lazy"></div><figcaption><b>Top, bare board.</b> J3/J4 out on the left end, U6/U7 and U5, U3/U4 stacked, U9 Teensy across the board with USB at the rear edge, SW1, PS1 and filters, U1/U2, J1/J2 in on the right end.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="pcb-slim/bottom.png" alt="Bottom of the slim Ghost Fader board, mirrored: ground pour with routed tracks and jack labels." loading="lazy"></div><figcaption><b>Bottom.</b> Ground pour and the rest of the routing.</figcaption></figure>
+  <div class="note prose"><b>Box.</b> Drill each end wall on the jack centres, 10 and 28 mm from the board's rear edge, at the NRJ6HF bushing height, and slot the rear wall for the micro-USB plug with a 3 mm LED hole beside it. Parts come within 1 mm of the long edges, so keep the walls clear above the board.</div>
+</section>
+
+<section>
   <div class="eyebrow">Level budget</div>
   <div class="tscroll">
   <table>
