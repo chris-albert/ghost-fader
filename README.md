@@ -122,6 +122,20 @@ kicad-cli pcb drc --severity-all --schematic-parity -o /tmp/drc.rpt ghost-fader.
 
 `<KiCad python3>` is the interpreter bundled with KiCad (on macOS `/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3`), which has the `pcbnew` module. Freerouting 1.9 was used; 2.4 routes the same board but writes an empty session file from the command line.
 
+## Narrow in-line PCB (alternative)
+
+`hardware/kicad/ghost-fader-narrow.kicad_pcb` is the same schematic on a second, independent board: 156 x 74.5 mm, inputs on one end, outputs on the other, USB out of the middle of the rear long edge, so the box sits in a signal chain like a pedal. It is sized for a Hammond 1455K1601 extruded aluminium enclosure (78 x 43 x 160 mm, made for a 75 mm wide board): the board slides into the wall slots, the jacks go through the two end plates, and the four jack nuts hold everything. Routed, DRC clean against the schematic (same jack-nose silkscreen warnings as the main board). Gerbers in `hardware/gerbers-narrow/` and `hardware/ghost-fader-narrow-gerbers.zip`; renders in `docs/pcb-narrow/`. The 1590BB board above is unchanged.
+
+Layout, rear edge at the top, signal flows right to left:
+
+- IN L / IN R (J1, J2) on the right end plate, OUT L / OUT R (J3, J4) on the left, each pair 24 mm apart centred on the board (jack centres 25.25 and 49.25 mm from the rear edge). The jack bodies sit 1.45 mm past the board ends, so with the board centred in the 160 mm extrusion the end plates land on the jack faces; the bushings have about 7 mm of thread through a 1.5 mm plate. Drill the end plates on those centres at the NRJ6HF bushing height above the board.
+- The Teensy is centred on the rear edge, USB end 1.5 mm inside the edge, which puts the connector face about level with the slot bottom; cut a slot in the rear wall for the plug. The DIP switch and the LED are just left of it. LED1 is at the rear edge, bend it back to face a hole in the rear wall.
+- The PGA2310s sit in front of the Teensy with their SPI rows facing it; receivers behind the input jacks, the summer and drivers behind the output jacks, summing and feedback resistors along the front edge. The DC-DC converter and rail filters are right of the Teensy, behind U4.
+- The long edges live inside the aluminium slots, so copper (pours, tracks, vias) stays 1.5 mm off them via keep-out areas; the short ends use the normal 0.25 mm edge clearance. Same rules otherwise: 0.6 mm power tracks, 0.3 mm signals, 0.25 mm clearance, ground pour both sides.
+- No mounting holes and no corner notches. Before ordering, check the slot width of your extrusion (Hammond specifies 75 +/- 0.5 mm) against the 74.5 mm board.
+
+To regenerate: same steps as above with `tools/build_pcb_narrow.py` in place of `tools/build_pcb.py` and `ghost-fader-narrow.kicad_pcb` as the board.
+
 ## Notes
 
 - The overview sheets label IC pins by function. The KiCad schematic in `hardware/kicad/` has the real pin numbers and is the one to lay out from.
