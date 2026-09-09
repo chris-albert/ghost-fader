@@ -136,6 +136,12 @@ Layout, rear edge at the top, signal flows right to left:
 
 To regenerate: same steps as above with `tools/build_pcb_narrow.py` in place of `tools/build_pcb.py` and `ghost-fader-narrow.kicad_pcb` as the board.
 
+## Slim in-line PCB (narrowest)
+
+`hardware/kicad/ghost-fader-slim.kicad_pcb` is the same circuit again on the narrowest board two side-by-side jacks allow: 207 x 38 mm. Width is set by the jacks (16.8 mm each on an 18 mm pitch) and, across the board, by the Teensy, which is 36.6 mm long with its USB out of the rear edge. Inputs right, outputs left, USB rear-centre, as on the narrow board. It needs a 3D-printed box: about 40 x 210 mm inside, a ledge under the long board edges, two jack holes in each end wall on the jack centres (10 and 28 mm from the rear edge of the board, at the NRJ6HF bushing height), a micro-USB slot and a 3 mm LED hole in the rear wall. No mounting holes; the four jack nuts hold the board. Routed, DRC clean against the schematic (the same jack-nose silkscreen warnings), 0.6 mm power tracks, 0.3 mm signals, ground pour both sides. Gerbers in `hardware/gerbers-slim/` and `hardware/ghost-fader-slim-gerbers.zip`; renders in `docs/pcb-slim/`. Placement is a table in `tools/build_pcb_slim.py`; regenerate as for the other boards.
+
+Everything runs in columns along the length, left to right: output jacks, RF caps, drivers with their sense caps stacked, build-outs and 100n, summer with its resistors, coupling caps, the two PGA2310s stacked across the board with their SPI rows facing each other, Teensy, DIP switch and pull-ups over the +/-15 V bulk caps, DC-DC with the ferrite, reservoir and rail filters, receivers, bulk caps, RF caps, input jacks. Most reference labels sit on the part bodies because there is no room beside them; they read on the bare board. Parts come within 1 mm of the long edges, so give the printed walls clearance above the board edge.
+
 ## Notes
 
 - The overview sheets label IC pins by function. The KiCad schematic in `hardware/kicad/` has the real pin numbers and is the one to lay out from.
