@@ -764,6 +764,20 @@ li{margin:0 0 6px}
 </section>
 
 <section>
+  <div class="eyebrow">Narrow in-line PCB · 2 layers, 156 × 74.5 mm</div>
+  <div class="prose">
+    <p>A second, independent board for the same schematic, shaped for a signal chain: inputs on one end plate, outputs on the other, USB out of the middle of the rear edge. It fits a Hammond 1455K1601 extruded box (78 × 43 × 160 mm, made for a 75 mm board): the board slides into the wall slots, the jacks go through the end plates and the four jack nuts hold it. Signal flows right to left, receivers behind the input jacks, PGA2310s in front of the Teensy with their SPI rows facing it, summer and drivers behind the output jacks, DC-DC and rail filters right of the Teensy. Copper stays 1.5 mm off the long edges because they sit inside the aluminium slots. Same rules as the main board, DRC clean against the schematic. Placement is a table in <code>tools/build_pcb_narrow.py</code>. The 1590BB board above is unchanged.</p>
+  </div>
+  <div class="dl">
+    <a href="https://github.com/chris-albert/ghost-fader/raw/main/hardware/ghost-fader-narrow-gerbers.zip">Gerbers + drill (zip)</a>
+    <a href="https://github.com/chris-albert/ghost-fader/blob/main/hardware/kicad/ghost-fader-narrow.kicad_pcb">KiCad board file</a>
+  </div>
+  <figure class="sch"><div class="scroll"><img src="pcb-narrow/top.png" alt="Top of the bare narrow Ghost Fader board: output jacks on the left end, input jacks on the right end, Teensy 4.0 centred on the rear edge with the USB connector at the edge, two PGA2310 DIPs in front of it, THAT 1246 receivers behind the input jacks, OPA2134 and THAT 1646 drivers behind the output jacks, TMR 3 DC-DC right of the Teensy." loading="lazy"></div><figcaption><b>Top, bare board.</b> J3/J4 out on the left end, J1/J2 in on the right end, U9 Teensy rear-centre with USB at the edge, U3/U4 in front of it, U5–U7 left, PS1 and filters right.</figcaption></figure>
+  <figure class="sch"><div class="scroll"><img src="pcb-narrow/bottom.png" alt="Bottom of the narrow Ghost Fader board, mirrored: ground pour with routed tracks and jack labels." loading="lazy"></div><figcaption><b>Bottom.</b> Ground pour and the rest of the routing.</figcaption></figure>
+  <div class="note prose"><b>Before ordering.</b> Hammond specifies a 75 ± 0.5 mm board for the 1455K slots; this board is 74.5 mm. Drill each end plate on the two jack centres, 25.25 and 49.25 mm from the rear edge of the board, at the NRJ6HF bushing height above the board, and slot the rear wall for the micro-USB plug and a 3 mm hole for the LED beside it.</div>
+</section>
+
+<section>
   <div class="eyebrow">Level budget</div>
   <div class="tscroll">
   <table>

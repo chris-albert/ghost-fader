@@ -17,7 +17,7 @@ dsn, ses = base + '.dsn', base + '.ses'
 board = pcbnew.LoadBoard(board_path)
 for t in list(board.GetTracks()):        # start from an unrouted board
     board.Remove(t)
-zones = list(board.Zones())              # route GND with real tracks, then put the pours back on top
+zones = [z for z in board.Zones() if not z.GetIsRuleArea()]   # route GND with real tracks, then put the pours back on top; keepouts stay for the DSN
 for z in zones:
     board.Remove(z)
 assert pcbnew.ExportSpecctraDSN(board, dsn), 'DSN export failed'
