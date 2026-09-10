@@ -590,6 +590,307 @@
           (effects 
             (font 
               (size 1.27 1.27)))))))
+(symbol "ISO7762F" 
+    (pin_names 
+      (offset 1.016)) 
+    (exclude_from_sim no) 
+    (in_bom yes) 
+    (on_board yes) 
+    (property "Reference" "U" 
+      (at -10.16 13.97 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (justify left))) 
+    (property "Value" "ISO7762F" 
+      (at 10.16 -13.97 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (justify right))) 
+    (property "Footprint" "" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Datasheet" "" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Description" "TI ISO7762F six-channel digital isolator, 4 forward / 2 reverse, fail-safe low outputs, SOIC-16 wide (DW)" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (symbol "ISO7762F_0_1" 
+      (rectangle 
+        (start -10.16 12.7) 
+        (end 10.16 -12.7) 
+        (stroke 
+          (width 0.254) 
+          (type default)) 
+        (fill 
+          (type background)))) 
+    (symbol "ISO7762F_1_1" 
+      (pin power_in line 
+        (at -12.7 10.16 0) 
+        (length 2.54) 
+        (name "VCC1" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "1" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin input line 
+        (at -12.7 5.08 0) 
+        (length 2.54) 
+        (name "INA" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "2" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin input line 
+        (at -12.7 2.54 0) 
+        (length 2.54) 
+        (name "INB" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "3" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin input line 
+        (at -12.7 0 0) 
+        (length 2.54) 
+        (name "INC" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "4" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin input line 
+        (at -12.7 -2.54 0) 
+        (length 2.54) 
+        (name "IND" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "5" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin output line 
+        (at -12.7 -5.08 0) 
+        (length 2.54) 
+        (name "OUTE" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "6" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin output line 
+        (at -12.7 -7.62 0) 
+        (length 2.54) 
+        (name "OUTF" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "7" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin power_in line 
+        (at -12.7 -10.16 0) 
+        (length 2.54) 
+        (name "GND1" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "8" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin power_in line 
+        (at 12.7 10.16 180) 
+        (length 2.54) 
+        (name "VCC2" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "16" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin output line 
+        (at 12.7 5.08 180) 
+        (length 2.54) 
+        (name "OUTA" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "15" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin output line 
+        (at 12.7 2.54 180) 
+        (length 2.54) 
+        (name "OUTB" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "14" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin output line 
+        (at 12.7 0 180) 
+        (length 2.54) 
+        (name "OUTC" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "13" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin output line 
+        (at 12.7 -2.54 180) 
+        (length 2.54) 
+        (name "OUTD" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "12" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin input line 
+        (at 12.7 -5.08 180) 
+        (length 2.54) 
+        (name "INE" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "11" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin input line 
+        (at 12.7 -7.62 180) 
+        (length 2.54) 
+        (name "INF" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "10" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin power_in line 
+        (at 12.7 -10.16 180) 
+        (length 2.54) 
+        (name "GND2" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "9" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))))))
+(symbol "L78L05" 
+    (pin_names 
+      (offset 1.016)) 
+    (exclude_from_sim no) 
+    (in_bom yes) 
+    (on_board yes) 
+    (property "Reference" "U" 
+      (at -6.35 5.08 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (justify left))) 
+    (property "Value" "L78L05" 
+      (at 6.35 -5.08 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (justify right))) 
+    (property "Footprint" "" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Datasheet" "" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Description" "100 mA 5 V linear regulator, TO-92 (1 = out, 2 = gnd, 3 = in)" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (symbol "L78L05_0_1" 
+      (rectangle 
+        (start -6.35 3.81) 
+        (end 6.35 -3.81) 
+        (stroke 
+          (width 0.254) 
+          (type default)) 
+        (fill 
+          (type background)))) 
+    (symbol "L78L05_1_1" 
+      (pin power_in line 
+        (at -8.89 0 0) 
+        (length 2.54) 
+        (name "VI" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "3" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin power_out line 
+        (at 8.89 0 180) 
+        (length 2.54) 
+        (name "VO" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "1" 
+          (effects 
+            (font 
+              (size 1.27 1.27))))) 
+      (pin power_in line 
+        (at 0 -6.35 90) 
+        (length 2.54) 
+        (name "GND" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "2" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))))))
 (symbol "XIAO_RP2040" 
     (pin_names 
       (offset 1.016)) 
@@ -948,6 +1249,78 @@
             (font 
               (size 1.27 1.27)))) 
         (number "4" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))))) 
+    (embedded_fonts no))
+(symbol "GND_USB" 
+    (power) 
+    (pin_numbers 
+      (hide yes)) 
+    (pin_names 
+      (offset 0) 
+      (hide yes)) 
+    (exclude_from_sim no) 
+    (in_bom yes) 
+    (on_board yes) 
+    (property "Reference" "#PWR" 
+      (at 0 -6.35 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Value" "GND_USB" 
+      (at 0 -3.81 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)))) 
+    (property "Footprint" "" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Datasheet" "" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "Description" "Power symbol creates a global label with name \"GND_USB\", the USB-side ground" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (property "ki_keywords" "global power" 
+      (at 0 0 0) 
+      (effects 
+        (font 
+          (size 1.27 1.27)) 
+        (hide yes))) 
+    (symbol "GND_USB_0_1" 
+      (polyline 
+        (pts 
+          (xy 0 0) 
+          (xy 0 -1.27) 
+          (xy 1.27 -1.27) 
+          (xy 0 -2.54) 
+          (xy -1.27 -1.27) 
+          (xy 0 -1.27)) 
+        (stroke 
+          (width 0) 
+          (type default)) 
+        (fill 
+          (type none)))) 
+    (symbol "GND_USB_1_1" 
+      (pin power_in line 
+        (at 0 0 270) 
+        (length 0) 
+        (name "~" 
+          (effects 
+            (font 
+              (size 1.27 1.27)))) 
+        (number "1" 
           (effects 
             (font 
               (size 1.27 1.27)))))) 
