@@ -6,14 +6,14 @@ Run with KiCad's bundled Python (it needs the pcbnew module):
   /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 tools/build_pcb_narrow.py /tmp/gf.net
 
 Board: 207 x 38 mm, 2 layers, for a 3D-printed box. Width is set by two NRJ6HF jacks side by side (16.8 mm each,
-18 mm pitch) and, across the board, the Teensy (36.6 mm long, USB out of the rear edge). Inputs on the right end,
-outputs on the left, signal flows right to left; Teensy USB out of the rear long edge (y = 0), centred on the
+18 mm pitch); the XIAO RP2040 (21 x 17.8 mm) lies across the board with its USB-C out of the rear edge. Inputs on the right end,
+outputs on the left, signal flows right to left; USB out of the rear long edge (y = 0), centred on the
 length. No mounting holes: the board hangs on the four jack nuts, so give the printed box a ledge under the
 board edges. Parts stay 1 mm off the edges; copper 0.3 mm.
 
 Coordinates below are mm, origin top-left, y down. Everything is arranged in columns along the length:
 output jacks -> RF caps -> drivers + sense caps -> build-outs and 100n -> summer -> coupling caps ->
-PGA2310s (digital rows facing each other) -> Teensy -> DIP switch, pull-ups, +/-15 V bulk -> DC-DC and rail
+PGA2310s (digital rows facing each other) -> XIAO -> DIP switch, pull-ups, +/-12 V bulk -> DC-DC and rail
 filters -> receivers -> bulk caps -> RF caps -> input jacks.
 """
 import sys, os
@@ -55,22 +55,22 @@ PLACE = {
     'R2': (38.5, 27.5, 0), 'R3': (38.5, 31, 0), 'R6': (38.5, 34.5, 0),
     # summer with its feedback resistors above, R9 and R7 below
     'R4': (52, 2.5, 0), 'R5': (52, 6, 0), 'R8': (52, 9.5, 0), 'U5': (54, 14, 0), 'R9': (52, 26.5, 0), 'R7': (52, 30, 0),
-    # coupling caps into the PGAs and the PGA +/-15 V 100n
+    # coupling caps into the PGAs and the PGA +/-12 V 100n
     'C4': (65, 4.5, 0), 'C3': (72, 4.5, 0), 'C5': (65, 11, 0), 'C6': (72, 11, 0),
     'C25': (65, 16.5, 0), 'C26': (72.5, 16.5, 0), 'C28': (65, 20, 0), 'C29': (72.5, 20, 0),
     # PGA2310s stacked across the board, digital rows (pins 1-8) facing each other at y 12.5 and 24.5, 5 V 100n between
     'U3': (80.5, 12.5, 90), 'U4': (99.5, 24.5, 270), 'C27': (81.5, 18.5, 0), 'C30': (90.5, 18.5, 0),
-    # Teensy across the board, USB end at the rear edge
-    'U9': (111.5, 19, 0),
-    # DIP switch, pull-ups / pull-down / LED resistor, +/-15 V bulk
+    # XIAO across the board, USB-C at the rear edge (body top edge 0.8 mm in, connector face 0.6 mm proud of the board edge)
+    'U9': (111.5, 11.3, 0),
+    # DIP switch, pull-ups / pull-down / LED resistor, +/-12 V bulk
     'SW1': (124.5, 3.5, 0),
     'R15': (124, 16, 270), 'R16': (127.5, 16, 270), 'R1': (131, 16, 270), 'R14': (134.5, 16, 270),
     'C40': (123.5, 32.5, 0), 'C41': (131, 32.5, 0),
     # power: USB 5 V -> FB1 -> C11 -> PS1; L1/L2 on the converter outputs; 100u bulk; LED at the rear edge
-    'FB1': (139, 3, 0), 'LED1': (154, 3.2, 0), 'PS1': (139, 11.5, 0),
+    'FB1': (139, 3, 0), 'LED1': (154, 3.2, 0), 'PS1': (139, 10, 90),
     'C11': (139, 21.5, 0), 'C12': (146.5, 21.5, 0), 'L1': (153.5, 19, 270), 'L2': (157.5, 19, 270),
     'C14': (139, 29, 0), 'C13': (146.5, 29, 0),
-    # input receivers (inputs facing the jacks) with 100n above and below, +/-15 V bulk beside them
+    # input receivers (inputs facing the jacks) with 100n above and below, +/-12 V bulk beside them
     'C22': (164, 3.5, 0), 'U1': (166, 10, 180), 'C21': (164, 16, 0),
     'C24': (164, 21, 0), 'U2': (166, 28, 180), 'C23': (164, 34.5, 0),
     'C42': (172.5, 4.5, 0), 'C43': (172.5, 33.5, 0),
@@ -79,7 +79,7 @@ PLACE = {
 # Reference labels, world coordinates (x, y, angle). Parts not listed use a rule for their footprint type.
 # On a board this tight most labels sit on the part body (resistors, discs, ICs): readable on the bare board.
 LABELS = {
-    'U9': (111.5, 19, 90), 'SW1': (129.5, 7.3, 0), 'PS1': (146, 9, 0), 'U5': (57.8, 17.8, 90),
+    'U9': (111.5, 11.3, 90), 'SW1': (129.5, 7.3, 0), 'PS1': (146, 14, 0), 'U5': (57.8, 17.8, 90),
     'U3': (89.4, 8.7, 0), 'U4': (90.6, 28.3, 0), 'LED1': (150.9, 3.2, 90),
     'U1': (166, 10, 0), 'U2': (166, 28, 0), 'U6': (33, 10, 0), 'U7': (33, 27.9, 0),
     'C17': (29.0, 4.1, 90), 'C18': (29.0, 16, 90), 'C19': (29.0, 21.9, 90), 'C20': (29.0, 33.9, 90),
@@ -130,7 +130,7 @@ default.SetClearance(mm(0.25)); default.SetTrackWidth(mm(0.3)); default.SetViaDi
 power = pcbnew.NETCLASS('Power')
 power.SetClearance(mm(0.25)); power.SetTrackWidth(mm(0.6)); power.SetViaDiameter(mm(0.9)); power.SetViaDrill(mm(0.5))
 nc.SetNetclass('Power', power)
-POWER_NETS = ['+5V', 'USB_5V', '+15V', '-15V', 'GND', 'Net-(PS1-+Vout)', 'Net-(PS1--Vout)']
+POWER_NETS = ['+5V', 'USB_5V', '+12V', '-12V', 'GND', 'Net-(PS1-+Vout)', 'Net-(PS1--Vout)']
 for pn in POWER_NETS:
     nc.SetNetclassPatternAssignment(pn, 'Power')
 
@@ -200,7 +200,7 @@ def text(txt, x, y, size=1.5, layer=pcbnew.F_SilkS, rot=0):
     t.SetTextAngle(EDA_ANGLE(rot, DEGREES_T))
     if layer == pcbnew.B_SilkS: t.SetMirrored(True)
     board.Add(t)
-text('GHOST FADER rev B  narrow', 111.5, 22, 1.5, pcbnew.B_SilkS, 90)
+text('GHOST FADER rev C  narrow', 111.5, 22, 1.5, pcbnew.B_SilkS, 90)
 text('USB', 111.5, 2.5, 1.0, pcbnew.B_SilkS)
 text('IN L', W - 12.3, JY_L + 2.5, 1.2, pcbnew.B_SilkS); text('IN R', W - 12.3, JY_R + 2.5, 1.2, pcbnew.B_SilkS)
 text('OUT L', 12.3, JY_L - 2.5, 1.2, pcbnew.B_SilkS); text('OUT R', 12.3, JY_R - 2.5, 1.2, pcbnew.B_SilkS)
