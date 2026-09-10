@@ -297,7 +297,7 @@
         (font 
           (size 1.27 1.27)) 
         (hide yes))) 
-    (property "Description" "TI PGA2310 stereo audio volume control, +/-15 V analog, SPI, DIP-16" 
+    (property "Description" "TI PGA2310 stereo audio volume control, +/-15 V max analog, SPI, DIP-16" 
       (at 0 0 0) 
       (effects 
         (font 
@@ -489,7 +489,7 @@
           (effects 
             (font 
               (size 1.27 1.27)))))))
-(symbol "TMR3_Dual" 
+(symbol "TBA2_Dual" 
     (pin_names 
       (offset 1.016)) 
     (exclude_from_sim no) 
@@ -501,7 +501,7 @@
         (font 
           (size 1.27 1.27)) 
         (justify left))) 
-    (property "Value" "TMR3_Dual" 
+    (property "Value" "TBA2_Dual" 
       (at 10.16 -8.89 0) 
       (effects 
         (font 
@@ -519,13 +519,13 @@
         (font 
           (size 1.27 1.27)) 
         (hide yes))) 
-    (property "Description" "TRACO TMR 3 series isolated 3 W DC-DC, dual output, SIP-8 (pins 4, 5 absent)" 
+    (property "Description" "TRACO TBA 2 series isolated 2 W unregulated DC-DC, dual output, SIP-7 (pins 3, 7 absent)" 
       (at 0 0 0) 
       (effects 
         (font 
           (size 1.27 1.27)) 
         (hide yes))) 
-    (symbol "TMR3_Dual_0_1" 
+    (symbol "TBA2_Dual_0_1" 
       (rectangle 
         (start -10.16 7.62) 
         (end 10.16 -7.62) 
@@ -534,7 +534,7 @@
           (type default)) 
         (fill 
           (type background)))) 
-    (symbol "TMR3_Dual_1_1" 
+    (symbol "TBA2_Dual_1_1" 
       (pin power_in line 
         (at -12.7 5.08 0) 
         (length 2.54) 
@@ -542,18 +542,7 @@
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "2" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin input line 
-        (at -12.7 0 0) 
-        (length 2.54) 
-        (name "Remote" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "3" 
+        (number "1" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
@@ -564,7 +553,7 @@
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "1" 
+        (number "2" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
@@ -586,7 +575,7 @@
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "7" 
+        (number "5" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
@@ -597,24 +586,24 @@
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "8" 
+        (number "4" 
           (effects 
             (font 
               (size 1.27 1.27)))))))
-(symbol "Teensy40" 
+(symbol "XIAO_RP2040" 
     (pin_names 
       (offset 1.016)) 
     (exclude_from_sim no) 
     (in_bom yes) 
     (on_board yes) 
     (property "Reference" "U" 
-      (at -15.24 21.59 0) 
+      (at -16.51 11.43 0) 
       (effects 
         (font 
           (size 1.27 1.27)) 
         (justify left))) 
-    (property "Value" "Teensy40" 
-      (at 15.24 -21.59 0) 
+    (property "Value" "XIAO_RP2040" 
+      (at 16.51 -11.43 0) 
       (effects 
         (font 
           (size 1.27 1.27)) 
@@ -631,26 +620,26 @@
         (font 
           (size 1.27 1.27)) 
         (hide yes))) 
-    (property "Description" "PJRC Teensy 4.0, outer edge pins only. Pin numbers are physical positions counted from the USB end: 1-14 left row, 15-28 right row." 
+    (property "Description" "Seeed Studio XIAO RP2040: USB-C, RP2040, 11 GPIO. Pin numbers as on the Seeed footprint (1-7 left row from the USB end, 8-14 right row from the far end)." 
       (at 0 0 0) 
       (effects 
         (font 
           (size 1.27 1.27)) 
         (hide yes))) 
-    (symbol "Teensy40_0_1" 
+    (symbol "XIAO_RP2040_0_1" 
       (rectangle 
-        (start -15.24 20.32) 
-        (end 15.24 -20.32) 
+        (start -16.51 10.16) 
+        (end 16.51 -10.16) 
         (stroke 
           (width 0.254) 
           (type default)) 
         (fill 
           (type background)))) 
-    (symbol "Teensy40_1_1" 
-      (pin power_in line 
-        (at -17.78 17.78 0) 
+    (symbol "XIAO_RP2040_1_1" 
+      (pin bidirectional line 
+        (at -19.05 7.62 0) 
         (length 2.54) 
-        (name "GND" 
+        (name "D0/GP26" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -659,9 +648,9 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 15.24 0) 
+        (at -19.05 5.08 0) 
         (length 2.54) 
-        (name "0" 
+        (name "D1/GP27" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -670,9 +659,9 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 12.7 0) 
+        (at -19.05 2.54 0) 
         (length 2.54) 
-        (name "1" 
+        (name "D2/GP28" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -681,9 +670,9 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 10.16 0) 
+        (at -19.05 0 0) 
         (length 2.54) 
-        (name "2" 
+        (name "D3/GP29" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -692,9 +681,9 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 7.62 0) 
+        (at -19.05 -2.54 0) 
         (length 2.54) 
-        (name "3" 
+        (name "D4/SDA/GP6" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -703,9 +692,9 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 5.08 0) 
+        (at -19.05 -5.08 0) 
         (length 2.54) 
-        (name "4" 
+        (name "D5/SCL/GP7" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -714,9 +703,9 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 2.54 0) 
+        (at -19.05 -7.62 0) 
         (length 2.54) 
-        (name "5" 
+        (name "D6/TX/GP0" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -724,54 +713,32 @@
           (effects 
             (font 
               (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at -17.78 0 0) 
+      (pin power_out line 
+        (at 19.05 7.62 180) 
         (length 2.54) 
-        (name "6" 
+        (name "5V" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "8" 
+        (number "14" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at -17.78 -2.54 0) 
+      (pin power_in line 
+        (at 19.05 5.08 180) 
         (length 2.54) 
-        (name "7" 
+        (name "GND" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "9" 
+        (number "13" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at -17.78 -5.08 0) 
+      (pin power_out line 
+        (at 19.05 2.54 180) 
         (length 2.54) 
-        (name "8" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "10" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at -17.78 -7.62 0) 
-        (length 2.54) 
-        (name "9" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "11" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at -17.78 -10.16 0) 
-        (length 2.54) 
-        (name "10" 
+        (name "3V3" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
@@ -780,178 +747,46 @@
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 -12.7 0) 
+        (at 19.05 0 180) 
         (length 2.54) 
-        (name "11" 
+        (name "D10/MOSI/GP3" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "13" 
+        (number "11" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at -17.78 -15.24 0) 
+        (at 19.05 -2.54 180) 
         (length 2.54) 
-        (name "12" 
+        (name "D9/MISO/GP4" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "14" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin power_out line 
-        (at 17.78 17.78 180) 
-        (length 2.54) 
-        (name "VIN" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "15" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin power_in line 
-        (at 17.78 15.24 180) 
-        (length 2.54) 
-        (name "GND" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "16" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin power_out line 
-        (at 17.78 12.7 180) 
-        (length 2.54) 
-        (name "3.3V" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "17" 
+        (number "10" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at 17.78 10.16 180) 
+        (at 19.05 -5.08 180) 
         (length 2.54) 
-        (name "23" 
+        (name "D8/SCK/GP2" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "18" 
+        (number "9" 
           (effects 
             (font 
               (size 1.27 1.27))))) 
       (pin bidirectional line 
-        (at 17.78 7.62 180) 
+        (at 19.05 -7.62 180) 
         (length 2.54) 
-        (name "22" 
+        (name "D7/RX/GP1" 
           (effects 
             (font 
               (size 1.27 1.27)))) 
-        (number "19" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 5.08 180) 
-        (length 2.54) 
-        (name "21" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "20" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 2.54 180) 
-        (length 2.54) 
-        (name "20" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "21" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 0 180) 
-        (length 2.54) 
-        (name "19" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "22" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 -2.54 180) 
-        (length 2.54) 
-        (name "18" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "23" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 -5.08 180) 
-        (length 2.54) 
-        (name "17" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "24" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 -7.62 180) 
-        (length 2.54) 
-        (name "16" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "25" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 -10.16 180) 
-        (length 2.54) 
-        (name "15" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "26" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 -12.7 180) 
-        (length 2.54) 
-        (name "14" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "27" 
-          (effects 
-            (font 
-              (size 1.27 1.27))))) 
-      (pin bidirectional line 
-        (at 17.78 -15.24 180) 
-        (length 2.54) 
-        (name "13" 
-          (effects 
-            (font 
-              (size 1.27 1.27)))) 
-        (number "28" 
+        (number "8" 
           (effects 
             (font 
               (size 1.27 1.27)))))))

@@ -288,11 +288,11 @@
       },
       {
         "netclass": "Power",
-        "pattern": "+15V"
+        "pattern": "+12V"
       },
       {
         "netclass": "Power",
-        "pattern": "-15V"
+        "pattern": "-12V"
       },
       {
         "netclass": "Power",

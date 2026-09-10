@@ -7,8 +7,8 @@ from sexp import parse, dump, libsym, pins as sympins, Q
 OUT = sys.argv[1] if len(sys.argv) > 1 else 'out'
 KLIB = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/'
 PROJECT = 'ghost-fader'
-DATE = '2026-09-06'
-REV = 'B'
+DATE = '2026-09-08'
+REV = 'C'
 G = 2.54
 
 def U(): return str(uuid.uuid4())
@@ -64,21 +64,19 @@ CUSTOM['PGA2310'] = boxsym('PGA2310', 'U', 20.32, 25.4, [
     ('14', 'VOUTL', 'R', 10.16, 'output'), ('11', 'VOUTR', 'R', 5.08, 'output'), ('7', 'SDO', 'R', -7.62, 'output'),
     ('12', 'VA+', 'T', -5.08, 'power_in'), ('4', 'VD+', 'T', 5.08, 'power_in'),
     ('15', 'AGNDL', 'B', -7.62, 'power_in'), ('10', 'AGNDR', 'B', -2.54, 'power_in'), ('5', 'DGND', 'B', 2.54, 'power_in'), ('13', 'VA-', 'B', 7.62, 'power_in')],
-    'TI PGA2310 stereo audio volume control, +/-15 V analog, SPI, DIP-16')
-CUSTOM['TMR3_Dual'] = boxsym('TMR3_Dual', 'PS', 20.32, 15.24, [
-    ('2', '+Vin', 'L', 5.08, 'power_in'), ('3', 'Remote', 'L', 0, 'input'), ('1', '-Vin', 'L', -5.08, 'power_in'),
-    ('6', '+Vout', 'R', 5.08, 'power_out'), ('7', 'Common', 'R', 0, 'power_out'), ('8', '-Vout', 'R', -5.08, 'power_out')],
-    'TRACO TMR 3 series isolated 3 W DC-DC, dual output, SIP-8 (pins 4, 5 absent)')
-tpins = []
-left = ['GND', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
-right = ['VIN', 'GND', '3.3V', '23', '22', '21', '20', '19', '18', '17', '16', '15', '14', '13']
-for i, n in enumerate(left):
-    tpins.append((str(i + 1), n, 'L', 17.78 - i * 2.54, 'power_in' if n == 'GND' else 'bidirectional'))
-for i, n in enumerate(right):
-    et = {'VIN': 'power_out', 'GND': 'power_in', '3.3V': 'power_out'}.get(n, 'bidirectional')
-    tpins.append((str(i + 15), n, 'R', 17.78 - i * 2.54, et))
-CUSTOM['Teensy40'] = boxsym('Teensy40', 'U', 30.48, 40.64, tpins,
-    'PJRC Teensy 4.0, outer edge pins only. Pin numbers are physical positions counted from the USB end: 1-14 left row, 15-28 right row.')
+    'TI PGA2310 stereo audio volume control, +/-15 V max analog, SPI, DIP-16')
+CUSTOM['TBA2_Dual'] = boxsym('TBA2_Dual', 'PS', 20.32, 15.24, [
+    ('1', '+Vin', 'L', 5.08, 'power_in'), ('2', '-Vin', 'L', -5.08, 'power_in'),
+    ('6', '+Vout', 'R', 5.08, 'power_out'), ('5', 'Common', 'R', 0, 'power_out'), ('4', '-Vout', 'R', -5.08, 'power_out')],
+    'TRACO TBA 2 series isolated 2 W unregulated DC-DC, dual output, SIP-7 (pins 3, 7 absent)')
+# Seeed XIAO RP2040. Pin numbers follow Seeed's footprint: 1-7 down the left row from the USB end (D0-D6),
+# 8-14 up the right row from the far end (D7-D10, 3V3, GND, 5V), so 14 is opposite 1 at the USB end.
+xleft = [('1', 'D0/GP26'), ('2', 'D1/GP27'), ('3', 'D2/GP28'), ('4', 'D3/GP29'), ('5', 'D4/SDA/GP6'), ('6', 'D5/SCL/GP7'), ('7', 'D6/TX/GP0')]
+xright = [('14', '5V'), ('13', 'GND'), ('12', '3V3'), ('11', 'D10/MOSI/GP3'), ('10', 'D9/MISO/GP4'), ('9', 'D8/SCK/GP2'), ('8', 'D7/RX/GP1')]
+xpins = [(num, n, 'L', 7.62 - i * 2.54, 'bidirectional') for i, (num, n) in enumerate(xleft)]
+xpins += [(num, n, 'R', 7.62 - i * 2.54, {'5V': 'power_out', 'GND': 'power_in', '3V3': 'power_out'}.get(n, 'bidirectional')) for i, (num, n) in enumerate(xright)]
+CUSTOM['XIAO_RP2040'] = boxsym('XIAO_RP2040', 'U', 33.02, 20.32, xpins,
+    'Seeed Studio XIAO RP2040: USB-C, RP2040, 11 GPIO. Pin numbers as on the Seeed footprint (1-7 left row from the USB end, 8-14 right row from the far end).')
 
 def copysym(lib, name, newname=None, value=None):
     s = libsym(KLIB + lib + '.kicad_sym', name)
@@ -103,7 +101,7 @@ def copysym(lib, name, newname=None, value=None):
 LIBSYMS = {}   # lib_id -> sexp
 for lib, name in [('Device', 'R'), ('Device', 'C'), ('Device', 'C_Polarized'), ('Device', 'L'), ('Device', 'FerriteBead'), ('Device', 'LED'),
                   ('Switch', 'SW_DIP_x04'), ('Connector_Audio', 'AudioJack3_SwitchTR'),
-                  ('power', 'GND'), ('power', '+15V'), ('power', '-15V'), ('power', '+5V'), ('power', '+3V3'), ('power', 'PWR_FLAG')]:
+                  ('power', 'GND'), ('power', '+12V'), ('power', '-12V'), ('power', '+5V'), ('power', '+3V3'), ('power', 'PWR_FLAG')]:
     _, base, s = copysym(lib, name)
     LIBSYMS[f'{lib}:{base}'] = s
 _, base, s = copysym('Amplifier_Operational', 'LM2904', newname='OPA2134', value='OPA2134')
@@ -139,8 +137,8 @@ FOOTPRINTS = {
     'DIP16': 'Package_DIP:DIP-16_W7.62mm',
     'DIP8': 'Package_DIP:DIP-8_W7.62mm',
     'SO8': 'Package_SO:SOIC-8_3.9x4.9mm_P1.27mm',
-    'TEENSY': 'GhostFader:Teensy40_Edge',
-    'TMR3': 'GhostFader:TRACO_TMR3_SIP8',
+    'XIAO': 'GhostFader:XIAO_RP2040_THT',
+    'TBA2': 'Converter_DCDC:Converter_DCDC_TRACO_TBA2-xxxx_Dual_THT',
     'JACK': 'Connector_Audio:Jack_6.35mm_Neutrik_NRJ6HF_Horizontal',
 }
 
@@ -362,8 +360,8 @@ def build_input():
         s.wire(vout, (111.76, vout[1])); s.stub_glabel((111.76, vout[1]), 'R', f'{side}_SE', 6, 'output')
         s.nc(ncp)
         s.stub_pwr(u.p('1'), 'D', 'GND', 1)
-        s.stub_pwr(u.p('4'), 'D', '-15V', 2)
-        s.stub_pwr(u.p('7'), 'U', '+15V', 1)
+        s.stub_pwr(u.p('4'), 'D', '-12V', 2)
+        s.stub_pwr(u.p('7'), 'U', '+12V', 1)
         # plug-sense pull-up, drawn as its own snippet
         px, py = 40.64, y0 + 25.4
         s.pwr('+3V3', px, py, 0)
@@ -376,8 +374,8 @@ def build_input():
     # decoupling for this sheet
     x0 = 200.66
     s.text('Bypass, one per supply pin, within 5 mm of U1 / U2. C40, C41 bulk for the input side.', x0, 45.72, 1.0)
-    for i, (ref, val, rail, kind) in enumerate([('C21', '100n', '+15V', 'C'), ('C22', '100n', '-15V', 'C'), ('C23', '100n', '+15V', 'C'), ('C24', '100n', '-15V', 'C'),
-                                                ('C40', '10u', '+15V', 'CP'), ('C41', '10u', '-15V', 'CP')]):
+    for i, (ref, val, rail, kind) in enumerate([('C21', '100n', '+12V', 'C'), ('C22', '100n', '-12V', 'C'), ('C23', '100n', '+12V', 'C'), ('C24', '100n', '-12V', 'C'),
+                                                ('C40', '10u', '+12V', 'CP'), ('C41', '10u', '-12V', 'CP')]):
         s.decap(x0 + i * 12.7, 53.34, ref, val, rail, kind)
     return s
 
@@ -397,13 +395,13 @@ def build_matrix():
         s.stub_glabel(u.p('8'), 'L', '~{MUTE}', 4)
         if sdo_to: s.stub_glabel(u.p('7'), 'R', sdo_to, 4, 'output')
         else: s.nc(u.p('7'))
-        s.stub_pwr(u.p('12'), 'U', '+15V', 1)
+        s.stub_pwr(u.p('12'), 'U', '+12V', 1)
         s.stub_pwr(u.p('4'), 'U', '+5V', 1)
         # grounds to one bar
         gy = u.p('15')[1] + 5.08
         for n in ('15', '10', '5'): s.wire(u.p(n), (u.p(n)[0], gy))
         s.wire((u.p('15')[0], gy), (u.p('5')[0], gy)); s.junc(u.p('10')[0], gy); s.pwr('GND', u.p('5')[0], gy, 0)
-        s.stub_pwr(u.p('13'), 'D', '-15V', 4)
+        s.stub_pwr(u.p('13'), 'D', '-12V', 4)
         # outputs through 10k mix resistors to the summing nodes
         for pinn, (rref, node), dx in (('14', outl, 8.89), ('11', outr, 16.51)):
             pp = u.p(pinn)
@@ -412,7 +410,7 @@ def build_matrix():
         return u
     pga(63.5, 'U3', 'C3', 'C4', 'SDI', 'U3_SDO', ('R2', 'L_SUM'), ('R6', 'R_SUM'))
     pga(129.54, 'U4', 'C5', 'C6', 'U3_SDO', None, ('R7', 'R_SUM'), ('R3', 'L_SUM'))
-    s.text('U3 = direct paths (L->L on its left channel, R->R on its right).  U4 = cross paths (L->R on its left channel, R->L on its right).\nSPI chain: Teensy MOSI -> U3 SDI, U3 SDO -> U4 SDI. 32 clocks per update: U4 word first, then U3; each word is right byte then left byte, MSB first.\nZCEN high: gain changes wait for a zero crossing. Code 192 = 0 dB, 0 = mute. Never route SDO (5 V logic) back to the Teensy.',
+    s.text('U3 = direct paths (L->L on its left channel, R->R on its right).  U4 = cross paths (L->R on its left channel, R->L on its right).\nSPI chain: XIAO MOSI (D10) -> U3 SDI, U3 SDO -> U4 SDI. 32 clocks per update: U4 word first, then U3; each word is right byte then left byte, MSB first.\nZCEN high: gain changes wait for a zero crossing. Code 192 = 0 dB, 0 = mute. Never route SDO (5 V logic) back to the XIAO.',
            33.02, 170.18, 1.1)
     # summers
     def summer(uy, unit, node, rg, rf, outname):
@@ -435,12 +433,12 @@ def build_matrix():
     s.text('Summers: two 10k resistors into the + input make a passive 1/2 mix; the non-inverting x2 stage restores unity.\nWhen one path is muted its PGA output sits at 0 V, so the other still comes through at unity.', 147.32, 152.4, 1.1)
     # U5 power unit + decoupling row
     pu = s.place('GhostFader:OPA2134', 'U5', 'OPA2134PA', 233.68, 63.5, 0, None, 3, fp=FOOTPRINTS['DIP8'])
-    s.stub_pwr(pu.p('8'), 'U', '+15V', 1); s.stub_pwr(pu.p('4'), 'D', '-15V', 1)
+    s.stub_pwr(pu.p('8'), 'U', '+12V', 1); s.stub_pwr(pu.p('4'), 'D', '-12V', 1)
     x0 = 210.82
     s.text('Bypass, one per supply pin: U3 / U4 VA+, VA-, VD+; U5 V+, V-. C14 bulk on the 5 V logic rail beside U3.', x0, 96.52, 1.0)
-    for i, (ref, val, rail, kind) in enumerate([('C25', '100n', '+15V', 'C'), ('C26', '100n', '-15V', 'C'), ('C27', '100n', '+5V', 'C'),
-                                                ('C28', '100n', '+15V', 'C'), ('C29', '100n', '-15V', 'C'), ('C30', '100n', '+5V', 'C'),
-                                                ('C31', '100n', '+15V', 'C'), ('C32', '100n', '-15V', 'C'), ('C14', '10u', '+5V', 'CP')]):
+    for i, (ref, val, rail, kind) in enumerate([('C25', '100n', '+12V', 'C'), ('C26', '100n', '-12V', 'C'), ('C27', '100n', '+5V', 'C'),
+                                                ('C28', '100n', '+12V', 'C'), ('C29', '100n', '-12V', 'C'), ('C30', '100n', '+5V', 'C'),
+                                                ('C31', '100n', '+12V', 'C'), ('C32', '100n', '-12V', 'C'), ('C14', '10u', '+5V', 'CP')]):
         s.decap(x0 + (i % 5) * 12.7, 104.14 + (i // 5) * 20.32, ref, val, rail, kind)
     return s
 
@@ -468,101 +466,96 @@ def build_output():
         cr = s.place('Device:C', Cr, '100p C0G', 137.16, outm[1] + 3.81, fp=FOOTPRINTS['C']); s.pwr('GND', *cr.p('2'), 0)
         s.wire(S, (149.86, S[1]), (149.86, S[1] + 5.08)); s.pwr('GND', 149.86, S[1] + 5.08, 0)
         s.nc(RN); s.nc(TN)
-        s.stub_pwr(u.p('6'), 'U', '+15V', 1)
+        s.stub_pwr(u.p('6'), 'U', '+12V', 1)
         s.stub_pwr(u.p('3'), 'D', 'GND', 1)
-        s.stub_pwr(u.p('5'), 'D', '-15V', 2)
+        s.stub_pwr(u.p('5'), 'D', '-12V', 2)
     channel(50.8, 'U6', 'J3', 'C17', 'C18', 'R10', 'R11', 'C9', 'C10', 'L')
     channel(111.76, 'U7', 'J4', 'C19', 'C20', 'R12', 'R13', 'C15', 'C16', 'R')
     s.text('THAT 1646 = +6 dB cross-coupled driver. A TS plug on the output shorts Out- to ground; OutSmarts keeps the full signal on the tip.\n10 uF non-polar sense caps (datasheet figure 5) drop output DC offset from 250 mV to 15 mV. 10 R build-outs isolate cable capacitance.\nOutput jack switch contacts are not used.', 33.02, 35.56, 1.27)
     x0 = 200.66
     s.text('Bypass, one per supply pin, within 5 mm of U6 / U7. C42, C43 bulk for the output side.', x0, 45.72, 1.0)
-    for i, (ref, val, rail, kind) in enumerate([('C33', '100n', '+15V', 'C'), ('C34', '100n', '-15V', 'C'), ('C35', '100n', '+15V', 'C'), ('C36', '100n', '-15V', 'C'),
-                                                ('C42', '10u', '+15V', 'CP'), ('C43', '10u', '-15V', 'CP')]):
+    for i, (ref, val, rail, kind) in enumerate([('C33', '100n', '+12V', 'C'), ('C34', '100n', '-12V', 'C'), ('C35', '100n', '+12V', 'C'), ('C36', '100n', '-12V', 'C'),
+                                                ('C42', '10u', '+12V', 'CP'), ('C43', '10u', '-12V', 'CP')]):
         s.decap(x0 + i * 12.7, 53.34, ref, val, rail, kind)
     return s
 
 # ---------------------------------------------------------------- Sheet 4: control
 def build_control():
-    s = Sheet('control.kicad_sch', 'Ghost Fader - Sheet 4: Control', 'Teensy 4.0, USB MIDI, plug sense, SPI')
-    t = s.place('GhostFader:Teensy40', 'U9', 'Teensy 4.0', 101.6, 101.6, fp=FOOTPRINTS['TEENSY'])
-    # left row
-    gnd1 = t.p('1'); s.wire(gnd1, (76.2, gnd1[1]), (76.2, gnd1[1] + 5.08)); s.pwr('GND', 76.2, gnd1[1] + 5.08, 0)
-    s.nc(t.p('2')); s.nc(t.p('3'))
-    s.stub_glabel(t.p('4'), 'L', 'SENSE_L', 4)
-    s.stub_glabel(t.p('5'), 'L', 'SENSE_R', 4)
-    sw = s.place('Switch:SW_DIP_x04', 'SW1', 'MIDI channel', 45.72, 101.6, fp=FOOTPRINTS['DIP4'])
-    for tp, sp in (('6', '8'), ('7', '7'), ('8', '6'), ('9', '5')):
+    s = Sheet('control.kicad_sch', 'Ghost Fader - Sheet 4: Control', 'XIAO RP2040, USB MIDI, plug sense, SPI')
+    t = s.place('GhostFader:XIAO_RP2040', 'U9', 'XIAO RP2040', 101.6, 101.6, fp=FOOTPRINTS['XIAO'])
+    # left row: D0-D6
+    s.stub_glabel(t.p('1'), 'L', 'SENSE_L', 4)
+    s.stub_glabel(t.p('2'), 'L', 'SENSE_R', 4)
+    sw = s.place('Switch:SW_DIP_x04', 'SW1', 'MIDI channel', 45.72, 104.14, fp=FOOTPRINTS['DIP4'])
+    for tp, sp in (('3', '8'), ('4', '7'), ('5', '6'), ('6', '5')):
         assert t.p(tp)[1] == sw.p(sp)[1]
         s.wire(sw.p(sp), t.p(tp))
     for sp in ('1', '2', '3', '4'):
         s.wire(sw.p(sp), (33.02, sw.p(sp)[1]))
     s.wire((33.02, sw.p('1')[1]), (33.02, sw.p('4')[1] + 5.08))
     s.pwr('GND', 33.02, sw.p('4')[1] + 5.08, 0)
-    # LED on pin 8, drawn as its own snippet below
-    s.stub_glabel(t.p('10'), 'L', 'LED', 4, 'output')
+    s.stub_glabel(t.p('7'), 'L', '~{MUTE}', 4, 'output')
+    # right row, bottom up: D7-D10, 3V3, GND, 5V
+    s.stub_glabel(t.p('8'), 'R', '~{CS}', 4, 'output')
+    s.stub_glabel(t.p('9'), 'R', 'SCLK', 4, 'output')
+    s.stub_glabel(t.p('10'), 'R', 'LED', 4, 'output')
+    s.stub_glabel(t.p('11'), 'R', 'SDI', 4, 'output')
+    v33 = t.p('12'); s.wire(v33, (132.08, v33[1])); s.pwr('+3V3', 132.08, v33[1], 0)
+    gnd = t.p('13'); s.wire(gnd, (127, gnd[1]), (127, gnd[1] - 5.08)); s.pwr('GND', 127, gnd[1] - 5.08, 180)
+    vin = t.p('14'); s.wire(vin, (124.46, vin[1]), (124.46, vin[1] - 5.08)); s.glabel('USB_5V', 124.46, vin[1] - 5.08, 90, 'output')
+    # LED snippet
     ly = 149.86
     s.glabel('LED', 48.26, ly, 180)
     r16 = s.place('Device:R', 'R16', '1k', 57.15, ly, 90, fp=FOOTPRINTS['R']); s.wire((48.26, ly), r16.p('1'))
     led = s.place('Device:LED', 'LED1', 'MIDI act', 68.58, ly, 180, fp=FOOTPRINTS['LED'])
     s.wire(r16.p('2'), led.p('2'))
     s.wire(led.p('1'), (76.2, ly), (76.2, ly + 5.08)); s.pwr('GND', 76.2, ly + 5.08, 0)
-    s.text('MIDI activity LED on Teensy pin 8, about 2 mA.', 86.36, ly + 1.27, 1.0)
-    s.stub_glabel(t.p('11'), 'L', '~{MUTE}', 4, 'output')
-    s.stub_glabel(t.p('12'), 'L', '~{CS}', 4, 'output')
-    s.stub_glabel(t.p('13'), 'L', 'SDI', 4, 'output')
-    s.nc(t.p('14'))
-    # right row
-    vin = t.p('15'); s.wire(vin, (124.46, vin[1]), (124.46, vin[1] - 5.08)); s.glabel('USB_5V', 124.46, vin[1] - 5.08, 90, 'output')
-    gnd2 = t.p('16'); s.wire(gnd2, (127, gnd2[1]), (127, gnd2[1] + 7.62)); s.pwr('GND', 127, gnd2[1] + 7.62, 0)
-    v33 = t.p('17'); s.wire(v33, (132.08, v33[1])); s.pwr('+3V3', 132.08, v33[1], 0)
-    for n in range(18, 28): s.nc(t.p(str(n)))
-    s.stub_glabel(t.p('28'), 'R', 'SCLK', 4, 'output')
+    s.text('MIDI activity LED on D9 (GP4), about 2 mA.', 86.36, ly + 1.27, 1.0)
     # mute pull-down snippet
     s.glabel('~{MUTE}', 48.26, 137.16, 180);
     r15 = s.place('Device:R', 'R15', '10k', 57.15, 137.16, 90, fp=FOOTPRINTS['R'])
     s.wire((48.26, 137.16), r15.p('1')); s.wire(r15.p('2'), (63.5, 137.16), (63.5, 139.7)); s.pwr('GND', 63.5, 139.7, 0)
     s.text('R15 holds both PGA2310s muted until the firmware writes its first gains: no power-on thump.', 73.66, 138.43, 1.0)
-    s.text('Teensy 4.0 pin numbers on this symbol are physical positions counted from the USB end (1-14 left row, 15-28 right row).\nUSB micro-B on the Teensy is the only connector: class-compliant MIDI in, 5 V in. Leave the VUSB-VIN pad on the underside intact so VIN exports the bus 5 V.\nSPI0: pin 13 SCK, pin 11 MOSI, pin 10 CS. MISO (12) unused - PGA SDO is 5 V logic and must not come back. DIP switch closed = 0, internal pull-ups on.\nSet the CPU clock to 150 MHz in firmware; it halves the Teensy current.', 33.02, 45.72, 1.1)
+    s.text('U9 is a Seeed XIAO RP2040 on header pins. Pin numbers are Seeed\'s: 1-7 down the left row from the USB end, 8-14 up the right row.\nIts USB-C is the only connector: class-compliant MIDI in (TinyUSB), 5 V in. The 5V pin is USB VBUS straight through, so it feeds the board.\nSPI0: D8 (GP2) SCK, D10 (GP3) MOSI, D7 (GP1) /CS, D6 (GP0) /MUTE. D9 (GP4, the MISO pin) drives the LED: bit-bang the 32-bit frame or leave SPI RX unassigned.\nPGA SDO is 5 V logic and must not come back. DIP switch on D2-D5 (GP28, GP29, GP6, GP7), closed = 0, internal pull-ups on. Plug sense on D0, D1 (GP26, GP27), internal pull-ups off.', 33.02, 45.72, 1.1)
     return s
 
 # ---------------------------------------------------------------- Sheet 5: power
 def build_power():
-    s = Sheet('power.kicad_sch', 'Ghost Fader - Sheet 5: Power', 'USB 5 V in, isolated +/-15 V, no external supply')
+    s = Sheet('power.kicad_sch', 'Ghost Fader - Sheet 5: Power', 'USB 5 V in, isolated +/-12 V, no external supply')
     y = 63.5
     s.glabel('USB_5V', 38.1, y, 180)
     fb = s.place('Device:FerriteBead', 'FB1', '600R@100MHz 1A', 49.53, y, 90, fp=FOOTPRINTS['L'])
     s.wire((38.1, y), fb.p('1'))
-    ps = s.place('GhostFader:TMR3_Dual', 'PS1', 'TMR 3-0523', 91.44, y + 5.08, fp=FOOTPRINTS['TMR3'])
-    vinp, rem, vinm, vop, com, vom = ps.p('2'), ps.p('3'), ps.p('1'), ps.p('6'), ps.p('7'), ps.p('8')
+    ps = s.place('GhostFader:TBA2_Dual', 'PS1', 'TBA 2-0522', 91.44, y + 5.08, fp=FOOTPRINTS['TBA2'])
+    vinp, vinm, vop, com, vom = ps.p('1'), ps.p('2'), ps.p('6'), ps.p('5'), ps.p('4')
     assert vinp[1] == y
     s.wire(fb.p('2'), vinp); s.junc(60.96, y); s.junc(71.12, y)
     c11 = s.place('Device:C_Polarized', 'C11', '47u low-ESR', 60.96, y + 3.81, fp=FOOTPRINTS['CP']); s.pwr('GND', *c11.p('2'), 0)
     s.wire((71.12, y), (71.12, y - 7.62)); s.pwr('+5V', 71.12, y - 7.62, 0)
     s.flag(66.04, y - 7.62, 0); s.wire((66.04, y - 7.62), (71.12, y - 7.62)); s.junc(71.12, y - 7.62)
-    s.nc(rem)
     s.wire(vinm, (73.66, vinm[1]), (73.66, vinm[1] + 5.08)); s.pwr('GND', 73.66, vinm[1] + 5.08, 0)
-    # +15 V
+    # +12 V
     l1 = s.place('Device:L', 'L1', '10uH 300mA', 113.03, vop[1], 90, fp=FOOTPRINTS['L'])
-    s.wire(vop, l1.p('1')); s.wire(l1.p('2'), (144.78, vop[1])); s.pwr("+15V", 144.78, vop[1], 0); s.junc(121.92, vop[1])
+    s.wire(vop, l1.p('1')); s.wire(l1.p('2'), (144.78, vop[1])); s.pwr("+12V", 144.78, vop[1], 0); s.junc(121.92, vop[1])
     c12 = s.place('Device:C_Polarized', 'C12', '100u 25V', 121.92, vop[1] - 3.81, 180, fp=FOOTPRINTS['CP']); s.pwr('GND', *c12.p('2'), 180)
     s.flag(132.08, vop[1], 0); s.junc(132.08, vop[1])
     # star ground
     s.wire(com, (106.68, com[1]), (106.68, com[1] + 12.7)); s.pwr('GND', 106.68, com[1] + 12.7, 0)
     s.text('star ground', 109.22, com[1] + 18.5, 1.0)
-    # -15 V
+    # -12 V
     l2 = s.place('Device:L', 'L2', '10uH 300mA', 113.03, vom[1], 90, fp=FOOTPRINTS['L'])
-    s.wire(vom, l2.p('1')); s.wire(l2.p('2'), (144.78, vom[1])); s.pwr("-15V", 144.78, vom[1], 180); s.junc(121.92, vom[1])
+    s.wire(vom, l2.p('1')); s.wire(l2.p('2'), (144.78, vom[1])); s.pwr("-12V", 144.78, vom[1], 180); s.junc(121.92, vom[1])
     c13 = s.place('Device:C_Polarized', 'C13', '100u 25V', 121.92, vom[1] + 3.81, 180, fp=FOOTPRINTS['CP']); s.pwr('GND', *c13.p('1'), 0)
     s.flag(132.08, vom[1], 180); s.junc(132.08, vom[1])
-    s.text('No external power supply. Everything runs from the USB 5 V that the Teensy passes out on VIN (sheet 4).\nPS1 is a board-mounted isolated DC-DC module: 5 V in, +/-15 V 100 mA out. Remote pin open = on.\nBudget at 5 V: Teensy 50-100 mA, PS1 ~260 mA for 35 mA per rail, PGA logic + LED 10 mA. ~370 mA typical, 450 mA worst case; USB 2.0 allows 500 mA.\nAll grounds meet once at PS1 Common. Keep PS1 at the far end of the board from J1 / J2.', 33.02, 45.72, 1.1)
-    s.text('Flags (unlabelled) mark +5V, +15V and -15V as driven for ERC, since they sit behind FB1 / L1 / L2.', 147.32, 88.9, 1.0)
+    s.text('No external power supply. Everything runs from the USB 5 V that the XIAO passes out on its 5V pin (sheet 4).\nPS1 is a board-mounted isolated 2 W DC-DC module: 5 V in, +/-12 V 80 mA out. Unregulated: the rails follow USB voltage and load,\nabout +/-11 V on a sagging port and up to +/-14 V at 5.25 V and light load; every part on the rails is rated for that (PGA2310 max 16 V).\nBudget at 5 V: XIAO ~30 mA, PS1 ~180 mA for 30 mA per rail, PGA logic 30 mA, LED 2 mA. ~250 mA typical, 320 mA worst case; USB 2.0 allows 500 mA.\nAll grounds meet once at PS1 Common. Keep PS1 at the far end of the board from J1 / J2. Total rail capacitance stays under the 220 uF the TBA 2 allows.', 33.02, 45.72, 1.1)
+    s.text('Flags (unlabelled) mark +5V, +12V and -12V as driven for ERC, since they sit behind FB1 / L1 / L2.', 147.32, 88.9, 1.0)
     return s
 
 # ---------------------------------------------------------------- Root
 def build_root(sheets):
     root_uuid = U()
     out = [f'(kicad_sch (version 20250114) (generator "ghost-fader-gen") (generator_version "9.0") (uuid "{root_uuid}") (paper "A4")',
-           f'  (title_block (title "Ghost Fader - Rev B") (date "{DATE}") (rev "{REV}") (company "Ghost Fader") (comment 1 "USB-MIDI volume and pan for two balanced line channels") (comment 2 "https://chris-albert.github.io/ghost-fader/"))',
+           f'  (title_block (title "Ghost Fader - Rev C") (date "{DATE}") (rev "{REV}") (company "Ghost Fader") (comment 1 "USB-MIDI volume and pan for two balanced line channels") (comment 2 "https://chris-albert.github.io/ghost-fader/"))',
            '  (lib_symbols)']
     def txt(t, x, y, size=1.27):
         t = t.replace('"', '\\"').replace('\n', '\\n')
@@ -577,7 +570,7 @@ def build_root(sheets):
         out.append(f'    (property "Sheetfile" "{sh.fname}" (at {x:g} {y + h + 0.6:g} 0) (effects (font (size 1.27 1.27)) (justify left top)))')
         out.append(f'    (instances (project "{PROJECT}" (path "/{root_uuid}" (page "{i + 2}"))))')
         out.append('  )')
-    out.append(txt('Signal flow:  J1/J2 -> U1/U2 THAT1246 (-6 dB) -> C3-C6 -> U3/U4 PGA2310 2x2 matrix -> R2-R9 + U5 OPA2134 summers (x2) -> U6/U7 THAT1646 (+6 dB) -> J3/J4\nControl:      Teensy 4.0 USB MIDI -> SPI (SCLK, SDI, /CS) + /MUTE -> U3 -> U4.  Plug sense from J1/J2 ring-normal contacts.\nPower:        Teensy VIN (USB 5 V) -> FB1 -> PS1 TMR 3-0523 -> +/-15 V.  Same 5 V feeds PGA logic.', 25.4, 130, 1.1))
+    out.append(txt('Signal flow:  J1/J2 -> U1/U2 THAT1246 (-6 dB) -> C3-C6 -> U3/U4 PGA2310 2x2 matrix -> R2-R9 + U5 OPA2134 summers (x2) -> U6/U7 THAT1646 (+6 dB) -> J3/J4\nControl:      XIAO RP2040 USB MIDI -> SPI (SCLK, SDI, /CS) + /MUTE -> U3 -> U4.  Plug sense from J1/J2 ring-normal contacts.\nPower:        XIAO 5V pin (USB 5 V) -> FB1 -> PS1 TBA 2-0522 -> +/-12 V.  Same 5 V feeds PGA logic.', 25.4, 130, 1.1))
     out.append('  (sheet_instances (path "/" (page "1")))')
     out.append(')')
     open(os.path.join(OUT, f'{PROJECT}.kicad_sch'), 'w').write('\n'.join(out) + '\n')
@@ -588,7 +581,7 @@ def write_project():
            "boards": [], "cvpcb": {"equivalence_files": []},
            "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
            "meta": {"filename": f"{PROJECT}.kicad_pro", "version": 3},
-           "net_settings": {"classes": [{'bus_width': 12, 'clearance': 0.25, 'diff_pair_gap': 0.25, 'diff_pair_via_gap': 0.25, 'diff_pair_width': 0.2, 'line_style': 0, 'microvia_diameter': 0.3, 'microvia_drill': 0.1, 'name': 'Default', 'pcb_color': 'rgba(0, 0, 0, 0.000)', 'priority': 2147483647, 'schematic_color': 'rgba(0, 0, 0, 0.000)', 'track_width': 0.3, 'via_diameter': 0.8, 'via_drill': 0.4, 'wire_width': 6}, {'bus_width': 12, 'clearance': 0.25, 'diff_pair_gap': 0.25, 'diff_pair_via_gap': 0.25, 'diff_pair_width': 0.2, 'line_style': 0, 'microvia_diameter': 0.3, 'microvia_drill': 0.1, 'name': 'Power', 'pcb_color': 'rgba(0, 0, 0, 0.000)', 'priority': -1, 'schematic_color': 'rgba(0, 0, 0, 0.000)', 'track_width': 0.6, 'via_diameter': 0.9, 'via_drill': 0.5, 'wire_width': 6}], "meta": {"version": 4}, "netclass_patterns": [{'netclass': 'Power', 'pattern': '+5V'}, {'netclass': 'Power', 'pattern': 'USB_5V'}, {'netclass': 'Power', 'pattern': '+15V'}, {'netclass': 'Power', 'pattern': '-15V'}, {'netclass': 'Power', 'pattern': 'GND'}, {'netclass': 'Power', 'pattern': 'Net-(PS1-+Vout)'}, {'netclass': 'Power', 'pattern': 'Net-(PS1--Vout)'}]},
+           "net_settings": {"classes": [{'bus_width': 12, 'clearance': 0.25, 'diff_pair_gap': 0.25, 'diff_pair_via_gap': 0.25, 'diff_pair_width': 0.2, 'line_style': 0, 'microvia_diameter': 0.3, 'microvia_drill': 0.1, 'name': 'Default', 'pcb_color': 'rgba(0, 0, 0, 0.000)', 'priority': 2147483647, 'schematic_color': 'rgba(0, 0, 0, 0.000)', 'track_width': 0.3, 'via_diameter': 0.8, 'via_drill': 0.4, 'wire_width': 6}, {'bus_width': 12, 'clearance': 0.25, 'diff_pair_gap': 0.25, 'diff_pair_via_gap': 0.25, 'diff_pair_width': 0.2, 'line_style': 0, 'microvia_diameter': 0.3, 'microvia_drill': 0.1, 'name': 'Power', 'pcb_color': 'rgba(0, 0, 0, 0.000)', 'priority': -1, 'schematic_color': 'rgba(0, 0, 0, 0.000)', 'track_width': 0.6, 'via_diameter': 0.9, 'via_drill': 0.5, 'wire_width': 6}], "meta": {"version": 4}, "netclass_patterns": [{'netclass': 'Power', 'pattern': '+5V'}, {'netclass': 'Power', 'pattern': 'USB_5V'}, {'netclass': 'Power', 'pattern': '+12V'}, {'netclass': 'Power', 'pattern': '-12V'}, {'netclass': 'Power', 'pattern': 'GND'}, {'netclass': 'Power', 'pattern': 'Net-(PS1-+Vout)'}, {'netclass': 'Power', 'pattern': 'Net-(PS1--Vout)'}]},
            "pcbnew": {"page_layout_descr_file": ""},
            "schematic": {"drawing": {}, "legacy_lib_dir": "", "legacy_lib_list": [], "meta": {"version": 1}},
            "sheets": [], "text_variables": {}}
@@ -602,7 +595,7 @@ def write_project():
     open(os.path.join(OUT, 'GhostFader.kicad_sym'), 'w').write('\n'.join(lib) + '\n')
     # footprints
     fpdir = os.path.join(OUT, 'GhostFader.pretty'); os.makedirs(fpdir, exist_ok=True)
-    def fp(name, desc, pads, outline, attr='through_hole'):
+    def fp(name, desc, pads, outline, attr='through_hole', extra=()):
         o = [f'(footprint "{name}" (version 20241229) (generator "ghost-fader-gen") (generator_version "9.0") (layer "F.Cu")',
              f'  (descr "{desc}")', f'  (attr {attr})',
              f'  (property "Reference" "REF**" (at 0 {outline[1] - 2:g} 0) (layer "F.SilkS") (uuid "{U()}") (effects (font (size 1 1) (thickness 0.15))))',
@@ -613,18 +606,23 @@ def write_project():
         for layer in ('F.SilkS', 'F.Fab'):
             for a, b in (((x0, y0), (x1, y0)), ((x1, y0), (x1, y1)), ((x1, y1), (x0, y1)), ((x0, y1), (x0, y0))):
                 o.append(f'  (fp_line (start {a[0]:g} {a[1]:g}) (end {b[0]:g} {b[1]:g}) (stroke (width 0.12) (type solid)) (layer "{layer}") (uuid "{U()}"))')
-        o.append(f'  (fp_rect (start {x0 - 0.5:g} {y0 - 0.5:g}) (end {x1 + 0.5:g} {y1 + 0.5:g}) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "{U()}"))')
+        for (ax, ay), (bx, by) in extra:   # extra silk/fab lines, e.g. a connector that overhangs the body
+            for layer in ('F.SilkS', 'F.Fab'):
+                o.append(f'  (fp_line (start {ax:g} {ay:g}) (end {bx:g} {by:g}) (stroke (width 0.12) (type solid)) (layer "{layer}") (uuid "{U()}"))')
+        cy0 = min([y0] + [min(a[1], b[1]) for a, b in extra])
+        o.append(f'  (fp_rect (start {x0 - 0.5:g} {cy0 - 0.5:g}) (end {x1 + 0.5:g} {y1 + 0.5:g}) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "{U()}"))')
         for num, x, y, shape in pads:
             o.append(f'  (pad "{num}" thru_hole {shape} (at {x:g} {y:g}) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask") (uuid "{U()}"))')
         o.append(')')
         open(os.path.join(fpdir, f'{name}.kicad_mod'), 'w').write('\n'.join(o) + '\n')
+    # XIAO RP2040 on 2 x 7 header pins, 0.6 in row spacing, USB-C at the top (-y). Pad numbers follow Seeed's footprint:
+    # 1-7 down the left row from the USB end, 8-14 up the right row. Body 21 x 17.8 mm; the USB-C shell overhangs the top edge by 1.4 mm.
     pads = []
-    for i in range(14):
-        pads.append((str(i + 1), -7.62, -16.51 + i * 2.54, 'rect' if i == 0 else 'circle'))
-        pads.append((str(i + 15), 7.62, -16.51 + i * 2.54, 'circle'))
-    fp('Teensy40_Edge', 'PJRC Teensy 4.0 on 2 x 14 header pins, 0.6 in row spacing. Pad numbers are physical positions from the USB end (top). Underside pads not included.', pads, (-8.89, -17.78, 8.89, 17.78))
-    pads = [(str(n), (n - 1) * 2.54, 0, 'rect' if n == 1 else 'circle') for n in (1, 2, 3, 6, 7, 8)]
-    fp('TRACO_TMR3_SIP8', 'TRACO TMR 3 series SIP-8, 2.54 mm pitch, pins 4 and 5 absent. Body outline approximate: check the TMR 3 datasheet drawing before ordering boards.', pads, (-2.0, -4.6, 19.8, 4.6))
+    for i in range(7):
+        pads.append((str(i + 1), -7.62, -7.62 + i * 2.54, 'rect' if i == 0 else 'circle'))
+        pads.append((str(14 - i), 7.62, -7.62 + i * 2.54, 'circle'))
+    usb = [((-4.5, -10.5), (-4.5, -11.9)), ((-4.5, -11.9), (4.5, -11.9)), ((4.5, -11.9), (4.5, -10.5))]
+    fp('XIAO_RP2040_THT', 'Seeed Studio XIAO RP2040 on 2 x 7 header pins, 0.6 in row spacing, 2.54 mm pitch. Pad numbers as on the Seeed footprint (1-7 left row from the USB end, 8-14 right row from the far end). USB-C overhangs the top edge by 1.4 mm.', pads, (-8.89, -10.5, 8.89, 10.5), extra=usb)
 
 if __name__ == '__main__':
     os.makedirs(OUT, exist_ok=True)
