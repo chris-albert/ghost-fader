@@ -300,6 +300,14 @@
       },
       {
         "netclass": "Power",
+        "pattern": "+5VA"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "GND_USB"
+      },
+      {
+        "netclass": "Power",
         "pattern": "Net-(PS1-+Vout)"
       },
       {

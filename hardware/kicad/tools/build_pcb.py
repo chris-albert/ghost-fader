@@ -10,6 +10,12 @@ centres, cleared by 7.5 x 6.5 mm corner notches). Jacks on the rear edge (y = 0)
 (y = 80). Coordinates below are mm, origin top-left, y down. Signal flow: jacks -> receivers (y ~33) ->
 coupling caps (y ~47) -> PGA2310s (y ~53-61) -> summers/drivers -> output jacks; DC-DC at the front centre,
 input receivers top-left, so the converter is as far from the receivers as the board allows.
+
+Rev D ground split: the front-left corner (x 0-29 for y > 49.5, widening to x 0-51 for y > 65.5) is the USB
+ground island (GND_USB): XIAO, DIP switch, LED, ferrite, reservoir cap, isolator side 1 and the DC-DC input
+pins. Everything else is on the audio ground. A 2 mm gap with no copper separates the two pours; only U8
+(isolator, across the top of the island) and PS1 (DC-DC, across its right edge) straddle the gap, plus the
+barrier parts C45 and R17. A rule area over the gap keeps the router out of it.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
@@ -25,6 +31,10 @@ FPDIR = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints'
 
 W, H = 108.0, 80.0          # board outline
 NX, NY = 7.5, 6.5           # corner notch (clears the 1590BB lid-screw bosses)
+# ground split: island polygon (GND_USB pour), audio polygon (GND pour) and the 2 mm gap between them (rule area)
+ISLAND = [(0, 49.5), (29, 49.5), (29, 65.5), (51, 65.5), (51, H), (0, H)]
+AUDIO = [(NX, 0), (W - NX, 0), (W - NX, NY), (W, NY), (W, H - NY), (W - NX, H - NY), (W - NX, H), (53, H), (53, 63.5), (31, 63.5), (31, 47.5), (0, 47.5), (0, NY), (NX, NY)]
+GAP = [(0, 47.5), (31, 47.5), (31, 63.5), (53, 63.5), (53, H), (51, H), (51, 65.5), (29, 65.5), (29, 49.5), (0, 49.5)]
 
 def mm(v): return pcbnew.FromMM(v)
 def pt(x, y): return VECTOR2I(mm(x), mm(y))
@@ -43,24 +53,28 @@ PLACE = {
     'C22': (10, 38.5, 90), 'C21': (22, 38.5, 90), 'C24': (30, 38.5, 90), 'C23': (42, 38.5, 90),
     # +/-12 V bulk, input end, in the gap between J2 and J3
     'C40': (50.5, 28, 0), 'C41': (50.5, 35.5, 0),
+    # plug-sense pull-ups (audio side, +5VA) in the left column above the island
+    'R1': (2.5, 43, 90), 'R14': (6, 43, 90),
+    # isolator across the top edge of the island: side 2 (audio) row at y 43.9, side 1 (USB) row at y 53.2
+    'U8': (21, 48.5, 90), 'C44': (13.5, 46.5, 90), 'C39': (8.5, 55.5, 0),
+    # barrier parts, both straddling the gap in the left column (the SPI lines leave U8 on its right)
+    'R17': (10, 52.5, 90), 'C45': (6.5, 51, 90),
     # coupling caps into the PGAs and the PGA +/-12 V 100n
-    'C3': (31, 47.5, 0), 'C25': (39.5, 51, 90), 'C26': (43.5, 51, 90), 'C4': (48, 47.5, 0),
-    'C5': (55, 47.5, 0), 'C28': (63.5, 51, 90), 'C29': (67.5, 51, 90), 'C6': (72, 47.5, 0),
-    # PGA2310s, analog pins on top (y 53.4), digital pins below (y 61)
-    'U3': (34, 61, 90), 'U4': (58, 61, 90),
-    # 5 V logic decoupling below the PGAs
-    'C27': (32.4, 65, 0), 'C30': (69.5, 65, 0), 'C14': (60.5, 65.5, 0),
-    # XIAO RP2040 across the front edge, USB-C face flush with it; DIP switch to its right
-    'U9': (19.5, 68.1, 180), 'SW1': (31.5, 78.5, 90),
-    # left column: plug-sense pull-ups, mute pull-down, LED resistor
-    'R1': (3.5, 55, 90), 'R14': (7, 55, 90), 'R16': (3.5, 70.5, 90), 'R15': (7, 70.5, 90),
-    # power: USB 5 V -> FB1 -> C11 -> PS1; L1/L2 on the +/-12 V outputs, C12/C13 up by the summer
-    'FB1': (39.8, 65.5, 0), 'C11': (53.5, 65.5, 0), 'PS1': (44.5, 73, 90),
-    'L1': (67.6, 78.5, 90), 'L2': (72.6, 78.5, 90), 'C12': (90, 48.5, 0), 'C13': (98, 48.5, 0),
+    'C3': (36.5, 47.5, 0), 'C25': (42.5, 51, 90), 'C26': (46, 51, 90), 'C4': (50.5, 47.5, 0),
+    'C5': (58, 47.5, 0), 'C28': (66, 51, 90), 'C29': (70, 51, 90), 'C6': (75, 47.5, 0),
+    # PGA2310s, analog pins on top (y 53.4), digital pins below (y 61); a +5VA 100n between them
+    'U3': (36, 61, 90), 'U4': (60.5, 61, 90), 'C27': (57.14, 62, 90),
+    # USB island: XIAO across the front edge, USB-C face flush with it; DIP switch right of it, LED in the left column
+    'U9': (20, 68.1, 180), 'SW1': (31.8, 78.5, 90), 'LED1': (3, 72.3, 0),
+    # island: LED resistor in the left column, ferrite and reservoir right of the XIAO; DC-DC straddles the island's right edge (x 52)
+    'R16': (5, 68.5, 90), 'FB1': (30.5, 66.5, 0), 'C11': (44.5, 67.5, 0), 'PS1': (46.92, 73, 90),
+    # audio side of the front strip: 78L05 caps, +5VA bulk, U4 VD+ 100n, rail filters, 78L05, op-amp V- 100n, mute pull-down; C12/C13 up by the summer
+    'C37': (54, 70, 90), 'C38': (57.5, 70, 90), 'C14': (62, 65.5, 0), 'C30': (69, 65.3, 0), 'L1': (69, 78.5, 90), 'L2': (73.3, 78.5, 90),
+    'U10': (77.5, 67.3, 0), 'C32': (85, 66, 0), 'R15': (90.5, 69.3, 0), 'C12': (90, 48.5, 0), 'C13': (98, 48.5, 0),
     # summing resistors from the PGA outputs, op-amp, feedback/ground resistors, op-amp 100n
     'R2': (95.7, 66, 90), 'R3': (99, 66, 90), 'R6': (102.3, 66, 90), 'R7': (105.6, 66, 90),
-    'U5': (82, 55, 0), 'R4': (75.7, 70.2, 0), 'R5': (75.7, 74.8, 0), 'R8': (89, 70.2, 0), 'R9': (89, 74.8, 0),
-    'C31': (92.5, 60, 90), 'C32': (79.2, 61.5, 90),
+    'U5': (82, 55, 0), 'R4': (76.6, 72.8, 0), 'R5': (76.6, 77.4, 0), 'R8': (89.2, 72.8, 0), 'R9': (89.2, 77.4, 0),
+    'C31': (92.5, 60, 90),
     # output drivers under J3/J4 with sense caps either side, build-out resistors and 100n below
     'C17': (58, 33.5, 0), 'U6': (68, 33.5, 270), 'C18': (74, 33.5, 0),
     'C19': (80, 33.5, 0), 'U7': (90, 33.5, 270), 'C20': (96, 33.5, 0),
@@ -68,22 +82,22 @@ PLACE = {
     'R12': (79, 39.5, 0), 'R13': (79, 43, 0), 'C35': (92, 39.5, 0), 'C36': (92, 43, 0),
     # +/-12 V bulk, output end
     'C42': (103, 33.5, 0), 'C43': (103, 40.5, 0),
-    # MIDI activity LED, front-right corner
-    'LED1': (102, 71, 0),
 }
 
 # Reference labels, world coordinates (x, y, angle). Parts not listed use a rule for their footprint type:
 # horizontal axial/disc parts get the library default (above the body), vertical axials a vertical label above the top pad, radial cans a label above or below the can.
 LABELS = {
-    'U9': (19.5, 56.4, 0), 'SW1': (35.3, 69.0, 0), 'PS1': (51, 77.2, 0), 'U5': (85.81, 52.6, 0),
-    'R11': (61, 45.3, 0), 'R13': (84.08, 45.3, 0), 'C34': (77.3, 45.3, 0), 'C36': (94.3, 45.3, 0),
-    'R5': (80.78, 72.5, 0), 'R9': (94.08, 72.5, 0),
-    'L1': (65.08, 73.4, 90), 'L2': (70.09, 73.4, 90), 'C32': (79.2, 54.3, 0), 'C31': (92.5, 52.8, 0), 'C12': (86.8, 48.5, 90),
+    'U9': (20, 59.5, 0), 'SW1': (35.6, 69.2, 0), 'PS1': (58, 77.5, 0), 'U5': (85.81, 52.6, 0), 'U4': (69.4, 57.2, 0), 'U8': (21, 48.5, 0), 'U10': (77.5, 63.9, 0),
+    'R11': (52.5, 43.9, 0), 'R13': (84.08, 45.3, 0), 'C34': (72.5, 43, 0), 'C36': (94.3, 45.3, 0),
+    'R5': (81.7, 75.1, 0), 'R8': (94.3, 72.8, 0), 'R9': (94.3, 75.1, 0), 'C32': (87.5, 68.4, 0),
+    'L1': (69, 73.4, 90), 'L2': (73.3, 73.4, 90), 'C31': (92.5, 52.8, 0), 'C12': (86.8, 48.5, 90),
+    'LED1': (8.4, 72.3, 0), 'R16': (5, 63.5, 90), 'C39': (4.5, 55.5, 0), 'R1': (2.5, 38, 90), 'R14': (6, 38, 90), 'R17': (10, 47.5, 90), 'C27': (57.14, 59.5, 90), 'R15': (95.6, 69.3, 0), 'C45': (4.3, 48.5, 90), 'C44': (14.2, 44, 90),
+    'C37': (51.9, 67.5, 90), 'C38': (59.7, 67.5, 90),
     # vertical 100n discs: label stands beside the body
-    'C22': (7.75, 36, 90), 'C21': (24.15, 36, 90), 'C24': (27.85, 36, 90), 'C23': (44.25, 36, 90),
-    'C25': (37.25, 48.5, 90), 'C26': (45.75, 48.5, 90), 'C28': (61.25, 48.5, 90), 'C29': (69.75, 48.5, 90),
+    'C22': (12.3, 36, 90), 'C21': (24.15, 36, 90), 'C24': (27.85, 36, 90), 'C23': (44.25, 36, 90),
+    'C25': (42.5, 44.2, 0), 'C26': (46, 44.2, 0), 'C28': (63.75, 48.5, 90), 'C29': (72.25, 48.5, 90),
 }
-REF_ABOVE = {'C40', 'C42', 'C13'}   # 6.3 mm radial caps whose label goes above the can (the rest go below)
+REF_ABOVE = {'C40', 'C42', 'C13', 'C11'}   # 6.3 mm radial caps whose label goes above the can (the rest go below)
 
 def label_for(ref, name, x, y, rot):
     if ref in LABELS: return LABELS[ref]
@@ -126,7 +140,7 @@ default.SetClearance(mm(0.25)); default.SetTrackWidth(mm(0.3)); default.SetViaDi
 power = pcbnew.NETCLASS('Power')
 power.SetClearance(mm(0.25)); power.SetTrackWidth(mm(0.6)); power.SetViaDiameter(mm(0.9)); power.SetViaDrill(mm(0.5))
 nc.SetNetclass('Power', power)
-POWER_NETS = ['+5V', 'USB_5V', '+12V', '-12V', 'GND', 'Net-(PS1-+Vout)', 'Net-(PS1--Vout)']
+POWER_NETS = ['+5V', 'USB_5V', '+12V', '-12V', 'GND', 'GND_USB', '+5VA', 'Net-(PS1-+Vout)', 'Net-(PS1--Vout)']
 for pn in POWER_NETS:
     nc.SetNetclassPatternAssignment(pn, 'Power')
 
@@ -175,19 +189,31 @@ for i in range(len(outline)):
     seg.SetLayer(pcbnew.Edge_Cuts); seg.SetWidth(mm(0.1))
     board.Add(seg)
 
-# ---------------------------------------------------------------- ground pours on both layers
-for layer in (pcbnew.F_Cu, pcbnew.B_Cu):
+# ---------------------------------------------------------------- ground pours on both layers, split into audio and USB
+def add_zone(netname, points, name, layer):
     z = pcbnew.ZONE(board)
-    z.SetLayer(layer); z.SetNet(netinfo['GND'])
+    z.SetLayer(layer); z.SetNet(netinfo[netname])
     z.SetLocalClearance(mm(0.3)); z.SetMinThickness(mm(0.25))
     z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
     z.SetThermalReliefGap(mm(0.4)); z.SetThermalReliefSpokeWidth(mm(0.5))
-    z.SetZoneName('GND_' + ('F' if layer == pcbnew.F_Cu else 'B'))
+    z.SetZoneName(name + '_' + ('F' if layer == pcbnew.F_Cu else 'B'))
     z.SetAssignedPriority(0)
-    poly = z.Outline()
-    poly.NewOutline()
-    for x, y in outline: poly.Append(mm(x), mm(y))
+    poly = z.Outline(); poly.NewOutline()
+    for x, y in points: poly.Append(mm(x), mm(y))
     board.Add(z)
+for layer in (pcbnew.F_Cu, pcbnew.B_Cu):
+    add_zone('GND', AUDIO, 'GND', layer)
+    add_zone('GND_USB', ISLAND, 'GND_USB', layer)
+# the gap: no tracks, vias or pour on either layer. Footprints and pads may straddle it (U8, PS1, C45, R17).
+gap = pcbnew.ZONE(board)
+gap.SetIsRuleArea(True)
+gap.SetDoNotAllowTracks(True); gap.SetDoNotAllowVias(True); gap.SetDoNotAllowCopperPour(True)
+gap.SetDoNotAllowPads(False); gap.SetDoNotAllowFootprints(False)
+gap.SetLayerSet(pcbnew.LSET.AllCuMask(2))
+gap.SetZoneName('ISOLATION_GAP')
+poly = gap.Outline(); poly.NewOutline()
+for x, y in GAP: poly.Append(mm(x), mm(y))
+board.Add(gap)
 
 # ---------------------------------------------------------------- silkscreen labels
 def text(txt, x, y, size=1.5, layer=pcbnew.F_SilkS, rot=0):
@@ -197,8 +223,9 @@ def text(txt, x, y, size=1.5, layer=pcbnew.F_SilkS, rot=0):
     t.SetTextAngle(EDA_ANGLE(rot, DEGREES_T))
     if layer == pcbnew.B_SilkS: t.SetMirrored(True)
     board.Add(t)
-text('GHOST FADER rev C', 55, 57.2, 1.8, pcbnew.B_SilkS)
-text('USB', 19.5, 54.4, 1.2)
+text('GHOST FADER rev D', 27, 42.8, 1.6, pcbnew.B_SilkS)
+text('USB', 20, 56, 1.2)
+text('USB GND', 20, 74, 1.2, pcbnew.B_SilkS); text('AUDIO GND', 63.5, 76.3, 1.0, pcbnew.B_SilkS)
 text('IN L', 19, 5, 1.2, pcbnew.B_SilkS); text('IN R', 39, 5, 1.2, pcbnew.B_SilkS)
 text('OUT L', 68, 5, 1.2, pcbnew.B_SilkS); text('OUT R', 90, 5, 1.2, pcbnew.B_SilkS)
 

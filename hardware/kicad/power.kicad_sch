@@ -1,6 +1,99 @@
-(kicad_sch (version 20250114) (generator "ghost-fader-gen") (generator_version "9.0") (uuid "92932ca4-a51f-4d8e-b238-385ad8cb4a55") (paper "A3")
-  (title_block (title "Ghost Fader - Sheet 5: Power") (date "2026-09-08") (rev "C") (company "Ghost Fader") (comment 1 "USB 5 V in, isolated +/-12 V, no external supply") (comment 2 "https://chris-albert.github.io/ghost-fader/"))
+(kicad_sch (version 20250114) (generator "ghost-fader-gen") (generator_version "9.0") (uuid "da700374-1181-4bb6-bc96-d4cd3fff9ce0") (paper "A3")
+  (title_block (title "Ghost Fader - Sheet 5: Power") (date "2026-09-09") (rev "D") (company "Ghost Fader") (comment 1 "USB 5 V in, isolated +/-12 V and +5VA, USB ground split from audio ground") (comment 2 "https://chris-albert.github.io/ghost-fader/"))
   (lib_symbols
+(symbol "Device:C" 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0.254)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "C" 
+        (at 0.635 2.54 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Value" "C" 
+        (at 0.635 -2.54 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Footprint" "" 
+        (at 0.9652 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "~" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Unpolarized capacitor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "cap capacitor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_fp_filters" "C_*" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "C_0_1" 
+        (polyline 
+          (pts 
+            (xy -2.032 0.762) 
+            (xy 2.032 0.762)) 
+          (stroke 
+            (width 0.508) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy -2.032 -0.762) 
+            (xy 2.032 -0.762)) 
+          (stroke 
+            (width 0.508) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "C_1_1" 
+        (pin passive line 
+          (at 0 3.81 270) 
+          (length 2.794) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 0 -3.81 90) 
+          (length 2.794) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
 (symbol "Device:C_Polarized" 
       (pin_numbers 
         (hide yes)) 
@@ -323,6 +416,238 @@
               (font 
                 (size 1.27 1.27)))))) 
       (embedded_fonts no))
+(symbol "Device:R" 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "R" 
+        (at 2.032 0 90) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Value" "R" 
+        (at 0 0 90) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at -1.778 0 90) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "~" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Resistor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "R res resistor" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_fp_filters" "R_*" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "R_0_1" 
+        (rectangle 
+          (start -1.016 -2.54) 
+          (end 1.016 2.54) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "R_1_1" 
+        (pin passive line 
+          (at 0 3.81 270) 
+          (length 1.27) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin passive line 
+          (at 0 -3.81 90) 
+          (length 1.27) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "GhostFader:GND_USB" 
+      (power) 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0) 
+        (hide yes)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "#PWR" 
+        (at 0 -6.35 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Value" "GND_USB" 
+        (at 0 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Power symbol creates a global label with name \"GND_USB\", the USB-side ground" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "global power" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "GND_USB_0_1" 
+        (polyline 
+          (pts 
+            (xy 0 0) 
+            (xy 0 -1.27) 
+            (xy 1.27 -1.27) 
+            (xy 0 -2.54) 
+            (xy -1.27 -1.27) 
+            (xy 0 -1.27)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "GND_USB_1_1" 
+        (pin power_in line 
+          (at 0 0 270) 
+          (length 0) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
+(symbol "GhostFader:L78L05" 
+      (pin_names 
+        (offset 1.016)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "U" 
+        (at -6.35 5.08 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify left))) 
+      (property "Value" "L78L05" 
+        (at 6.35 -5.08 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (justify right))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "100 mA 5 V linear regulator, TO-92 (1 = out, 2 = gnd, 3 = in)" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "L78L05_0_1" 
+        (rectangle 
+          (start -6.35 3.81) 
+          (end 6.35 -3.81) 
+          (stroke 
+            (width 0.254) 
+            (type default)) 
+          (fill 
+            (type background)))) 
+      (symbol "L78L05_1_1" 
+        (pin power_in line 
+          (at -8.89 0 0) 
+          (length 2.54) 
+          (name "VI" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "3" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin power_out line 
+          (at 8.89 0 180) 
+          (length 2.54) 
+          (name "VO" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27))))) 
+        (pin power_in line 
+          (at 0 -6.35 90) 
+          (length 2.54) 
+          (name "GND" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "2" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))))
 (symbol "GhostFader:TBA2_Dual" 
       (pin_names 
         (offset 1.016)) 
@@ -596,6 +921,92 @@
               (font 
                 (size 1.27 1.27)))))) 
       (embedded_fonts no))
+(symbol "power:+5VA" 
+      (power) 
+      (pin_numbers 
+        (hide yes)) 
+      (pin_names 
+        (offset 0) 
+        (hide yes)) 
+      (exclude_from_sim no) 
+      (in_bom yes) 
+      (on_board yes) 
+      (property "Reference" "#PWR" 
+        (at 0 -3.81 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Value" "+5VA" 
+        (at 0 3.556 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)))) 
+      (property "Footprint" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Datasheet" "" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "Description" "Power symbol creates a global label with name \"+5VA\"" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (property "ki_keywords" "global power" 
+        (at 0 0 0) 
+        (effects 
+          (font 
+            (size 1.27 1.27)) 
+          (hide yes))) 
+      (symbol "+5VA_0_1" 
+        (polyline 
+          (pts 
+            (xy -0.762 1.27) 
+            (xy 0 2.54)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 0 2.54) 
+            (xy 0.762 1.27)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none))) 
+        (polyline 
+          (pts 
+            (xy 0 0) 
+            (xy 0 2.54)) 
+          (stroke 
+            (width 0) 
+            (type default)) 
+          (fill 
+            (type none)))) 
+      (symbol "+5VA_1_1" 
+        (pin power_in line 
+          (at 0 0 90) 
+          (length 0) 
+          (name "~" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))) 
+          (number "1" 
+            (effects 
+              (font 
+                (size 1.27 1.27)))))) 
+      (embedded_fonts no))
 (symbol "power:-12V" 
       (power) 
       (pin_numbers 
@@ -813,187 +1224,318 @@
             (type none)))) 
       (embedded_fonts no))
   )
-(global_label "USB_5V" (shape input) (at 38.1 63.5 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "2965a1e8-7b5c-42aa-842f-32a1aefa249c") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 38.1 63.5 0) (effects (font (size 1.27 1.27)) (hide yes))))
-(text "star ground" (exclude_from_sim no) (at 109.22 87.08 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "3b291d99-e449-4ca4-8dba-8450845cbcc3"))
-(text "No external power supply. Everything runs from the USB 5 V that the XIAO passes out on its 5V pin (sheet 4).\nPS1 is a board-mounted isolated 2 W DC-DC module: 5 V in, +/-12 V 80 mA out. Unregulated: the rails follow USB voltage and load,\nabout +/-11 V on a sagging port and up to +/-14 V at 5.25 V and light load; every part on the rails is rated for that (PGA2310 max 16 V).\nBudget at 5 V: XIAO ~30 mA, PS1 ~180 mA for 30 mA per rail, PGA logic 30 mA, LED 2 mA. ~250 mA typical, 320 mA worst case; USB 2.0 allows 500 mA.\nAll grounds meet once at PS1 Common. Keep PS1 at the far end of the board from J1 / J2. Total rail capacitance stays under the 220 uF the TBA 2 allows." (exclude_from_sim no) (at 33.02 45.72 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "25343a35-d533-443f-865a-d259e4070802"))
-(text "Flags (unlabelled) mark +5V, +12V and -12V as driven for ERC, since they sit behind FB1 / L1 / L2." (exclude_from_sim no) (at 147.32 88.9 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "c5172990-62d1-4130-bdf9-36f6946f5295"))
-(wire (pts (xy 38.1 63.5) (xy 45.72 63.5)) (stroke (width 0) (type default)) (uuid "7f069e57-7595-402a-ad93-99eafe74f4fd"))
-(wire (pts (xy 53.34 63.5) (xy 60.96 63.5)) (stroke (width 0) (type default)) (uuid "49cb2499-9649-4888-aa20-b5705bde606c"))
-(wire (pts (xy 60.96 63.5) (xy 71.12 63.5)) (stroke (width 0) (type default)) (uuid "ebeb9e8e-9103-4c51-8b0e-d66a7e235f36"))
-(wire (pts (xy 71.12 63.5) (xy 78.74 63.5)) (stroke (width 0) (type default)) (uuid "3d82a8ea-17e9-4bfc-ae22-133fee78e3f7"))
-(wire (pts (xy 71.12 63.5) (xy 71.12 55.88)) (stroke (width 0) (type default)) (uuid "d4976d87-b4e6-41cc-9a3f-00047d1c31ff"))
-(wire (pts (xy 66.04 55.88) (xy 71.12 55.88)) (stroke (width 0) (type default)) (uuid "b26a362d-5c87-415a-acf9-d0560615d3ab"))
-(wire (pts (xy 78.74 73.66) (xy 73.66 73.66)) (stroke (width 0) (type default)) (uuid "2576466a-dfd7-41fa-8ccb-daeef8fa581b"))
-(wire (pts (xy 73.66 73.66) (xy 73.66 78.74)) (stroke (width 0) (type default)) (uuid "0c11d28b-5d14-409a-b367-4b7704058ea0"))
-(wire (pts (xy 104.14 63.5) (xy 109.22 63.5)) (stroke (width 0) (type default)) (uuid "b5ddfe3c-ed7a-4cf2-b100-036eb7abf93a"))
-(wire (pts (xy 116.84 63.5) (xy 121.92 63.5)) (stroke (width 0) (type default)) (uuid "712590c6-abdb-425d-8da6-0531fd8f6732"))
-(wire (pts (xy 121.92 63.5) (xy 132.08 63.5)) (stroke (width 0) (type default)) (uuid "47458ac6-6eb3-4966-a3df-4b79fd31325c"))
-(wire (pts (xy 132.08 63.5) (xy 144.78 63.5)) (stroke (width 0) (type default)) (uuid "421da9f5-a2b6-43eb-9656-6d75a529fb57"))
-(wire (pts (xy 104.14 68.58) (xy 106.68 68.58)) (stroke (width 0) (type default)) (uuid "3a6a4a37-e978-4040-9486-b967f07185e6"))
-(wire (pts (xy 106.68 68.58) (xy 106.68 81.28)) (stroke (width 0) (type default)) (uuid "98bee69f-05fe-4730-948d-c7fe1a92540f"))
-(wire (pts (xy 104.14 73.66) (xy 109.22 73.66)) (stroke (width 0) (type default)) (uuid "7f564408-8c23-4780-8a42-04de104c4b4d"))
-(wire (pts (xy 116.84 73.66) (xy 121.92 73.66)) (stroke (width 0) (type default)) (uuid "3f2dcfc1-dc44-48b0-9913-96c9ea64f03a"))
-(wire (pts (xy 121.92 73.66) (xy 132.08 73.66)) (stroke (width 0) (type default)) (uuid "4471874e-188e-4ed5-902d-4108529f9019"))
-(wire (pts (xy 132.08 73.66) (xy 144.78 73.66)) (stroke (width 0) (type default)) (uuid "4ad54949-49e7-41e4-85f1-0a5cb1bd0d72"))
-(junction (at 60.96 63.5) (diameter 0) (color 0 0 0 0) (uuid "1f062999-82aa-4bba-a09f-962c7441b0d1"))
-(junction (at 71.12 55.88) (diameter 0) (color 0 0 0 0) (uuid "5bbeef6f-e8de-4fc3-9be9-b4b922a4e994"))
-(junction (at 71.12 63.5) (diameter 0) (color 0 0 0 0) (uuid "54521386-ee2c-460f-85ad-9a828ac8de45"))
-(junction (at 121.92 63.5) (diameter 0) (color 0 0 0 0) (uuid "898af52c-629b-4262-b63a-de5332906308"))
-(junction (at 121.92 73.66) (diameter 0) (color 0 0 0 0) (uuid "4d8828e3-6147-402b-be82-302e02909591"))
-(junction (at 132.08 63.5) (diameter 0) (color 0 0 0 0) (uuid "7239c9e3-fd66-482a-92e3-a71a163872b1"))
-(junction (at 132.08 73.66) (diameter 0) (color 0 0 0 0) (uuid "373e92b2-c243-412d-a358-c8ec339dcd51"))
-(symbol (lib_id "Device:FerriteBead") (at 49.53 63.5 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "ab78ad67-74d7-4c3c-95b5-384f56a12d0f")
+(global_label "USB_5V" (shape input) (at 38.1 63.5 180) (fields_autoplaced yes) (effects (font (size 1.27 1.27)) (justify right)) (uuid "e2407013-df3c-461a-9d56-ac6af63fbec2") (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 38.1 63.5 0) (effects (font (size 1.27 1.27)) (hide yes))))
+(text "audio star ground" (exclude_from_sim no) (at 109.22 87.08 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "f7099629-0774-440f-9e4d-ea487536cfa4"))
+(text "U10 78L05: +5VA for the PGA2310 logic, U8 side 2 and the plug-sense pull-ups, about 15 mA.\nOn the audio ground, so the 5 V logic never references USB. Input up to +14 V, 0.15 W in the TO-92." (exclude_from_sim no) (at 104.14 132.3 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "b3c9d3c0-1d6a-4949-b87d-94f24e73d2b4"))
+(text "Ground barrier. GND_USB (XIAO, USB-C shell, U8 side 1, PS1 input) and GND (everything audio, U8 side 2,\nPS1 output) meet only here: C45 gives the converter's switching noise a local return so it does not\nradiate as common mode, R17 stops the audio side floating away when nothing is plugged in.\nPlace both at PS1, on the 2 mm gap in the ground pours. No other copper crosses the gap." (exclude_from_sim no) (at 165.1 93.88 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "da393ef2-43c2-43b8-b441-2618f6a4e1ca"))
+(text "No external power supply. Everything runs from the USB 5 V that the XIAO passes out on its 5V pin (sheet 4).\nPS1 is a board-mounted isolated 2 W DC-DC module: 5 V in, +/-12 V 80 mA out. Unregulated: the rails follow USB voltage and load,\nabout +/-11 V on a sagging port and up to +/-14 V at 5.25 V and light load; every part on the rails is rated for that (PGA2310 max 16 V).\nRails: +12 V ~55 mA (analog ~40 mA plus U10 ~15 mA), -12 V ~40 mA; the TBA 2 gives 80 mA per rail. Budget at 5 V: XIAO ~30 mA, PS1 ~230 mA, LED 2 mA;\n~260 mA typical, 330 mA worst case; USB 2.0 allows 500 mA. PS1 is the only power path across the ground barrier: its 1.5 kV isolation is what floats the audio side.\nAudio grounds meet once at PS1 Common. Keep PS1 at the far end of the board from J1 / J2. Total rail capacitance stays under the 220 uF the TBA 2 allows." (exclude_from_sim no) (at 33.02 45.72 0) (effects (font (size 1.1 1.1)) (justify left bottom)) (uuid "6b20690a-1464-4224-8ada-b409bfd60a0a"))
+(text "Flags (unlabelled) mark +5V, +12V, -12V and GND_USB as driven for ERC, since they sit behind FB1 / L1 / L2 or the XIAO." (exclude_from_sim no) (at 147.32 88.9 0) (effects (font (size 1 1)) (justify left bottom)) (uuid "b0b06bc4-1c61-4a31-a4c0-3d066d1ee62d"))
+(wire (pts (xy 38.1 63.5) (xy 45.72 63.5)) (stroke (width 0) (type default)) (uuid "c4fce078-c33a-4c46-b7dd-868796acdd07"))
+(wire (pts (xy 53.34 63.5) (xy 60.96 63.5)) (stroke (width 0) (type default)) (uuid "e5b4c1e6-2e67-405d-a4a0-ad27965732fd"))
+(wire (pts (xy 60.96 63.5) (xy 71.12 63.5)) (stroke (width 0) (type default)) (uuid "5d409510-710a-4086-ba6e-2b8542ef0532"))
+(wire (pts (xy 71.12 63.5) (xy 78.74 63.5)) (stroke (width 0) (type default)) (uuid "13eaabe1-15b3-4814-b858-8b2ccb0b80f5"))
+(wire (pts (xy 71.12 63.5) (xy 71.12 55.88)) (stroke (width 0) (type default)) (uuid "ea9b2b62-64ac-49f4-a0cf-df7fe9f543fc"))
+(wire (pts (xy 66.04 55.88) (xy 71.12 55.88)) (stroke (width 0) (type default)) (uuid "0effffff-a9e6-4fff-a35a-1f63c68442b6"))
+(wire (pts (xy 78.74 73.66) (xy 73.66 73.66)) (stroke (width 0) (type default)) (uuid "6d539b2b-bd28-468e-815b-119ba9f3df23"))
+(wire (pts (xy 73.66 73.66) (xy 73.66 78.74)) (stroke (width 0) (type default)) (uuid "bad77bd8-ad51-4bc1-bda9-9c647d302eb4"))
+(wire (pts (xy 66.04 78.74) (xy 73.66 78.74)) (stroke (width 0) (type default)) (uuid "d461b9a6-80ea-4c85-8413-375a6c186513"))
+(wire (pts (xy 104.14 63.5) (xy 109.22 63.5)) (stroke (width 0) (type default)) (uuid "0d93274e-9474-41ad-9a31-178bdb78c169"))
+(wire (pts (xy 116.84 63.5) (xy 121.92 63.5)) (stroke (width 0) (type default)) (uuid "2b595b9f-7b52-4204-8e77-0c02c7ff948b"))
+(wire (pts (xy 121.92 63.5) (xy 132.08 63.5)) (stroke (width 0) (type default)) (uuid "08804a9a-9a8a-413b-9501-3c3bfa542b44"))
+(wire (pts (xy 132.08 63.5) (xy 144.78 63.5)) (stroke (width 0) (type default)) (uuid "fe0ca18c-7849-4309-8b8c-838666a8bb7a"))
+(wire (pts (xy 104.14 68.58) (xy 106.68 68.58)) (stroke (width 0) (type default)) (uuid "4cddd828-4f65-432e-bdb9-f41c799249d6"))
+(wire (pts (xy 106.68 68.58) (xy 106.68 81.28)) (stroke (width 0) (type default)) (uuid "dca1cda2-e224-41e3-b706-f99885c4168b"))
+(wire (pts (xy 104.14 73.66) (xy 109.22 73.66)) (stroke (width 0) (type default)) (uuid "02d1ed29-a0b2-44dd-8392-59ac89dfd8c9"))
+(wire (pts (xy 116.84 73.66) (xy 121.92 73.66)) (stroke (width 0) (type default)) (uuid "fc900ba0-2df0-4306-8c26-c9cd878e94db"))
+(wire (pts (xy 121.92 73.66) (xy 132.08 73.66)) (stroke (width 0) (type default)) (uuid "d1e4d107-3248-4e48-a484-1f809bf7d276"))
+(wire (pts (xy 132.08 73.66) (xy 144.78 73.66)) (stroke (width 0) (type default)) (uuid "4a3c707f-c5ce-40d5-ad30-6dd3d8bd59a9"))
+(wire (pts (xy 104.14 109.22) (xy 104.14 114.3)) (stroke (width 0) (type default)) (uuid "71fb16de-7525-4b85-ba8f-9bbd8b71dce8"))
+(wire (pts (xy 104.14 114.3) (xy 110.49 114.3)) (stroke (width 0) (type default)) (uuid "66ff1cca-dedd-46bf-af9f-1103c16e0b76"))
+(wire (pts (xy 110.49 114.3) (xy 118.11 114.3)) (stroke (width 0) (type default)) (uuid "3d6b2e8e-1b71-4648-98e6-834bcf9ae73a"))
+(wire (pts (xy 127 120.65) (xy 127 123.19)) (stroke (width 0) (type default)) (uuid "acb06d45-878a-47d2-8aba-73d5fea26b50"))
+(wire (pts (xy 135.89 114.3) (xy 140.97 114.3)) (stroke (width 0) (type default)) (uuid "3cd8fb78-a8b2-47a2-a9d8-2aeec0b61e68"))
+(wire (pts (xy 140.97 114.3) (xy 147.32 114.3)) (stroke (width 0) (type default)) (uuid "9d4d4287-1784-48b1-af65-b85a7227aa4a"))
+(wire (pts (xy 147.32 114.3) (xy 147.32 109.22)) (stroke (width 0) (type default)) (uuid "25dbd875-8345-4c0e-8d84-60cf993c3a6e"))
+(wire (pts (xy 177.8 55.88) (xy 177.8 63.5)) (stroke (width 0) (type default)) (uuid "c9895041-014d-49dc-9b3b-cb8e2c3bf21d"))
+(wire (pts (xy 177.8 63.5) (xy 190.5 63.5)) (stroke (width 0) (type default)) (uuid "393063e7-90cc-47ce-8622-9f23ad0737d2"))
+(wire (pts (xy 177.8 71.12) (xy 177.8 76.2)) (stroke (width 0) (type default)) (uuid "fa5f93a5-c956-459c-8a56-93f5b8bb88ad"))
+(wire (pts (xy 190.5 71.12) (xy 190.5 76.2)) (stroke (width 0) (type default)) (uuid "ec531f86-06ad-4f3a-ac2e-b2dba35ade00"))
+(wire (pts (xy 190.5 76.2) (xy 177.8 76.2)) (stroke (width 0) (type default)) (uuid "4dddd1d9-b12b-48b0-9d83-ca432f05b5b1"))
+(junction (at 60.96 63.5) (diameter 0) (color 0 0 0 0) (uuid "b35f970e-2fd7-47eb-b25c-cdc4c28501b8"))
+(junction (at 71.12 55.88) (diameter 0) (color 0 0 0 0) (uuid "409dccb5-f94c-4a61-a171-64bc65858d24"))
+(junction (at 71.12 63.5) (diameter 0) (color 0 0 0 0) (uuid "5204d7f4-ff56-40ad-81a4-579cac4c2284"))
+(junction (at 73.66 78.74) (diameter 0) (color 0 0 0 0) (uuid "95fe4146-c9c6-4068-ac9f-a4b19da05e77"))
+(junction (at 110.49 114.3) (diameter 0) (color 0 0 0 0) (uuid "d93ddc74-655a-4043-aacb-d6786501d53d"))
+(junction (at 121.92 63.5) (diameter 0) (color 0 0 0 0) (uuid "d3f72f0c-d420-4c56-8af9-1e294c3e721b"))
+(junction (at 121.92 73.66) (diameter 0) (color 0 0 0 0) (uuid "eac5bd36-af59-4c16-ab4d-437a457e7129"))
+(junction (at 132.08 63.5) (diameter 0) (color 0 0 0 0) (uuid "b4cc93bf-2f7f-4bd3-8a55-dca70466d061"))
+(junction (at 132.08 73.66) (diameter 0) (color 0 0 0 0) (uuid "887ed43b-b9c7-4cd2-9e6d-aedcabdfc88d"))
+(junction (at 140.97 114.3) (diameter 0) (color 0 0 0 0) (uuid "61063917-a5d1-4b49-9515-552cf34a1fa7"))
+(junction (at 177.8 63.5) (diameter 0) (color 0 0 0 0) (uuid "2f45d02a-fe6a-4a1a-84da-548d341a5873"))
+(junction (at 177.8 71.12) (diameter 0) (color 0 0 0 0) (uuid "23013e8c-74b5-4736-8ceb-e13f7aa10d0f"))
+(junction (at 177.8 76.2) (diameter 0) (color 0 0 0 0) (uuid "6aa9babe-ee9a-4962-82f4-f798aa359804"))
+(symbol (lib_id "Device:FerriteBead") (at 49.53 63.5 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "848b043e-3e47-40ac-98a3-3072127b7b42")
   (property "Reference" "FB1" (at 49.53 59.4614 90) (effects (font (size 1.27 1.27))))
   (property "Value" "600R@100MHz 1A" (at 49.53 67.5386 90) (effects (font (size 1.27 1.27))))
   (property "Footprint" "Inductor_THT:L_Axial_L7.0mm_D3.3mm_P10.16mm_Horizontal_Fastron_MICC" (at 49.53 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 49.53 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "7a9ea998-f14c-432c-b907-8d764c29bcb0"))
-  (pin "2" (uuid "853461aa-636c-4cda-bd41-fd304ee8f08a"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "FB1") (unit 1))))
+  (pin "1" (uuid "f3889804-e724-4842-b08a-aa96e2289006"))
+  (pin "2" (uuid "99f1c2df-61d4-440f-9fce-10757ca3e65a"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "FB1") (unit 1))))
 )
-(symbol (lib_id "GhostFader:TBA2_Dual") (at 91.44 68.58 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "560ca9f7-6716-4e05-9f11-47c97609fbf9")
+(symbol (lib_id "GhostFader:TBA2_Dual") (at 91.44 68.58 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6cd09f74-d9db-4eff-9d5a-6f746461077e")
   (property "Reference" "PS1" (at 99.06 57.15 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "TBA 2-0522" (at 99.06 59.69 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Footprint" "Converter_DCDC:Converter_DCDC_TRACO_TBA2-xxxx_Dual_THT" (at 91.44 68.58 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 91.44 68.58 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "9f4cdd99-009d-43a6-ab60-1ac65a87e646"))
-  (pin "2" (uuid "8a236f39-8a85-465a-827d-b696d89896e7"))
-  (pin "4" (uuid "db2ebea3-2468-404a-b1c4-8de3e2166269"))
-  (pin "5" (uuid "ddd997eb-d1e5-4fdb-be47-a46328269c05"))
-  (pin "6" (uuid "240c6b2a-da99-4ac9-a602-17f9db7a2b6c"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "PS1") (unit 1))))
+  (pin "1" (uuid "2bc73756-1495-4b36-8072-06d5c14d5234"))
+  (pin "2" (uuid "3ef685db-717b-474b-aaef-ebc384c4fc0a"))
+  (pin "4" (uuid "8fc18521-ec07-4b31-8bb6-ca45facdf383"))
+  (pin "5" (uuid "01d57c30-e1a9-4cdd-8acc-b9c6436d0d8b"))
+  (pin "6" (uuid "cbb4e8a6-e7e5-462a-a470-d0bd80831704"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "PS1") (unit 1))))
 )
-(symbol (lib_id "Device:C_Polarized") (at 60.96 67.31 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3de07eb4-4381-468a-8dc8-6189ef072595")
+(symbol (lib_id "Device:C_Polarized") (at 60.96 67.31 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3ee0483a-046e-42c3-a99b-e730d8cdf1e9")
   (property "Reference" "C11" (at 64.516 66.04 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "47u low-ESR" (at 64.516 68.58 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" (at 60.96 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 60.96 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "132fa8cc-f1f7-488b-8817-6b87fa1829d0"))
-  (pin "2" (uuid "2131df93-e9ae-4d7e-b102-4be239585756"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "C11") (unit 1))))
+  (pin "1" (uuid "c9c59233-0f45-4220-b129-373a3b531bef"))
+  (pin "2" (uuid "a6bafafd-6e95-494c-8e13-4bc8dec8aa30"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "C11") (unit 1))))
 )
-(symbol (lib_id "power:GND") (at 60.96 71.12 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "e5330016-22cd-4af2-b206-f946d6128c5a")
+(symbol (lib_id "GhostFader:GND_USB") (at 60.96 71.12 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "3b1aa8aa-cd84-48c3-9169-d2696add7629")
   (property "Reference" "#PWR001" (at 60.96 71.12 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
-  (property "Value" "GND" (at 60.96 74.93 0) (effects (font (size 1.27 1.27))))
+  (property "Value" "GND_USB" (at 60.96 74.93 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 60.96 71.12 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 60.96 71.12 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "9c6e71a0-b825-4371-9cac-5bb340efb5b9"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR001") (unit 1))))
+  (pin "1" (uuid "642b7940-22da-4206-acb9-cd5880e2f9bd"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR001") (unit 1))))
 )
-(symbol (lib_id "power:+5V") (at 71.12 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "291849cb-65bf-4930-ac7c-0ed8c9847407")
+(symbol (lib_id "power:+5V") (at 71.12 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "7ac0f589-14a5-4d71-af42-a29488a2b9e4")
   (property "Reference" "#PWR002" (at 71.12 55.88 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "+5V" (at 71.12 52.07 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 71.12 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 71.12 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "2ab5db7d-28e9-44a6-bfad-028e26809fd6"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR002") (unit 1))))
+  (pin "1" (uuid "3f2e26fa-31b8-4045-88ea-65152fade040"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR002") (unit 1))))
 )
-(symbol (lib_id "power:PWR_FLAG") (at 66.04 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "5f341a7f-f474-4eb0-baf2-cdd602964757")
+(symbol (lib_id "power:PWR_FLAG") (at 66.04 55.88 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "2d97f681-7117-4b55-a429-f00281d831b6")
   (property "Reference" "#FLG003" (at 66.04 55.88 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "PWR_FLAG" (at 66.04 52.07 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Footprint" "" (at 66.04 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 66.04 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "88111562-0e18-495c-88df-6d505182f614"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#FLG003") (unit 1))))
+  (pin "1" (uuid "56d5ac7a-f3dd-41ba-99c7-88461c737c9d"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#FLG003") (unit 1))))
 )
-(symbol (lib_id "power:GND") (at 73.66 78.74 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "48e89d61-bb6e-4e1a-aafe-f570608438c1")
+(symbol (lib_id "GhostFader:GND_USB") (at 73.66 78.74 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "dd6c3d4f-8b39-462d-9fd9-f0ec89f836ea")
   (property "Reference" "#PWR004" (at 73.66 78.74 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
-  (property "Value" "GND" (at 73.66 82.55 0) (effects (font (size 1.27 1.27))))
+  (property "Value" "GND_USB" (at 73.66 82.55 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 73.66 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 73.66 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "7802e39a-eb1a-4a5f-a00c-35279eb0aa65"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR004") (unit 1))))
+  (pin "1" (uuid "63989c1b-e4aa-4716-885c-2283efd6b48f"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR004") (unit 1))))
 )
-(symbol (lib_id "Device:L") (at 113.03 63.5 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "b3090db2-3b09-4c35-bba5-de16136fa145")
+(symbol (lib_id "power:PWR_FLAG") (at 66.04 78.74 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "825ff266-6fde-45cd-8c9f-c8e89126f5a2")
+  (property "Reference" "#FLG005" (at 66.04 78.74 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "PWR_FLAG" (at 66.04 74.93 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Footprint" "" (at 66.04 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 66.04 78.74 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "e9967867-0342-437c-b4d7-6bcf803ab293"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#FLG005") (unit 1))))
+)
+(symbol (lib_id "Device:L") (at 113.03 63.5 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "d03f8b73-cff8-4d9c-ad4a-1bb983e547f0")
   (property "Reference" "L1" (at 113.03 61.5977 90) (effects (font (size 1.27 1.27))))
   (property "Value" "10uH 300mA" (at 113.03 64.77 90) (effects (font (size 1.27 1.27))))
   (property "Footprint" "Inductor_THT:L_Axial_L7.0mm_D3.3mm_P10.16mm_Horizontal_Fastron_MICC" (at 113.03 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 113.03 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "fa11b9aa-9611-46dc-ab96-3f45c9353417"))
-  (pin "2" (uuid "316740fe-f026-4ba3-8108-9d4a532b0995"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "L1") (unit 1))))
+  (pin "1" (uuid "8cf144d7-5ecb-49f3-aefc-847d0889d7dc"))
+  (pin "2" (uuid "e20ba463-d2c0-4031-803a-1f1fda6476fc"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "L1") (unit 1))))
 )
-(symbol (lib_id "power:+12V") (at 144.78 63.5 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "82df1dca-b6ba-4f1d-a167-d0fcdba88746")
-  (property "Reference" "#PWR005" (at 144.78 63.5 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:+12V") (at 144.78 63.5 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "579c2670-ed7f-4d8d-8077-8a88293aebb9")
+  (property "Reference" "#PWR006" (at 144.78 63.5 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "+12V" (at 144.78 59.69 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 144.78 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 144.78 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "7d2d7935-c634-409b-9b92-88773a7dce6c"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR005") (unit 1))))
+  (pin "1" (uuid "5ae21169-61db-4aa3-b452-8c69a6612f58"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR006") (unit 1))))
 )
-(symbol (lib_id "Device:C_Polarized") (at 121.92 59.69 180) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "bc54bcd8-bdbd-4d21-8f14-fe5fde25e472")
+(symbol (lib_id "Device:C_Polarized") (at 121.92 59.69 180) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2b962b25-77f2-4e91-a830-c49e8ffbe2c8")
   (property "Reference" "C12" (at 125.476 58.42 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "100u 25V" (at 125.476 60.96 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" (at 121.92 59.69 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 121.92 59.69 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "a7961147-2f37-4e5a-b9bb-7d24e86b4b00"))
-  (pin "2" (uuid "e7479c63-ce40-4400-b30b-8034c5319873"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "C12") (unit 1))))
+  (pin "1" (uuid "d206e996-1625-4ac6-a1bf-fc917ed6ec93"))
+  (pin "2" (uuid "63a4d6f1-b02f-45ed-9c65-4a59d412f9c8"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "C12") (unit 1))))
 )
-(symbol (lib_id "power:GND") (at 121.92 55.88 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "c1b1509c-a301-4a77-b42d-e8915945eb98")
-  (property "Reference" "#PWR006" (at 121.92 55.88 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:GND") (at 121.92 55.88 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "03dd420c-9b96-44b6-ab48-312fc0be7def")
+  (property "Reference" "#PWR007" (at 121.92 55.88 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "GND" (at 121.92 52.07 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 121.92 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 121.92 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "29689989-23e7-4fa3-8ad7-ef472017d385"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR006") (unit 1))))
+  (pin "1" (uuid "0c0334e9-1e6a-4c07-a7c3-c9028bc58064"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR007") (unit 1))))
 )
-(symbol (lib_id "power:PWR_FLAG") (at 132.08 63.5 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "4cc90806-517d-4087-86bb-5f6c1eff0dc9")
-  (property "Reference" "#FLG007" (at 132.08 63.5 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:PWR_FLAG") (at 132.08 63.5 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "1ad01e5c-bbca-46ad-b304-8a036ec012e3")
+  (property "Reference" "#FLG008" (at 132.08 63.5 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "PWR_FLAG" (at 132.08 59.69 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Footprint" "" (at 132.08 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 132.08 63.5 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "74ea9393-cf24-441b-b97c-9f55010664e1"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#FLG007") (unit 1))))
+  (pin "1" (uuid "089fc2bf-f16e-421b-84e9-ab544d0321f4"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#FLG008") (unit 1))))
 )
-(symbol (lib_id "power:GND") (at 106.68 81.28 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "e8ea5f65-486b-47af-869a-a1c420e38ffc")
-  (property "Reference" "#PWR008" (at 106.68 81.28 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:GND") (at 106.68 81.28 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "6f2bb273-3f82-4ff5-8254-293842a1033e")
+  (property "Reference" "#PWR009" (at 106.68 81.28 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "GND" (at 106.68 85.09 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 106.68 81.28 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 106.68 81.28 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "c1dd24cf-290e-49d6-9291-a5783e1bfad9"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR008") (unit 1))))
+  (pin "1" (uuid "c0ce66ad-a634-4249-b916-652a422d0a55"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR009") (unit 1))))
 )
-(symbol (lib_id "Device:L") (at 113.03 73.66 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0fe9ba52-8219-4c0b-8a5a-1807488d03b7")
+(symbol (lib_id "Device:L") (at 113.03 73.66 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "3adfe863-dc05-4d5a-8fbb-7d0f32dbeb42")
   (property "Reference" "L2" (at 113.03 71.7577 90) (effects (font (size 1.27 1.27))))
   (property "Value" "10uH 300mA" (at 113.03 74.93 90) (effects (font (size 1.27 1.27))))
   (property "Footprint" "Inductor_THT:L_Axial_L7.0mm_D3.3mm_P10.16mm_Horizontal_Fastron_MICC" (at 113.03 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 113.03 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "921e3735-44a5-4d34-9b1b-8cbb51f139fa"))
-  (pin "2" (uuid "d033d27d-e60d-448d-a058-2709aa50e59c"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "L2") (unit 1))))
+  (pin "1" (uuid "507a21b6-b826-4d77-8ba4-220d7aeac925"))
+  (pin "2" (uuid "43d8b13c-d6a4-4c82-bb10-8eaf5d496b18"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "L2") (unit 1))))
 )
-(symbol (lib_id "power:-12V") (at 144.78 73.66 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "9334cf78-c4cb-430a-abfa-e7e02e9cdc52")
-  (property "Reference" "#PWR009" (at 144.78 73.66 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:-12V") (at 144.78 73.66 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "2e2c9f1f-9dfb-4c61-8002-26255e9c7e5e")
+  (property "Reference" "#PWR010" (at 144.78 73.66 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "-12V" (at 144.78 77.47 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 144.78 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 144.78 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "2169e313-eec8-4662-9d44-82eeb4cb2439"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR009") (unit 1))))
+  (pin "1" (uuid "1603bc00-c6dd-406c-8ed4-e8dc951ced05"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR010") (unit 1))))
 )
-(symbol (lib_id "Device:C_Polarized") (at 121.92 77.47 180) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "1921d3dd-1932-4d29-9eea-9a83ca5a5713")
+(symbol (lib_id "Device:C_Polarized") (at 121.92 77.47 180) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2df5a801-e025-4f52-900c-816fe738ec8b")
   (property "Reference" "C13" (at 125.476 76.2 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Value" "100u 25V" (at 125.476 78.74 0) (effects (font (size 1.27 1.27)) (justify left)))
   (property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" (at 121.92 77.47 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 121.92 77.47 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "b1cd2d2d-07a1-496f-92ed-5d78ca86038c"))
-  (pin "2" (uuid "6f35f005-f390-4be6-9cf1-e767b4d68d95"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "C13") (unit 1))))
+  (pin "1" (uuid "e1623663-99c7-4406-a3f6-cd76ac833edd"))
+  (pin "2" (uuid "23fb1d90-901d-4866-8329-dcc5520b5da4"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "C13") (unit 1))))
 )
-(symbol (lib_id "power:GND") (at 121.92 81.28 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "2f4faf1d-3beb-4f2c-8678-18da90ce2a95")
-  (property "Reference" "#PWR010" (at 121.92 81.28 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:GND") (at 121.92 81.28 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "266b13dd-d627-4fa7-b481-aa4df6c1e566")
+  (property "Reference" "#PWR011" (at 121.92 81.28 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "GND" (at 121.92 85.09 0) (effects (font (size 1.27 1.27))))
   (property "Footprint" "" (at 121.92 81.28 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 121.92 81.28 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "65209a19-abd0-40cd-99c4-1e4ea2fcce21"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#PWR010") (unit 1))))
+  (pin "1" (uuid "22f837a0-0408-467f-89ed-ed34a97241a6"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR011") (unit 1))))
 )
-(symbol (lib_id "power:PWR_FLAG") (at 132.08 73.66 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "291dfa9d-51e1-4ee2-b09e-3ba5099d1db3")
-  (property "Reference" "#FLG011" (at 132.08 73.66 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+(symbol (lib_id "power:PWR_FLAG") (at 132.08 73.66 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "297175df-aa36-456d-a572-78414f062b2c")
+  (property "Reference" "#FLG012" (at 132.08 73.66 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
   (property "Value" "PWR_FLAG" (at 132.08 77.47 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Footprint" "" (at 132.08 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
   (property "Datasheet" "" (at 132.08 73.66 0) (effects (font (size 1.27 1.27)) (hide yes)))
-  (pin "1" (uuid "83499ea3-91bc-463a-9a0c-b7e4475cae27"))
-  (instances (project "ghost-fader" (path "/4c5c562c-d270-4690-8736-07f5ac58d31a/d9211f0e-dbf1-4270-81ba-3056a08c52f2" (reference "#FLG011") (unit 1))))
+  (pin "1" (uuid "aec65b56-bfb5-4f91-805f-93b411006228"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#FLG012") (unit 1))))
+)
+(symbol (lib_id "power:+12V") (at 104.14 109.22 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "78ef98ea-1254-47df-9f99-79ec9be1fe32")
+  (property "Reference" "#PWR013" (at 104.14 109.22 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+12V" (at 104.14 105.41 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 104.14 109.22 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 104.14 109.22 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "65a433d8-0b9f-4984-9fb9-b24ec2c373b3"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR013") (unit 1))))
+)
+(symbol (lib_id "GhostFader:L78L05") (at 127 114.3 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "cafc0adf-b6ed-4403-ad85-f0b534e0922f")
+  (property "Reference" "U10" (at 130.81 106.68 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "L78L05" (at 130.81 109.22 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Package_TO_SOT_THT:TO-92_Inline_Wide" (at 127 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 127 114.3 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "633fa74a-3d57-4f4e-add9-1512050f41ae"))
+  (pin "2" (uuid "1d0d8154-4617-4088-8ab0-4dbc1e8a71e6"))
+  (pin "3" (uuid "75a21c28-ec2e-4400-9e0f-e6e5fd3aafdf"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "U10") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 110.49 118.11 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "af35510c-350e-47c2-a91d-1619caa791a8")
+  (property "Reference" "C37" (at 113.792 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100n" (at 113.792 119.38 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 110.49 118.11 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 110.49 118.11 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "7f940805-0f27-491e-a799-dbefb1de6de7"))
+  (pin "2" (uuid "a2d6410a-19cd-4cd4-be7e-1eb0bd2f982d"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "C37") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 110.49 121.92 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "a5d9e80d-19ba-458f-968f-c79b1e612597")
+  (property "Reference" "#PWR014" (at 110.49 121.92 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 110.49 125.73 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 110.49 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 110.49 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "47f87191-d5b7-4e20-bd71-e44be171bc4e"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR014") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 127 123.19 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "049ecb8f-b721-437e-be58-de005291404b")
+  (property "Reference" "#PWR015" (at 127 123.19 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 127 127 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 127 123.19 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 127 123.19 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "61517ffd-c4b6-4e68-a322-a997be0b1953"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR015") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 140.97 118.11 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "71225198-9033-4f47-87c5-51500c6c10a2")
+  (property "Reference" "C38" (at 144.272 116.84 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "100n" (at 144.272 119.38 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 140.97 118.11 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 140.97 118.11 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "d7f583e9-e74b-4e57-8986-94b209ecfc46"))
+  (pin "2" (uuid "d171d76c-1cab-42dd-9852-7a3faf292dc0"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "C38") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 140.97 121.92 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "b78b9836-61fa-4bb8-82c3-030ab6af6963")
+  (property "Reference" "#PWR016" (at 140.97 121.92 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 140.97 125.73 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 140.97 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 140.97 121.92 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "825440f2-fc4b-4ab3-9c0d-ecff80bac040"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR016") (unit 1))))
+)
+(symbol (lib_id "power:+5VA") (at 147.32 109.22 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "61ff23ae-6014-4da0-bf32-8f268c0cb487")
+  (property "Reference" "#PWR017" (at 147.32 109.22 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "+5VA" (at 147.32 105.41 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 147.32 109.22 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 147.32 109.22 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "8f1902b1-95a7-47b8-86ca-301e8777fa84"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR017") (unit 1))))
+)
+(symbol (lib_id "GhostFader:GND_USB") (at 177.8 55.88 180) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "b89f0f22-693a-4619-b56d-80f77a69271c")
+  (property "Reference" "#PWR018" (at 177.8 55.88 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND_USB" (at 177.8 52.07 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 177.8 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 177.8 55.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "5d428dc9-9f7d-4a9a-8450-9f6e93d572a0"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR018") (unit 1))))
+)
+(symbol (lib_id "Device:C") (at 177.8 67.31 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "5611dbf7-b11e-4dfc-8a37-3b92960cdb74")
+  (property "Reference" "C45" (at 181.102 66.04 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1n 1kV" (at 181.102 68.58 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" (at 177.8 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 177.8 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "e067e12f-f5b8-4c50-b4f8-44aad232ccd2"))
+  (pin "2" (uuid "e7caa1ed-0b44-4d24-9380-f4064c19eb95"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "C45") (unit 1))))
+)
+(symbol (lib_id "Device:R") (at 190.5 67.31 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "6072fda1-6277-4ad3-8f98-8800539aee91")
+  (property "Reference" "R17" (at 192.786 66.04 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Value" "1M" (at 192.786 68.58 0) (effects (font (size 1.27 1.27)) (justify left)))
+  (property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" (at 190.5 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 190.5 67.31 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "2dd67828-8bfd-48de-bb4f-39eb6db10418"))
+  (pin "2" (uuid "556359d7-07cd-4dda-a96c-3d6011f2f71f"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "R17") (unit 1))))
+)
+(symbol (lib_id "power:GND") (at 177.8 76.2 0) (unit 1) (exclude_from_sim no) (in_bom no) (on_board no) (dnp no) (uuid "337cc7fe-94b7-4060-8d4c-98db2154bb37")
+  (property "Reference" "#PWR019" (at 177.8 76.2 0) (effects (font (size 1.27 1.27)) (justify left) (hide yes)))
+  (property "Value" "GND" (at 177.8 80.01 0) (effects (font (size 1.27 1.27))))
+  (property "Footprint" "" (at 177.8 76.2 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (property "Datasheet" "" (at 177.8 76.2 0) (effects (font (size 1.27 1.27)) (hide yes)))
+  (pin "1" (uuid "16cb5510-6044-41f5-a62d-04daad36eec6"))
+  (instances (project "ghost-fader" (path "/ff864ed0-13b7-4c46-a78e-2ff7ed2b1e14/158352c6-4c94-44f9-9b25-77a834183c54" (reference "#PWR019") (unit 1))))
 )
 )
